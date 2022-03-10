@@ -1,4 +1,4 @@
-# calculateur-ges-nume
+# calculateur-ges-num
 
 ## Project setup
 ```
