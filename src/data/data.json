@@ -1,0 +1,303 @@
+{
+    "production": {
+        "duree_de_vie" : {
+            "msg" : "durée de vie des appareils",
+            "src" : "[1] Rapport The Shift Prject numérique 2018;[2]rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+            "smartphone" : 2.25,
+            "laptop" : 5,
+            "serveur" : -1,
+            "tele_connectee" : 4,
+            "tablette" : 3,
+            "ordinateurfixe" : 6,
+            "ecran" : 6.5
+        },
+        "GES" : {
+            "msg" : "GES émis lors de la production de l'appareil en kgCO2e",
+            "src" : "[1]'[Lean ICT Materials] REN', onglet “REN Prod Phase,\n[2][CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ?,[3] base-carbone ADEME",
+            "unite" : "kgCO2e",
+            "smartphone" : 61.1,
+            "laptop" : 424.5,
+            "serveur" : 588,
+            "tele_connectee" : 442.2,
+            "ordinateurfixe" : 296,
+            "ecran" : 370,
+            "reseau" : 0.000000006,
+            "unite_reseau" : "gCo2e/byte",
+            "datacenter" :  0.000000003,
+            "unite_datacenter" : "gCo2e/byte"
+        },
+        "energie_primaire" : {
+            "msg" : "Energie primaire émise lors de la production de l'appareil en MJ",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "MJ",
+            "smartphone" : 714,
+            "laptop" : 6640,
+            "serveur" : -1,
+            "tele_connectee" : -1
+        },
+        "gallium" : {
+            "msg" : "quantité de gallium nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 0.000475,
+            "laptop" : 0.0076,
+            "serveur" : -1,
+            "tele_connectee" : 200
+        },
+        "indium" : {
+            "msg" : "quantité de indium nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 0.006985,
+            "laptop" : 0.0175,
+            "serveur" : -1,
+            "tele_connectee" : 12.1
+        },
+        "tantalium" : {
+            "msg" : "quantité de tantalium nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 0.045,
+            "laptop" : 0.54,
+            "serveur" : -1,
+            "tele_connectee" : -1
+        },
+        "cuivre" : {
+            "msg" : "quantité de cuivre nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 19.66,
+            "laptop" : 170.7,
+            "serveur" : -1,
+            "tele_connectee" : 885
+        },
+        "cobalt" : {
+            "msg" : "quantité de cuivre nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 5.79,
+            "laptop" : 12.1,
+            "serveur" : -1,
+            "tele_connectee" : 12.1
+        },
+        "pendalladium" : {
+            "msg" : "quantité de cuivre nécessaire à la production de l'appareil en g",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 0.000036,
+            "laptop" : 0.00098,
+            "serveur" : -1,
+            "tele_connectee" : 12.1
+        },
+        "extract_volum" : {
+            "msg" : "volume de terre déplacé pour la fabrication de l'appareil",
+            "src" : "'[Lean ICT Materials] REN', onglet “REN Prod Phase",
+            "unite" : "g",
+            "smartphone" : 2,
+            "laptop" : 7,
+            "serveur" : -1,
+            "tele_connectee" : 0.2
+        },
+        "Eau" : {
+
+        }
+    },
+    "utilisation" : {
+        "equipement" : {
+            "smartphone" : {
+                "src" :"[1]Rapport The Shift Prject numérique 2018\n[2]rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+                "msg" :"energie = moyenne(valeur[1],valeur[2],...,valeur[n])",
+                "energie" : 4.95,
+                "valeur[1]" : 5.9,
+                "valeur[2]" : 3.9,
+                "unite" : "kWh/an" 
+            },
+            "laptop" : {
+                "src" :"[1]Rapport The Shift Prject numérique 2018\n[2]rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+                "msg" :"energie = moyenne(valeur[1],valeur[2],...,valeur[n])",
+                "energie" : 42.5,
+                "valeur[1]" : 56,
+                "valeur[2]" : 29.1,
+                "unite" : "kWh/an" 
+            },
+            "ordinateurfixe" : {
+                "src" :"rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+                "msg" :"energie = moyenne(valeur[1],valeur[2],...,valeur[n])",
+                "energie" : 125,
+                "unite" : "kWh/an"
+            },
+            "tele" : {
+                "src" :"Rapport The Shift Prject numérique 2018",
+                "msg" : "energie = moyenne(valeur[1],valeur[2],...,valeur[n])",
+                "energie" : 168,
+                "valeur[1]" : 157,
+                "valeur[2]": 179,
+                "unite" : "kWh/an" 
+            },
+            "tablette" : {
+                "src" : "rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+                "energie" : 18.6,
+                "unite" : "kWh/an"
+            },
+            "box" : {
+                "msg" : "On pondère la moyenne de l'énergie consommée par une box par la couverture de la fibre en France",
+                "energie" : 93.2,
+                "energieDSL" : 98,
+                "energieFTTx" : 82,
+                "couv_FFTx_fr" : 0.30,
+                "unite" : "kWh/an"
+            },
+            "ecran" : {
+                "src" :"rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+                "energie" : 70,
+                "unite" : "kWh/an"
+            }
+        },  
+        "actions" : {
+            "1-byte" : {
+                "fillaire" : {
+                    "src" : "[1] Rapport The Shift Prject numérique 2018,\n[2]rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+                    "energie_par_byte[1]" : 0.00000000023,
+                    "energie_par_byte[2]" : 0.00000000033,
+                    "energie_par_byte" : 0.00000000028,
+                    "unite" : "kWh/byte"
+                },
+                "wifi" : {
+                    "src" : "[1] Rapport The Shift Prject numérique 2018,\n[2]rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+                    "msg" :"energie_par_byte = moyenne(energie_par_byte[1],energie_par_byte[2],...,energie_par_byte[n])",
+                    "energie_par_byte[1]" : 0.00000000008,
+                    "energie_par_byte[2]"  : 0.000000000033,
+                    "energie_par_byte" : 0.0000000000565,
+                    "unite" : "kWh/byte"
+                },
+                "mobile" : {
+                    "3G" : {
+                        "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ",
+                        "energie_par_byte" : 0.00000000214,
+                        "unite" : "kWh/byte"
+                    },
+                    "4G" : {
+                        "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ",
+                        "energie_par_byte" : 0.00000000009,
+                        "unite" : "kWh/byte"
+                    }
+                    
+                },
+                "datacenter" : {
+
+                    "src":"[1] Rapport The Shift Prject numérique 2018;[2][3][4][5]rapport ADEME : 'evaluation de l'impact environnemental du numérique en France et analye et perspective' - 2022",
+
+                    "energie" : 0.000000000089,
+
+                    "energie[1]" : 0.000000000038,
+                    "energie[2]" : 0.00000000013,
+                    "unite[1][2]" : "kWh/byte",
+
+                    "energie[3]" : 11.59,
+                    "unite[3]" : "TWh/an",
+
+                    "conso_donnees_annuelle_particulier[4]" : 82.4,
+                    "unite[4]" : "Eo",
+
+                    "conso_donnees_annuelle_entreprise[5]" : 6.15,
+                    "unite[5]" : "Eo",
+
+                    "type" : {
+                        "public_local" : {
+                            "superficie" : 8100,
+                            "unite_superficie" : "m2",
+                            "PUE" : 1.93,
+                            "conso_fioul" : 66,
+                            "unite_fioul" : "m3",
+                            "conso" : 0.66,
+                            "unite" : "kWh/an"
+
+                        },
+                        "public_national" : {
+                            "superficie" : 6500,
+                            "unite_superficie" : "m2",
+                            "PUE" : 1.93,
+                            "conso_fioul" : 69.2,
+                            "unite_fioul" : "m3",
+                            "conso" : 0.69,
+                            "unite" : "kWh/an"
+                        },
+                        "entreprise" : {
+                            "superficie" : 311800,
+                            "unite_superficie" : "m2",
+                            "PUE" : 1.93,
+                            "conso_fioul" : 422,
+                            "unite_fioul" : "m3",
+                            "conso" : 4.22,
+                            "unite" : "kWh/an"
+                        },
+                        "colocation" : {
+                            "superficie" : 414174,
+                            "unite_superficie" : "m2",
+                            "PUE" : 1.55,
+                            "conso_fioul" : 562,
+                            "unite_fioul" : "m3",
+                            "conso" : 5.62,
+                            "unite" : "kWh/an"
+                        },
+                        "HPC": {
+                            "superficie" : 10800,
+                            "unite_superficie" : "m2",
+                            "PUE" : 1.17,
+                            "conso_fioul" : 40,
+                            "unite_fioul" : "m3",
+                            "conso" : 0.40,
+                            "unite" : "kWh/an"
+                        }
+
+                    }   
+                }
+            },
+            "video" : {
+                "conso" : 30.9375,
+                "unite" : "Mo/mn"
+            },
+            "mail" : {
+                "conso" : 1,
+                "unite" : "Mo",
+                "GES" : {
+                    "src" : "base-carbone ADEME",
+                    "valeur" : 0.004,
+                    "unite" : "kgCO2e"
+                }
+            },
+            "mail_piece_jointe" : {
+                "conso" : 9,
+                "unite" : "Mo",
+                "GES" : {
+                    "src" : "base-carbone ADEME",
+                    "valeur" : 0.035,
+                    "unite" : "kgCO2e"
+                }
+            },
+            "insta" : {
+                "conso" : 1.66,
+                "unite" : "Mo/mn"
+            },
+            "tweet" : {
+                "GES" : {
+                    "src" : "base-carbone ADEME",
+                    "valeur" : 0.00002,
+                    "unite" : "kgCO2e"
+                }
+            }
+        }
+    },
+    "ges_elec_france" : {
+        "src" : "Rapport RTE Co2 2019 : https://assets.rte-france.com/prod/public/2020-07/Note_Bilan_CO2_2019.pdf,\n[2] CITIZING : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? '",
+        "unite" : "gCO2e/kWh",
+        "valeur" : 46.6,
+        "valeur[1]" : 36.1,
+        "valeur[2]" : 57.1
+    },
+    "ges_elec_us" : {
+        "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ", 
+        "unite" : "gCO2e/kWh",
+        "valeur" : 493
+    }
+}
