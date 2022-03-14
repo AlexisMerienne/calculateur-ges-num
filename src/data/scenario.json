@@ -1,0 +1,41 @@
+{
+  "smartphone": {
+    "label": "smartphone",
+    "item": 0,
+    "temps": []
+  },
+  "laptop": {
+    "label": "odinateur",
+    "item": 0,
+    "temps": []
+  },
+  "tele": {
+    "label": "t\u00e9l\u00e9vision",
+    "item": 0,
+    "temps": []
+  },
+  "ordinateurfixe": {
+    "label": "Ordinateur fixe",
+    "item": 0,
+    "temps": []
+  },
+  "actions": {
+    "mail": {
+      "label": "mail",
+      "nbr_mail": 0,
+      "nbr_mail_pj": 0
+    },
+    "video": {
+      "label": "video streaming",
+      "temps": 0
+    },
+    "tweet": {
+      "label": "tweet",
+      "nbr_tweet": 0
+    },
+    "insta": {
+      "label": "insta",
+      "temps": 0
+    }
+  }
+}

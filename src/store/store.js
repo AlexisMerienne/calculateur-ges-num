@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {deviceModule} from "@/store/device";
 import {actionModule} from "@/store/actions";
+import {chartsModule} from "@/store/charts";
 
 
 Vue.use(Vuex);
@@ -35,7 +36,8 @@ export default new Vuex.Store( {
     },
     modules: {
         deviceModule: deviceModule,
-        actionModule : actionModule
+        actionModule : actionModule,
+        chartsModule : chartsModule
     }
 
 })

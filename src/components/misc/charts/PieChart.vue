@@ -1,11 +1,7 @@
-<template>
-  <Pie></Pie>
-</template>
-
 <script>
-import { Pie } from 'vue-chartjs'
+import  { Pie }  from 'vue-chartjs'
 export default {
-  extends : Pie,
+  extends: Pie,
   props: {
     chartdata: {
       type: Object,
@@ -21,7 +17,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

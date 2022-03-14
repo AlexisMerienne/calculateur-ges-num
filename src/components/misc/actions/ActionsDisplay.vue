@@ -2,17 +2,17 @@
   <div id="displayer">
     <div v-if="action.label==='mail'">
       {{action.label}}
-      <b-form-input id="mail" v-model="nbr_mail" placeholder="mails"></b-form-input>
-      <b-form-input id="mailpj" v-model="nbr_mail_pj" placeholder="mails pièces jointes"></b-form-input>
+      <b-form-input id="mail" v-model="action.value_1" placeholder="mails"></b-form-input>
+      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails pièces jointes"></b-form-input>
     </div>
     <div v-else style="display: flex;flex-direction: column">
-      {{action.label}} - {{time}}
+      {{action.label}} - {{action.value_1}}
       <range-slider
           class="slider"
           min="0"
           max="12"
           step="1"
-          v-model="time">
+          v-model="action.value_1">
       </range-slider>
     </div>
     <b-button id="b-delete" v-on:click="onDelete">Delete</b-button>
@@ -35,16 +35,16 @@ export default {
   },
   data() {
     return {
-      action : this.$store.getters.getAction(this.id),
-      time : 0,
-      nbr_mail : 0,
-      nbr_mail_pj : 0
+      action : this.$store.getters.getAction(this.id)
     }
   },
   methods : {
     onDelete(){
       this.$store.commit('DELETE_ACTION',this.id)
     }
+  },
+  updated() {
+    this.$store.commit('SET_VALUE_ACTION',this.action)
   }
 }
 </script>

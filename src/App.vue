@@ -8,13 +8,12 @@
       <div id="wrapper">
         <router-view/>
       </div>
-      <div id="b-next" v-on:click="goToNext">
+      <div v-if="currentviews!=='charts'" id="b-next" v-on:click="goToNext">
            <img id="b-next-icon" src="../src/assets/arrow-right-circle.svg" width="50" height="50">
       </div>
     </div>
   </div>
 </template>
-
 <script>
 
 import Header from "@/components/layouts/Header";
@@ -84,15 +83,21 @@ export default {
   margin: 5px;
 }
 #b-next-icon{
+  border-radius: 25px;
   cursor: pointer;
 }
 #b-next-icon:hover{
   background-color: lightslategray;
+  width: 53px;
+  height: 53px;
 }
 #b-prev-icon{
+  border-radius: 25px;
   cursor: pointer;
 }
 #b-prev-icon:hover{
   background-color: lightslategray;
+  width: 53px;
+  height: 53px;
 }
 </style>

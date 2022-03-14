@@ -154,7 +154,7 @@
             }
         },  
         "actions" : {
-            "1-byte" : {
+            "onebyte" : {
                 "fillaire" : {
                     "src" : "[1] Rapport The Shift Prject numérique 2018,\n[2]rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
                     "energie_par_byte[1]" : 0.00000000023,

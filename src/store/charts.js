@@ -1,4 +1,6 @@
 import data from "../data/data.json"
+import {getColors} from "@/utils/colors";
+import {getGESAction} from "@/utils/computedges";
 
 export const chartsModule = {
     namespaced:false,
@@ -7,17 +9,18 @@ export const chartsModule = {
     },
     getters : {
         getData (state) {return state.gesdata;},
-        getActionGes (state) {
+        getActionGes () {
             let data = {
                 labels: ['mail','video','insta'],
                 datasets: [
                     {
                         label: 'Emmission de GES des actions',
-                        data: [],
-                        backgroundColor: [],
+                        data: getGESAction(),
+                        backgroundColor: [getColors().backgroundColor[0],getColors().backgroundColor[1],getColors().backgroundColor[4]],
                     }
                 ]
             };
+            return data;
         }
     }
 
