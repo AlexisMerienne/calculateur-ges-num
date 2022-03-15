@@ -2,13 +2,13 @@
   <div id="app">
     <Header/>
       <div v-if="currentviews!=='home'" id="b-prev" v-on:click="goToPrev">
-        <img id="b-prev-icon" src="../src/assets/arrow-left-circle.svg" width="50" height="50">
+        <img id="b-prev-icon" src="../src/assets/chevron-left-arrow.svg" width="50" height="50">
       </div>
       <div id="wrapper">
         <router-view/>
       </div>
       <div v-if="currentviews!=='charts'" id="b-next" v-on:click="goToNext">
-           <img id="b-next-icon" src="../src/assets/arrow-right-circle.svg" width="50" height="50">
+           <img id="b-next-icon" src="../src/assets/chevron-right-arrow.svg" width="50" height="50">
       </div>
     </div>
 </template>
@@ -92,7 +92,6 @@ export default {
   cursor: pointer;
 }
 #b-next-icon:hover{
-  background-color: lightslategray;
   width: 53px;
   height: 53px;
 }
@@ -101,7 +100,6 @@ export default {
   cursor: pointer;
 }
 #b-prev-icon:hover{
-  background-color: lightslategray;
   width: 53px;
   height: 53px;
 }

@@ -5,7 +5,7 @@
       <ActionDisplay v-bind:id="action.id"/>
     </div>
     <div id="buttons">
-      <b-dropdown class="mx-1" right text="+" style="margin: 5px">
+      <b-dropdown class="mx-1" right text="Ajouter une action numérique" style="margin: 5px">
         <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('insta')">insta</b-dropdown-item>
@@ -38,8 +38,6 @@ export default {
   position: relative;
   flex-direction: column;
   align-items: center;
-  border: solid;
-  border-radius: 7px;
   min-width: 275px;
 }
 #buttons{

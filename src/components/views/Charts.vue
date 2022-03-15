@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" shadow="">
     <h3>Ma consommation</h3>
     <PieChartContainer/>
   </div>
@@ -28,8 +28,6 @@ export default {
   position: relative;
   flex-direction: column;
   align-items: center;
-  border: solid;
-  border-radius: 7px;
   min-width: 275px;
 }
 

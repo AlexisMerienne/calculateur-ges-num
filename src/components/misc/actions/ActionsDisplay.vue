@@ -1,9 +1,9 @@
 <template>
-  <div id="displayer">
+  <div id="displayer" shadow="">
     <div v-if="action.label==='mail'">
       {{action.label}}
       <b-form-input id="mail" v-model="action.value_1" placeholder="mails"></b-form-input>
-      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails pièces jointes"></b-form-input>
+      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails avec pièces jointes"></b-form-input>
     </div>
     <div v-else style="display: flex;flex-direction: column">
       {{action.label}} - {{action.value_1}}h
@@ -15,7 +15,11 @@
           v-model="action.value_1">
       </range-slider>
     </div>
-    <b-button id="b-delete" v-on:click="onDelete">Delete</b-button>
+    <div class="d-button" style="width:100%">
+      <div class="d-button-container" style="display: flex;justify-content:right">
+        <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,9 +60,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid;
   margin: 5px 20%;
-  border-radius: 7px;
 }
 #b-delete{
   margin : 3px

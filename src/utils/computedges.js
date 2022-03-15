@@ -4,6 +4,8 @@ exports.chartData = (data,scenario,id) => {
             return getGESAction(data,scenario);
         case 'chart-gesdevice' :
             return getGESDevice(data,scenario);
+        case 'chart-gesproduction' :
+            return getGESProduction(data,scenario);
     }
 }
 
@@ -74,6 +76,40 @@ function getGESDevice(data,scenario){
         'labels' : ['smartphone','laptop','tele'],
         'title': "Emmission de GES de l'utilisation des appareils numérique",
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
+        'src' : src
+    };
+}
+
+function getGESProduction(data,scenario){
+
+    const temps_smartphone = getTempsTotalUtilisation(scenario,"smartphone")
+    const ges_smartphone_daily_prod = ((data.production.GES.smartphone * Math.pow(10,3)) / (data.production.duree_de_vie.smartphone *365.25 * 24 * 60))*temps_smartphone
+
+
+    const temps_laptop = getTempsTotalUtilisation(scenario,"laptop")
+    const ges_laptop_daily = ((data.production.GES.laptop * Math.pow(10,3)) / (data.production.duree_de_vie.laptop*365.25 * 24))*temps_laptop
+
+    const temps_tele = getTempsTotalUtilisation(scenario,"tele")
+    const ges_tele_daily = ((data.production.GES.tele_connectee*Math.pow(10,3)) / (data.production.duree_de_vie.tele_connectee*365.25 * 24))*temps_tele
+
+
+    const src = [{
+        id : 0,
+        src : 'base-carbone ADEME'
+    },
+        {
+            id : 1,
+            src : "Rapport The Shift Project numérique 2018"
+        },
+        {
+            id : 2,
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
+        }]
+    return {
+        'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)],
+        'labels' : ['smartphone','laptop','tele'],
+        'title': "Emmission de GES de la production des appareils",
+        'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
         'src' : src
     };
 }

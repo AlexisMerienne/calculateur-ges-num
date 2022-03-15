@@ -5,7 +5,7 @@
         <DeviceDisplay v-bind:id="device.id"/>
       </div>
       <div id="buttons">
-        <b-dropdown class="mx-1" right text="+" style="margin: 5px;">
+        <b-dropdown class="mx-1" right text="Ajouter un appareil" style="margin: 5px;">
           <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
@@ -40,8 +40,6 @@ export default {
   position: relative;
   flex-direction: column;
   align-items: center;
-  border: solid;
-  border-radius: 7px;
   min-width: 275px;
 }
 #buttons{

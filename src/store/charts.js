@@ -8,7 +8,7 @@ export const chartsModule = {
     state: {
         gesdata : data,
         scenario : scenario,
-        chartsids : ['chart-gesaction','chart-gesdevice'],
+        chartsids : ['chart-gesaction','chart-gesdevice','chart-gesproduction'],
         currentid : 'chart-gesaction'
     },
     getters : {

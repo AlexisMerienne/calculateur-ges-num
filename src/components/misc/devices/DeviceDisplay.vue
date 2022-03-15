@@ -1,6 +1,6 @@
 <template>
-  <div id="displayer">
-      J'utilise mon/ma {{device.label}} pendant {{device.temps[0]}}h
+  <div id="displayer" shadow="">
+    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{device.temps[0]}}h
     <range-slider
         class="slider"
         min="0"
@@ -8,7 +8,11 @@
         step="1"
         v-model="device.temps[0]">
     </range-slider>
-    <b-button id="b-delete" v-on:click="onDelete">Delete</b-button>
+    <div class="d-button" style="width:100%">
+      <div class="d-button-container" style="display: flex;justify-content:right">
+        <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,9 +55,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid;
   margin: 5px 20%;
-  border-radius: 7px;
 }
 #b-delete{
   margin : 3px
