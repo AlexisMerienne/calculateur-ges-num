@@ -1,12 +1,12 @@
 <template>
   <div id="displayer">
-      J'utilise mon/ma {{device.label}} pendant {{time}}h
+      J'utilise mon/ma {{device.label}} pendant {{device.temps[0]}}h
     <range-slider
         class="slider"
         min="0"
         max="24"
         step="1"
-        v-model="time">
+        v-model="device.temps[0]">
     </range-slider>
     <b-button id="b-delete" v-on:click="onDelete">Delete</b-button>
   </div>
@@ -27,8 +27,7 @@ export default {
   },
   data() {
     return {
-      device : {},
-      time : 0
+      device : this.$store.getters.getDevice(this.id),
     }
   },
   methods : {
@@ -38,6 +37,9 @@ export default {
   },
   mounted() {
      this.device = this.$store.getters.getDevice(this.id);
+  },
+  updated() {
+    this.$store.commit('SET_VALUE_DEVICE',this.device)
   }
 }
 </script>

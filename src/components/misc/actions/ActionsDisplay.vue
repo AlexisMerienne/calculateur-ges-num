@@ -6,7 +6,7 @@
       <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails pièces jointes"></b-form-input>
     </div>
     <div v-else style="display: flex;flex-direction: column">
-      {{action.label}} - {{action.value_1}}
+      {{action.label}} - {{action.value_1}}h
       <range-slider
           class="slider"
           min="0"

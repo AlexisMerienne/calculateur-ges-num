@@ -1,8 +1,7 @@
 <template>
   <div id="wrapper">
     <h3>Ma consommation</h3>
-    <PieChartContainer v-if="loaded"
-        :chartdata="chartdata"/>
+    <PieChartContainer/>
   </div>
 </template>
 
@@ -12,19 +11,14 @@ import PieChartContainer from "@/components/misc/charts/PieChartContainer";
 
 export default {
   name: "PieChart",
-  components : {
-    PieChartContainer
-  },
-  data () {
+  data() {
     return {
-      chartdata: null,
-      loaded : false
+      chartdata : null,
+      loaded : false,
     }
   },
-  mounted() {
-    this.chartdata = this.$store.getters.getActionGes
-    this.loaded = true
-
+  components : {
+    PieChartContainer
   }
 }
 </script>
@@ -38,5 +32,6 @@ export default {
   border-radius: 7px;
   min-width: 275px;
 }
+
 
 </style>

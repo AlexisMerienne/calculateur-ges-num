@@ -5,10 +5,10 @@
         <DeviceDisplay v-bind:id="device.id"/>
       </div>
       <div id="buttons">
-        <b-dropdown class="mx-1" right text="+" style="margin: 5px">
-          <b-dropdown-item v-on:click="addDevice('Smartphone')">Smartphone</b-dropdown-item>
-          <b-dropdown-item v-on:click="addDevice('Laptop')">Laptop</b-dropdown-item>
-          <b-dropdown-item v-on:click="addDevice('Tele')">Télé</b-dropdown-item>
+        <b-dropdown class="mx-1" right text="+" style="margin: 5px;">
+          <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
+          <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
+          <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
         </b-dropdown>
       </div>
   </div>

@@ -28,7 +28,7 @@ export default {
     addAction(action) {
       this.$store.commit('CREATE_ACTION',action)
     }
-  }
+  },
 }
 </script>
 
