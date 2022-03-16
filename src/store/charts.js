@@ -8,7 +8,7 @@ export const chartsModule = {
     state: {
         gesdata : data,
         scenario : scenario,
-        chartsids : ['chart-gesaction','chart-gesdevice','chart-gesproduction'],
+        chartsids : ['chart-gesaction','chart-gesdevice','chart-gesproduction','chart-gesutilisationproduction','chart-gesbrique'],
         currentid : 'chart-gesaction'
     },
     getters : {
@@ -21,6 +21,7 @@ export const chartsModule = {
                 title : datages.title,
                 focus : datages.focus,
                 src : datages.src,
+                total : datages.total,
                 chartdata : {
                     labels: datages.labels,
                     datasets: [

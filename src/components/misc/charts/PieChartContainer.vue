@@ -1,9 +1,15 @@
 <template>
-  <div class="container">
+  <div class="container" style="max-height: 60%">
     {{this.title}}
-    <pie-chart v-if="loaded"
-        :chartdata="chartdata"
-        :options="options"/>
+    <div id='flex-row' style="display: flex;flex-direction: row">
+      <pie-chart v-if="loaded"
+                 :chartdata="chartdata"
+                 :options="options"/>
+        <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
+          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong display="inline !important;">{{total}} </strong>gCo2/Kwh</div>
+        </div>
+
+    </div>
 
   <Popup
         :textbutton="btext"
@@ -15,7 +21,6 @@
     </div>
   </div>
 </template>
-
 <script>
 
 import PieChart from "@/components/misc/charts/PieChart";
@@ -33,6 +38,7 @@ export default {
       focus : null,
       source: null,
       btext : "D'où viennent les données ?",
+      total : null,
       chartdata : null,
       options: {
         legend: {
@@ -53,7 +59,7 @@ export default {
       this.title = data.title
       this.focus = data.focus
       this.source = data.src
-      console.log(this.chartdata);
+      this.total = data.total
       this.loaded=true;
     }
 

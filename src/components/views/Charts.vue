@@ -1,10 +1,8 @@
 <template>
   <div id="wrapper" shadow="">
-    <h3>Ma consommation</h3>
     <PieChartContainer/>
   </div>
 </template>
-
 <script>
 
 import PieChartContainer from "@/components/misc/charts/PieChartContainer";
@@ -19,6 +17,10 @@ export default {
   },
   components : {
     PieChartContainer
+  },
+  mounted() {
+    let wrapper = document.getElementById("wrapper");
+    wrapper.scrollIntoView();
   }
 }
 </script>

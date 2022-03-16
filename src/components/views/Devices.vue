@@ -47,5 +47,4 @@ export default {
   justify-content: right;
   margin: 5px 10px;
 }
-
 </style>
