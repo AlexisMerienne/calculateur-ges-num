@@ -41,6 +41,7 @@ export default {
   },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
+    if (this.$store.getters.getIsMobile){document.getElementById('displayer').style.margin='5px'}
   },
   updated() {
     this.$store.commit('SET_VALUE_DEVICE',this.device)
@@ -55,7 +56,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin : 5px 20%;
+  margin : 5px
 }
 #b-delete{
   margin : 3px

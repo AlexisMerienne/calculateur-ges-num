@@ -23,14 +23,14 @@ export default {
   components: {DeviceDisplay},
   data() {
     return {
-      devices: this.$store.getters.getDevices
+      devices: this.$store.getters.getDevices,
     }
   },
   methods:{
     addDevice(device) {
       this.$store.commit('CREATE_DEVICE',device)
     }
-  }
+  },
 }
 </script>
 

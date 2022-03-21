@@ -1,13 +1,20 @@
 <template>
   <div id="displayer" shadow="">
-    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{device.temps[0]}}h
-    <range-slider
-        class="slider"
-        min="0"
-        max="24"
-        step="1"
-        v-model="device.temps[0]">
-    </range-slider>
+    <div v-if="action.label==='mail'">
+      {{action.label}}
+      <b-form-input id="mail" v-model="action.value_1" placeholder="mails"></b-form-input>
+      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails avec pièces jointes"></b-form-input>
+    </div>
+    <div v-else style="display: flex;flex-direction: column">
+      {{action.label}} - {{action.value_1}}h
+      <range-slider
+          class="slider"
+          min="0"
+          max="12"
+          step="1"
+          v-model="action.value_1">
+      </range-slider>
+    </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
         <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
@@ -16,13 +23,14 @@
   </div>
 </template>
 
-
 <script>
+
 import RangeSlider from "vue-range-slider";
 import 'vue-range-slider/dist/vue-range-slider.css'
 
+
 export default {
-  name: "DeviceDisplay",
+  name: "ActionDisplay",
   props : {
     id : Number
   },
@@ -31,19 +39,16 @@ export default {
   },
   data() {
     return {
-      device : this.$store.getters.getDevice(this.id),
+      action : this.$store.getters.getAction(this.id)
     }
   },
   methods : {
     onDelete(){
-      this.$store.commit('DELETE_DEVICE',this.id)
+      this.$store.commit('DELETE_ACTION',this.id)
     }
   },
-  mounted() {
-    this.device = this.$store.getters.getDevice(this.id);
-  },
   updated() {
-    this.$store.commit('SET_VALUE_DEVICE',this.device)
+    this.$store.commit('SET_VALUE_ACTION',this.action)
   }
 }
 </script>
@@ -55,10 +60,16 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin : 5px 20%;
+  margin: 5px
 }
 #b-delete{
   margin : 3px
+}
+#mail{
+  margin: 5px;
+}
+#mailpj{
+  margin: 5px;
 }
 .slider {
   width: 200px;

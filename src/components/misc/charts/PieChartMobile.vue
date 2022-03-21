@@ -5,13 +5,13 @@
       <pie-chart v-if="loaded"
                  :chartdata="chartdata"
                  :options="options"/>
-        <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2/Kwh</div>
-        </div>
+      <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
+        Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2/Kwh</div>
+      </div>
 
     </div>
 
-  <Popup
+    <Popup
         :textbutton="btext"
         v-bind:sources="source"
         v-bind:content="focus"

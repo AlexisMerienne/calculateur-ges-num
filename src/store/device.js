@@ -15,7 +15,7 @@ export const deviceModule = {
             state.devices.push({
                 id : state.count++,
                 label : device,
-                temps : [],
+                temps : [0],
             })
         },
         SET_VALUE_DEVICE (state,device){
