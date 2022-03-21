@@ -26,8 +26,9 @@ export default new Vuex.Store( {
             return current_index <= 2 ? state.views[current_index+1]+strmobile : state.views[0]+strmobile
         },
         getPrevView (state) {
-            const current_index = state.views.findIndex(elmt => elmt === state.currentview);
-            return current_index > 0 ? state.views[current_index-1] : state.views[state.views.length - 1]
+            const strmobile = state.is_mobile ? 'mobile' : ''
+            const current_index = state.views.findIndex(elmt => elmt+strmobile === state.currentview);
+            return current_index > 0 ? state.views[current_index-1]+strmobile : state.views[state.views.length - 1]+strmobile
         },
         getIsMobile (state) {
             return state.is_mobile;
@@ -41,8 +42,9 @@ export default new Vuex.Store( {
 
         },
         SET_VIEW_PREV (state) {
-            const current_index = state.views.findIndex(elmt => elmt === state.currentview);
-            state.currentview = current_index > 0 ? state.views[current_index-1] : state.views[state.views.length - 1]
+            const strmobile = state.is_mobile ? 'mobile' : '';
+            const current_index = state.views.findIndex(elmt => elmt+strmobile === state.currentview);
+            state.currentview = current_index > 0 ? state.views[current_index-1]+strmobile : state.views[state.views.length - 1]+strmobile
         },
         SET_CURRENT_VIEW (state,currentview) {
             state.currentview = currentview;

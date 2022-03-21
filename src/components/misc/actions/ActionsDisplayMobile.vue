@@ -60,7 +60,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5px
+  margin: 5px;
+  background-color: #eff4f9;
 }
 #b-delete{
   margin : 3px

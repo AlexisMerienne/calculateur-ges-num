@@ -1,14 +1,15 @@
 <template>
   <div class="container" style="max-height: 60%">
     {{this.title}}
-    <div id='flex-row' style="display: flex;flex-direction: row">
+    <div id='flex-row' style="position:relative;display: flex;flex-direction: column">
       <pie-chart v-if="loaded"
                  :chartdata="chartdata"
-                 :options="options"/>
+                 :options="options"
+                  :width='300'
+                  :height='300'/>
       <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
         Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2/Kwh</div>
       </div>
-
     </div>
 
     <Popup

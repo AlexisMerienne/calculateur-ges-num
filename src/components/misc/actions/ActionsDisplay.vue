@@ -61,6 +61,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 5px 20%;
+  background-color:#eff4f9;
 }
 #b-delete{
   margin : 3px

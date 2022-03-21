@@ -2,7 +2,7 @@
   <div id="popup-wrapper">
     <b-button id="button-popup" variant="outline-primary" v-on:click="onClickPopup">{{ textbutton }}</b-button>
     <div id="myModal" class="modal">
-      <div class="modal-content" style="width: 50%">
+      <div id="modal-content" class="modal-content" style="width: 50%">
         <div class="close" style="display: flex;justify-content: right;text-align: left">
           <span class="close" v-on:click="closePopup">&times;</span></div>
         <h5 style="text-align: left;">{{ content }}</h5>
@@ -20,7 +20,12 @@ export default {
   props: {
     textbutton : String,
     content : String,
-    sources : Array
+    sources : Array,
+  },
+  data() {
+    return {
+      isMobile : false,
+    };
   },
   methods : {
     onClickPopup() {
@@ -28,6 +33,13 @@ export default {
     },
     closePopup() {
       document.getElementById("myModal").style.display = "none";
+    }
+  },
+  mounted() {
+    this.isMobile = this.$store.getters.getIsMobile
+    if(this.isMobile==true){
+      document.getElementById('modal-content').style.margin="5px"
+      document.getElementById('modal-content').style.width="90%"
     }
   }
 }
@@ -39,7 +51,7 @@ export default {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */

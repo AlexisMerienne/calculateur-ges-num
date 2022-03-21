@@ -1,13 +1,11 @@
 <template>
   <div id="displayer" shadow="">
-    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{device.temps[0]}}h
-    <range-slider
-        class="slider"
-        min="0"
-        max="24"
-        step="1"
-        v-model="device.temps[0]">
-    </range-slider>
+    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{temps}}h
+    <Slider
+        :min=0
+        :max=24
+        @send-value="setValue">
+    </Slider>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
         <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
@@ -18,7 +16,7 @@
 
 
 <script>
-import RangeSlider from "vue-range-slider";
+import Slider from "@/components/Slider";
 import 'vue-range-slider/dist/vue-range-slider.css'
 
 export default {
@@ -27,16 +25,21 @@ export default {
     id : Number
   },
   components: {
-    RangeSlider
+    Slider
   },
   data() {
     return {
       device : this.$store.getters.getDevice(this.id),
+      temps : 0,
     }
   },
   methods : {
     onDelete(){
       this.$store.commit('DELETE_DEVICE',this.id)
+    },
+    setValue(payload) {
+      this.device.temps[0] = payload.value;
+      this.temps = payload.value;
     }
   },
   mounted() {
@@ -56,7 +59,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin : 5px
+  margin : 5px;
+  background-color: #eff4f9;
 }
 #b-delete{
   margin : 3px

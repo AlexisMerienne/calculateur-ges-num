@@ -31,6 +31,7 @@ export default {
   },
   mounted() {
     document.getElementById('b-prev').style.left = '0%';
+    document.getElementById('b-next').style.right = '0%';
   }
 }
 </script>
