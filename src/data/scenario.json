@@ -22,8 +22,8 @@
   "actions": {
     "mail": {
       "label": "mail",
-      "nbr_mail": 0,
-      "nbr_mail_pj": 0
+      "nbr_mail": null,
+      "nbr_mail_pj": null
     },
     "video": {
       "label": "video streaming",

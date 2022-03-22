@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" shadow="">
     <h3>Mes appareils</h3>
     <div v-for="device in devices" :key="device.id">
       <DeviceDisplayMobile v-bind:id="device.id"/>

@@ -1,11 +1,13 @@
 <template>
   <div id="displayer" shadow="">
-    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{temps}}h
-    <Slider
-        :min=0
-        :max=24
-        @send-value="setValue">
-    </Slider>
+    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{device.temps[0]}}h
+    <range-slider
+        class="slider"
+        min="0"
+        max="12"
+        step="1"
+        v-model="device.temps[0]">
+    </range-slider>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
         <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
@@ -16,7 +18,7 @@
 
 
 <script>
-import Slider from "@/components/Slider";
+import RangeSlider from 'vue-range-slider'
 import 'vue-range-slider/dist/vue-range-slider.css'
 
 export default {
@@ -25,11 +27,11 @@ export default {
     id : Number
   },
   components: {
-    Slider
+    RangeSlider
   },
   data() {
     return {
-      device : this.$store.getters.getDevice(this.id),
+      device :null,
       temps : 0,
     }
   },
@@ -42,8 +44,10 @@ export default {
       this.temps = payload.value;
     }
   },
-  mounted() {
+  beforeMount() {
     this.device = this.$store.getters.getDevice(this.id);
+  },
+  mounted() {
     if (this.$store.getters.getIsMobile){document.getElementById('displayer').style.margin='5px'}
   },
   updated() {

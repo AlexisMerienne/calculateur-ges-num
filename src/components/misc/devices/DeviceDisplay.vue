@@ -1,9 +1,10 @@
 <template>
   <div id="displayer" shadow="">
-    J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{temps}}h
+    <h6>J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{temps}}h</h6>
     <Slider
       :min=0
       :max=24
+      :id="id"
       @send-value="setValue">
     </Slider>
     <div class="d-button" style="width:100%">
@@ -17,7 +18,6 @@
 
 <script>
 import Slider from "@/components/Slider";
-import 'vue-range-slider/dist/vue-range-slider.css'
 
 export default {
   name: "DeviceDisplay",
@@ -38,12 +38,13 @@ export default {
       this.$store.commit('DELETE_DEVICE', this.id)
     },
     setValue(payload) {
-      this.device.temps[0] = payload.value;
-      this.temps = payload.value;
+      this.device.temps[0] = payload;
+      this.temps = payload;
     }
   },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
+    console.log(this.temps)
   },
   updated() {
     this.$store.commit('SET_VALUE_DEVICE',this.device)
@@ -58,13 +59,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin : 10px 20%;
+  text-align: left;
+  margin : 10px 10%;
   background-color: #eff4f9;
 }
 #b-delete{
   margin : 3px
 }
-.slider {
-  width: 200px;
-}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="actions-wrapper">
+  <div id="actions-wrapper" shadow="">
     <h3>Mes actions</h3>
     <div v-for="action in actions" :key="action.id">
       <ActionDisplay v-bind:id="action.id"/>

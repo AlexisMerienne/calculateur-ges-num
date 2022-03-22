@@ -1,6 +1,7 @@
 <template>
   <div class="header">
       <h5>Outil de cacule d'émission en GES de nos actions numériques</h5>
+    <img src="../../assets/NewlogoI3S_0.png">
   </div>
 </template>
 
@@ -19,8 +20,8 @@ export default {
     align-items: center;
     #border: solid;
     border-radius: 7px;
-    margin-bottom: 10px;
-    margin-top: 3px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     min-width: 275px;
 }
 h2{

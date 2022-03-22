@@ -1,15 +1,20 @@
 <template>
   <div class="slidecontainer">
-    <input type="range" min=min max=max value=value class="slider" id="myRange" v-model="value">
+    <input type="range" v-bind:min=min v-bind:max=max value=value class="slider" id="myRange" v-on:change='$emit("send-value",$event.target.value)'>
   </div>
 </template>
 
 <script>
 export default {
   name: "Slider",
+  model : {
+    prop: 'value',
+    event : 'sendValue'
+  },
   props : {
     min : Number,
     max : Number,
+    id : Number,
   },
   data(){
     return  {
@@ -17,14 +22,10 @@ export default {
     };
   },
   methods : {
-    emitValue(){
+    sendEvent(){
       let slider = document.getElementById("myRange");
-      //Update the current slider value (each time you drag the slider handle)
-      this.$emit('send-value',{value : slider.value})
-    }
-  },
-  updated() {
-    this.emitValue()
+      this.$emit('send-value',slider.value)
+    },
   },
   mounted() {
     document.getElementById("myRange").min = this.min;

@@ -15,8 +15,8 @@ export const actionModule = {
             state.action.push({
                 id : state.count++,
                 label : action,
-                value_1 : 0,
-                value_2 : 0,
+                value_1 : null,
+                value_2 : null,
             })
         },
         SET_VALUE_ACTION (state,action) {

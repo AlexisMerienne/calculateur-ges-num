@@ -8,7 +8,7 @@
                  :width='320'
                  :height='320'/>
         <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2/Kwh</div>
+          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2e</div>
         </div>
 
     </div>
