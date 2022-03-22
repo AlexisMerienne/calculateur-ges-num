@@ -20,5 +20,13 @@ npm run build
 npm run lint
 ```
 
+### Push to production 
+
+#### to do only after bulding the app
+```
+cd dist
+
+firebase deploy
+```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
