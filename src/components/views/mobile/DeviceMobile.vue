@@ -1,6 +1,12 @@
 <template>
   <div id="wrapper" shadow="">
-    <h3>Mes appareils</h3>
+    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
+      <h3>Mes appareils</h3>
+      <Popup
+          textbutton="?"
+          content="Ajoute les appareils numériques que t'utilise dans une journée type de travail et renseigne leur durée d'utilisation"
+      ></Popup>
+    </div>
     <div v-for="device in devices" :key="device.id">
       <DeviceDisplayMobile v-bind:id="device.id"/>
     </div>

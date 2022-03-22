@@ -1,6 +1,6 @@
 <template>
   <div class="slidecontainer">
-    <input type="range" v-bind:min=min v-bind:max=max value=value class="slider" id="myRange" v-on:change='$emit("send-value",$event.target.value)'>
+    <input type="range" v-bind:min=min v-bind:max=max v-bind:value=ivalue class="slider" id="myRange" v-on:change='$emit("send-value",$event.target.value)'>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
     min : Number,
     max : Number,
     id : Number,
+    ivalue : Number,
   },
   data(){
     return  {

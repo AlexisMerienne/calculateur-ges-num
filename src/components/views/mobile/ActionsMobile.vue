@@ -1,6 +1,12 @@
 <template>
   <div id="actions-wrapper">
-    <h3>Mes actions</h3>
+    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
+      <h3>Mes actions</h3>
+      <Popup
+          textbutton="?"
+          content="Ajoute les actions que tu fais pendant une journée de travail."
+      ></Popup>
+    </div>
     <div v-for="action in actions" :key="action.id">
       <ActionsDisplayMobile v-bind:id="action.id"/>
     </div>

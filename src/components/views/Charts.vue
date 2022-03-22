@@ -19,8 +19,6 @@ export default {
     PieChartContainer
   },
   mounted() {
-    let wrapper = document.getElementById("wrapper");
-    wrapper.scrollIntoView();
   }
 }
 </script>

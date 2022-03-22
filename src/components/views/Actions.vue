@@ -1,6 +1,12 @@
 <template>
   <div id="actions-wrapper" shadow="">
-    <h3>Mes actions</h3>
+    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
+      <h3>Mes actions</h3>
+      <Popup
+          textbutton="?"
+          content="Ajoute les actions que tu fais pendant une journée de travail."
+      ></Popup>
+    </div>
     <div v-for="action in actions" :key="action.id">
       <ActionDisplay v-bind:id="action.id"/>
     </div>
@@ -15,10 +21,13 @@
 </template>
 
 <script>
+
 import ActionDisplay from "@/components/misc/actions/ActionsDisplay";
+import Popup from "@/components/Popup";
+
 export default {
   name: "Actions",
-  components: {ActionDisplay},
+  components: {ActionDisplay,Popup},
   data() {
     return {
       actions : this.$store.getters.getActions

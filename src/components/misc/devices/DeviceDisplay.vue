@@ -1,10 +1,11 @@
 <template>
   <div id="displayer" shadow="">
-    <h6>J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{temps}}h</h6>
+    <h6>J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{this.temps}}h</h6>
     <Slider
       :min=0
       :max=24
       :id="id"
+      v-bind:ivalue=parseInt(this.device.temps[0])
       @send-value="setValue">
     </Slider>
     <div class="d-button" style="width:100%">
@@ -44,6 +45,7 @@ export default {
   },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
+    this.temps = this.device.temps[0];
     console.log(this.temps)
   },
   updated() {

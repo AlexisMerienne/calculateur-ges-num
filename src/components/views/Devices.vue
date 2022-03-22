@@ -1,6 +1,12 @@
 <template>
   <div id="wrapper" shadow="">
-      <h3>Mes appareils</h3>
+      <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
+        <h3>Mes appareils</h3>
+        <Popup
+          textbutton="?"
+          content="Ajoute les appareils numériques que t'utilise dans une journée type de travail et renseigne leur durée d'utilisation"
+          ></Popup>
+      </div>
       <div v-for="device in devices" :key="device.id">
         <DeviceDisplay v-bind:id="device.id"/>
       </div>
@@ -17,10 +23,11 @@
 <script>
 
 import DeviceDisplay from "@/components/misc/devices/DeviceDisplay";
+import Popup from "@/components/Popup";
 
 export default {
   name: "WrapperDevice",
-  components: {DeviceDisplay},
+  components: {DeviceDisplay,Popup},
   data() {
     return {
       devices: this.$store.getters.getDevices,
@@ -46,5 +53,8 @@ export default {
   display: flex;
   justify-content: right;
   margin: 5px 10px;
+}
+#question-icon {
+  cursor: pointer;
 }
 </style>
