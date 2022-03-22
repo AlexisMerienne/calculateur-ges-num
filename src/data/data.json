@@ -299,5 +299,12 @@
         "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ", 
         "unite" : "gCO2e/kWh",
         "valeur" : 493
+    },
+    "narratif" : {
+        "nar-gesdevice" : "Les appareils que l'on utilise quotidiennement pour accéder au numérique <strong>consomment de l'électricité </strong>.<br><br> Cette électricté génère des gaz à effet de serre pendant sa phase de production.<br><br> Voyons ce que vos appareils ont émis pendant votre journée:",
+        "nar-gesaction" : "Ajoutons un peu plus de complexité. <br><br> Ces appareils nous permettent d'accéder à des services numériques (mails, réseaux sociaux, plateforme de streaming ...). Chacun de ces services sont accesibles via un <strong>réseau </strong> et sont hébérgés dans des <strong>centres de données</strong>. Ces deux infrastructures sont également émétrice de Co2. <br><br> Regardons combien nos action numériques consomment :  ",
+        "nar-gesproduction" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils. En effet, avant d'atterrir dans nos mains, ces appareils ont déjà émis plus de la moitié du Co2 total de leur cycle de vie. Cette consommation est liée à la phase de fabrication qui est très couteuse en ressoucre et énergie. <br><br>Mais regardons plutôt à combien de Co2 cela correspond",
+        "ges-utilisationproduction": "Comparaison de la phase de production et d'utilisation"
+
     }
 }

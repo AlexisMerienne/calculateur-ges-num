@@ -8,14 +8,15 @@ export const chartsModule = {
     state: {
         gesdata : data,
         scenario : scenario,
-        chartsids : ['chart-gesaction','chart-gesdevice','chart-gesproduction','chart-gesutilisationproduction','chart-gesbrique'],
-        currentid : 'chart-gesaction'
+        chartsids : ['chart-gesdevice','chart-gesaction','chart-gesproduction','chart-gesutilisationproduction'],
+        currentid : 'chart-gesbrique',
+        narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction'],
+        currentnarid : 'nar-gesdevice',
     },
     getters : {
         getCurrentChartId (state) {return state.chartsids;},
         getData (state) {return state.gesdata;},
         getChartData (state) {
-            console.log(state.currentid);
             const datages = chartData(state.gesdata,state.scenario,state.currentid)
             let data = {
                 title : datages.title,
@@ -34,12 +35,20 @@ export const chartsModule = {
                 }
             };
             return data
+        },
+        getNarData (state) {
+            return data.narratif[state.currentnarid];
         }
     },
     mutations : {
         SET_NEXT_CHARTID (state) {
             const indexChart = state.chartsids.findIndex(id => id === state.currentid);
             state.currentid = indexChart < state.chartsids.length-1 ? state.chartsids[indexChart+1] : state.chartsids[0]
+        },
+        SET_NEXT_NARID (state) {
+            const indexNar = state.narids.findIndex(id => id === state.currentnarid);
+            state.currentnarid = indexNar < state.narids.length-1 ? state.narids[indexNar+1] : state.narids[0]
+
         }
     }
 

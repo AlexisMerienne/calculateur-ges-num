@@ -1,5 +1,6 @@
 <template>
   <div class="container" style="max-height: 60%">
+    <div v-if="isChart">
     {{this.title}}
     <div id='flex-row' style="display: flex;flex-direction: row">
       <pie-chart v-if="loaded"
@@ -12,25 +13,32 @@
         </div>
 
     </div>
-
   <Popup
         :textbutton="btext"
         v-bind:sources="source"
         v-bind:content="focus"
         style="margin: 5px"></Popup>
+    </div>
+    <div v-else>
+      <Narratif
+          v-bind:content="narcontent"/>
+    </div>
     <div id="next-chart" v-on:click="nextChart">
       <img src="../../../assets/caret-down.svg" width="50" height="50">
     </div>
+
   </div>
 </template>
 <script>
 
 import PieChart from "@/components/misc/charts/PieChart";
 import Popup from "@/components/Popup";
+import Narratif from "@/components/misc/Narratif";
 
 export default {
   name : "myPieChart",
   components: {
+    Narratif,
     PieChart,
     Popup
   },
@@ -49,11 +57,18 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       },
-      loaded : false
+      loaded : false,
+      isChart : false,
+      narcontent : ""
     }
   },
   methods : {
     nextChart() {
+      if (this.isChart){
+        this.$store.commit('SET_NEXT_NARID');
+        this.narcontent = this.$store.getters.getNarData;
+        this.isChart=false
+      }else{
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
       const data = this.$store.getters.getChartData
@@ -63,11 +78,12 @@ export default {
       this.source = data.src
       this.total = data.total
       this.loaded=true;
+      this.isChart=true
+      }
     }
   },
   updated() {
-    console.log(document.getElementById('wrapper').offsetWidth)
-    if (document.getElementById('wrapper').offsetWidth < 470){document.getElementById('flex-row').style.flexDirection='column'}
+    if (document.getElementById('wrapper').offsetWidth < 490 && this.isChart){document.getElementById('flex-row').style.flexDirection='column'}
   },
   mounted() {
     const data = this.$store.getters.getChartData
@@ -78,6 +94,9 @@ export default {
     this.total = data.total
     this.loaded=true
   },
+  beforeMount() {
+    this.narcontent = this.$store.getters.getNarData
+  }
 }
 </script>
 

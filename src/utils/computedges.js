@@ -51,7 +51,7 @@ function getGESAction(data,scenario){
         'total' : roundDecimal(ges_total),
         'labels' : ['mail','video','insta'],
         'title': 'Emmission de GES des actions numérique',
-        'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux + le coût carbone lié aux centres de données',
+        'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
         'src' : src
     };
 }
@@ -99,12 +99,12 @@ function getGESDevice(data,scenario){
 
 function getGESProduction(data){
 
-    const ges_smartphone_daily_prod = ((data.production.GES.smartphone * Math.pow(10,3)) / (data.production.duree_de_vie.smartphone *365.25))
+    const ges_smartphone_daily_prod = data.production.GES.smartphone * Math.pow(10,3)
 
 
-    const ges_laptop_daily = ((data.production.GES.laptop * Math.pow(10,3)) / (data.production.duree_de_vie.laptop*365.25))
+    const ges_laptop_daily = data.production.GES.laptop * Math.pow(10,3)
 
-    const ges_tele_daily = ((data.production.GES.tele_connectee*Math.pow(10,3)) / (data.production.duree_de_vie.tele_connectee*365.25))
+    const ges_tele_daily = data.production.GES.tele_connectee*Math.pow(10,3)
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)].reduce(
@@ -229,7 +229,6 @@ function getBrique(data,scenario){
         'focus' : "On calcule les émissions de GES par brique numérique",
         'src' : src
     };
-
 }
 
 
