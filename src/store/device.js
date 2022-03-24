@@ -24,11 +24,11 @@ export const deviceModule = {
             state.devices[index_device].label==='laptop' ? scenario.laptop.temps[0] = device.temps : null
             state.devices[index_device].label==='smartphone' ? scenario.smartphone.temps[0] = device.temps : null;
             state.devices[index_device].label==='tele' ? scenario.tele.temps[0] = device.temps : null;
+            state.devices[index_device].label==='ordinateurfixe' ? scenario.ordinateurfixe.temps[0] = device.temps : null;
         },
         DELETE_DEVICE (state,id) {
             state.devices.splice(state.devices.findIndex(d => d.id === id), 1);
         }
-
     }
 }
 

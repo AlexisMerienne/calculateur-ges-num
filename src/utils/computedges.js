@@ -10,6 +10,8 @@ exports.chartData = (data,scenario,id) => {
             return getGESProdUtilisation(data,scenario);
         case 'chart-gesbrique':
             return getBrique(data,scenario);
+        case 'chart-gesdoubleutilisationproduction':
+            return getGESProdUtilisationDoubleDureeDeVie(data,scenario)
     }
 }
 
@@ -48,9 +50,9 @@ function getGESAction(data,scenario){
 
     return {
         'data' : [roundDecimal(ges_mail), roundDecimal(ges_video), roundDecimal(ges_insta)],
-        'total' : roundDecimal(ges_total),
+        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'labels' : ['mail','video','insta'],
-        'title': 'Emmission de GES des actions numérique',
+        'title': 'Emmission de GES des actions numériques',
         'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
         'src' : src
     };
@@ -69,6 +71,10 @@ function getGESDevice(data,scenario){
     const nrj_tele_daily = (data.utilisation.equipement.tele.energie / (365.25 * 24))*temps_tele
     const ges_tele=(nrj_tele_daily*data.ges_elec_france.valeur)
 
+    const temps_ordifixe = getTempsTotalUtilisation(scenario,"ordinateurfixe")
+    const nrj_ordifixe_daily = (data.utilisation.equipement.ordinateurfixe.energie / (365.25 * 24))*temps_ordifixe
+    const ges_ordifixe=(nrj_ordifixe_daily*data.ges_elec_france.valeur)
+
     const src = [{
         id : 0,
         src : 'base-carbone ADEME'
@@ -83,14 +89,14 @@ function getGESDevice(data,scenario){
         }]
 
     const initialValue=0;
-    const ges_total = [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele)].reduce(
+    const ges_total = [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue);
 
     return {
-        'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele)],
-        'total' : roundDecimal(ges_total),
-        'labels' : ['smartphone','laptop','tele'],
+        'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe)],
+        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
         'title': "Emmission de GES de l'utilisation des appareils numérique",
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
         'src' : src
@@ -99,12 +105,12 @@ function getGESDevice(data,scenario){
 
 function getGESProduction(data){
 
-    const ges_smartphone_daily_prod = data.production.GES.smartphone * Math.pow(10,3)
+    const ges_smartphone_daily_prod = data.production.GES.smartphone
 
 
-    const ges_laptop_daily = data.production.GES.laptop * Math.pow(10,3)
+    const ges_laptop_daily = data.production.GES.laptop
 
-    const ges_tele_daily = data.production.GES.tele_connectee*Math.pow(10,3)
+    const ges_tele_daily = data.production.GES.tele_connectee
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)].reduce(
@@ -126,7 +132,7 @@ function getGESProduction(data){
         }]
     return {
         'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)],
-        'total' : roundDecimal(ges_total),
+        'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
         'labels' : ['smartphone','laptop','tele'],
         'title': "Emmission de GES de la production des appareils",
         'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
@@ -137,7 +143,7 @@ function getGESProduction(data){
 function getGESProdUtilisation(data,scenario){
 
 
-    const initialValue_1 = 0;const initialValue_2 = 0;const initialValue_3=0;
+    const initialValue_1 = 0;const initialValue_2 = 0;
     const ges_utilisation_action = getGESAction(data,scenario).data.reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue_1
@@ -145,9 +151,12 @@ function getGESProdUtilisation(data,scenario){
             (previousValue, currentValue) => previousValue + currentValue,
             initialValue_2
     );
-    const ges_production = getGESProduction(data).data.reduce(
-        (previousValue, currentValue) => previousValue + currentValue,
-        initialValue_3);
+
+    let ges_production = 0;
+    ges_production += data.production.GES.smartphone * Math.pow(10,3) / (data.production.duree_de_vie.smartphone * 365.25)
+    ges_production+= data.production.GES.laptop * Math.pow(10,3) / (data.production.duree_de_vie.laptop * 365.25)
+    ges_production+= data.production.GES.tele_connectee*Math.pow(10,3) / (data.production.duree_de_vie.tele_connectee * 365.25)
+
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(
@@ -168,7 +177,52 @@ function getGESProdUtilisation(data,scenario){
         }]
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
-        'total' : roundDecimal(ges_total),
+        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'labels' : ['utilisation','production'],
+        'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
+        'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
+        'src' : src
+    };
+}
+
+function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
+
+
+    const initialValue_1 = 0;const initialValue_2 = 0;
+    const ges_utilisation_action = getGESAction(data,scenario).data.reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        initialValue_1
+    ) + getGESDevice(data,scenario).data.reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        initialValue_2
+    );
+
+    const initialValue_3=0
+    const ges_production = getGESAction(data,scenario).data.reduce(
+        (previousValue, currentValue) => previousValue + (currentValue/2),
+        initialValue_3
+    )
+
+    const initialValue=0;
+    const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        initialValue);
+
+    const src = [{
+        id : 0,
+        src : 'base-carbone ADEME'
+    },
+        {
+            id : 1,
+            src : "Rapport The Shift Project numérique 2018"
+        },
+        {
+            id : 2,
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
+        }]
+    return {
+        'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
+        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
@@ -223,7 +277,7 @@ function getBrique(data,scenario){
         }]
     return {
         'data' : [roundDecimal(ges_terminaux), roundDecimal(ges_resaux), roundDecimal(ges_datacenter)],
-        'total' : roundDecimal(ges_total),
+        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'labels' : ['terminaux','réseaux','datacenter'],
         'title': "GES par 'brique numérique'",
         'focus' : "On calcule les émissions de GES par brique numérique",

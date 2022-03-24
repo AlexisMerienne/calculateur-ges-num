@@ -1,7 +1,7 @@
 <template>
   <div id="footer-wrapper">
     <h5>Développé par Alexis Mérienne</h5>
-    <a href="https://github.com/AlexisMerienne/calculateur-ges-num">Code source</a>
+    <a href="https://c.tenor.com/CHc0B6gKHqUAAAAi/deadserver.gif">Code source</a>
   </div>
 </template>
 

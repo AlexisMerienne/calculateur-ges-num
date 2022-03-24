@@ -1,7 +1,8 @@
 <template>
   <div id="wrapper" shadow="">
-    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
+    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-between">
       <h3>Mes appareils</h3>
+      <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
           content="Ajoute les appareils numériques que t'utilise dans une journée type de travail et renseigne leur durée d'utilisation"
@@ -15,6 +16,7 @@
         <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
+        <b-dropdown-item v-on:click="addDevice('ordinateurfixe')">Ordinateur fixe</b-dropdown-item>
       </b-dropdown>
     </div>
   </div>
@@ -23,10 +25,11 @@
 <script>
 
 import DeviceDisplayMobile from "@/components/misc/devices/mobile/DeviceDisplayMobile";
+import Popup from "@/components/Popup";
 
 export default {
   name: "WrapperDevice",
-  components: {DeviceDisplayMobile},
+  components: {DeviceDisplayMobile,Popup},
   data() {
     return {
       devices: this.$store.getters.getDevices,

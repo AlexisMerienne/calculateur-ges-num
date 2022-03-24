@@ -2,6 +2,7 @@
   <div id="actions-wrapper">
     <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
       <h3>Mes actions</h3>
+      <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
           content="Ajoute les actions que tu fais pendant une journée de travail."
@@ -14,7 +15,7 @@
       <b-dropdown class="mx-1" right text="Ajouter une action numérique" style="margin: 5px">
         <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
-        <b-dropdown-item v-on:click="addAction('insta')">insta</b-dropdown-item>
+        <b-dropdown-item v-on:click="addAction('insta')">réseaux (a)sociaux</b-dropdown-item>
       </b-dropdown>
     </div>
   </div>
@@ -22,9 +23,12 @@
 
 <script>
 import ActionsDisplayMobile from "@/components/misc/actions/ActionsDisplayMobile";
+import Popup from "@/components/Popup";
+
+
 export default {
   name: "Actions",
-  components: {ActionsDisplayMobile},
+  components: {ActionsDisplayMobile,Popup},
   data() {
     return {
       actions : this.$store.getters.getActions

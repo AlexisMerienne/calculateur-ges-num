@@ -9,7 +9,7 @@
                  :width='320'
                  :height='320'/>
         <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong> gCo2e</div>
+          Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
         </div>
 
     </div>
@@ -68,6 +68,7 @@ export default {
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent = this.$store.getters.getNarData;
         this.isChart=false
+        this.$store.commit('SET_iS_CHART',false);
       }else{
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
@@ -79,6 +80,7 @@ export default {
       this.total = data.total
       this.loaded=true;
       this.isChart=true
+      this.$store.commit('SET_iS_CHART',true);
       }
     }
   },
@@ -92,7 +94,8 @@ export default {
     this.focus = data.focus
     this.source = data.src
     this.total = data.total
-    this.loaded=true
+    this.loaded=true;
+    this.isChart = this.$store.getters.getIsChart;
   },
   beforeMount() {
     this.narcontent = this.$store.getters.getNarData

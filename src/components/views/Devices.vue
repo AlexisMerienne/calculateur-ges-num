@@ -15,6 +15,7 @@
           <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
+          <b-dropdown-item v-on:click="addDevice('ordinateurfixe')">Ordinateur fixe</b-dropdown-item>
         </b-dropdown>
       </div>
   </div>

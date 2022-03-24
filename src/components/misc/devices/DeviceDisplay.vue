@@ -46,7 +46,6 @@ export default {
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
     this.temps = this.device.temps[0];
-    console.log(this.temps)
   },
   updated() {
     this.$store.commit('SET_VALUE_DEVICE',this.device)

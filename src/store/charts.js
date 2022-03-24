@@ -8,10 +8,11 @@ export const chartsModule = {
     state: {
         gesdata : data,
         scenario : scenario,
-        chartsids : ['chart-gesdevice','chart-gesaction','chart-gesproduction','chart-gesutilisationproduction'],
+        chartsids : ['chart-gesdevice','chart-gesaction','chart-gesproduction','chart-gesutilisationproduction','chart-gesdoubleutilisationproduction'],
         currentid : 'chart-gesbrique',
-        narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction'],
+        narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction','nar-sobrieteproduction'],
         currentnarid : 'nar-gesdevice',
+        isChart : false,
     },
     getters : {
         getCurrentChartId (state) {return state.chartsids;},
@@ -29,7 +30,7 @@ export const chartsModule = {
                         {
                             label: 'Emmission de GES des actions',
                             data: datages.data,
-                            backgroundColor: [getColors().backgroundColor[0],getColors().backgroundColor[1],getColors().backgroundColor[4]],
+                            backgroundColor: [getColors().backgroundColor[0],getColors().backgroundColor[1],getColors().backgroundColor[4],getColors().backgroundColor[11]],
                         }
                     ]
                 }
@@ -38,7 +39,10 @@ export const chartsModule = {
         },
         getNarData (state) {
             return data.narratif[state.currentnarid];
-        }
+        },
+        getIsChart (state) {
+            return state.isChart;
+        },
     },
     mutations : {
         SET_NEXT_CHARTID (state) {
@@ -48,7 +52,9 @@ export const chartsModule = {
         SET_NEXT_NARID (state) {
             const indexNar = state.narids.findIndex(id => id === state.currentnarid);
             state.currentnarid = indexNar < state.narids.length-1 ? state.narids[indexNar+1] : state.narids[0]
-
+        },
+        SET_iS_CHART (state,ischart) {
+            state.isChart = ischart;
         }
     }
 
