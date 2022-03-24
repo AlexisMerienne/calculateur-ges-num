@@ -57,7 +57,8 @@ export default {
     this.$store.commit('SET_VALUE_ACTION',this.action)
   },
   mounted() {
-    if(typeof this.$store.getters.getAction(this.id).value1 !== 'undefined' && this.$store.getters.getAction(this.id).label !== 'mail'){this.action.value_1 = this.value1;}
+    this.value1 = (this.$store.getters.getAction(this.id).value_1 !== null && this.$store.getters.getAction(this.id).label != "mail" ) ? this.value1 = this.$store.getters.getAction(this.id).value_1 : this.value1=0
+
   }
 }
 </script>
