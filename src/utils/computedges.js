@@ -197,11 +197,10 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         initialValue_2
     );
 
-    const initialValue_3=0
-    const ges_production = getGESAction(data,scenario).data.reduce(
-        (previousValue, currentValue) => previousValue + (currentValue/2),
-        initialValue_3
-    )
+    let ges_production = 0;
+    ges_production += data.production.GES.smartphone * Math.pow(10,3) / (2*data.production.duree_de_vie.smartphone * 365.25)
+    ges_production+= data.production.GES.laptop * Math.pow(10,3) / (2*data.production.duree_de_vie.laptop * 365.25)
+    ges_production+= data.production.GES.tele_connectee*Math.pow(10,3) / (2*data.production.duree_de_vie.tele_connectee * 365.25)
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(

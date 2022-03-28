@@ -1,6 +1,8 @@
 <template>
   <div id="displayer" shadow="">
-    <h6>J'utilise mon/ma <strong>{{device.label}}</strong> pendant {{this.temps}}h</h6>
+    <div id="displat-txt-label" style="display: flex;flex-direction: row">
+      <h6 v-bind:id="idtxtlabel"></h6><div style="width: 2px"></div><h6><strong>{{this.temps}}h</strong></h6>
+    </div>
     <Slider
       :min=0
       :max=24
@@ -19,6 +21,7 @@
 
 <script>
 import Slider from "@/components/Slider";
+import {setTextDevice} from "@/utils/parseText"
 
 export default {
   name: "DeviceDisplay",
@@ -32,6 +35,8 @@ export default {
     return {
       device : this.$store.getters.getDevice(this.id),
       temps : 0,
+      description :"",
+      idtxtlabel : "",
     }
   },
   methods : {
@@ -43,13 +48,21 @@ export default {
       this.temps = payload;
     }
   },
+  beforeMount() {
+    this.idtxtlabel = "txt-label-"+this.device.id
+  },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
     this.temps = this.device.temps[0];
+    this.description = setTextDevice(this.device.label);
+    let htmldescription = document.createElement('p');
+    htmldescription.innerHTML = this.description;
+    htmldescription.style.textAlign='left'
+    document.getElementById(this.idtxtlabel).appendChild(htmldescription)
   },
   updated() {
     this.$store.commit('SET_VALUE_DEVICE',this.device)
-  }
+  },
 }
 </script>
 

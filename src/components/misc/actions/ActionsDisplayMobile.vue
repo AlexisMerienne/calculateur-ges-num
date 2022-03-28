@@ -12,7 +12,7 @@
           min="0"
           max="12"
           step="1"
-          v-model="action.value_1">
+          v-model="value1">
       </range-slider>
     </div>
     <div class="d-button" style="width:100%">
