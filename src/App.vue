@@ -9,13 +9,13 @@
     </div>
 
       <div v-if="displayprev" id="b-prev" v-on:click="goToPrev">
-        <img id="b-prev-icon" src="../src/assets/chevron-left-arrow.svg" width="50" height="50">
+        <img id="b-prev-icon" src="../src/assets/chevron-left-arrow.svg" alt="left-arrow" width="50" height="50">
       </div>
       <div id="wrapper">
         <router-view/>
       </div>
       <div v-if="displaynext" id="b-next" v-on:click="goToNext">
-           <img id="b-next-icon" src="../src/assets/chevron-right-arrow.svg" width="50" height="50">
+           <img id="b-next-icon" src="../src/assets/chevron-right-arrow.svg" alt="right-arrow" width="50" height="50">
       </div>
     </div>
     <div id="footer">

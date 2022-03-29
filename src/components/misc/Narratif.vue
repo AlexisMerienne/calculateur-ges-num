@@ -2,7 +2,7 @@
   <div id="narratif-wrapper" class="w3-container">
     <div style="display: flex;flex-direction: row;justify-content: space-between">
       <div v-for="i in nbricon" :key="i">
-        <img :src="require(`../../assets/${icon[i-1]}`)" height="50" width="50">
+        <img :src="require(`../../assets/${icon[i-1]}`)" :alt="icon[i-1]" height="50" width="50">
       </div>
     </div>
   </div>
