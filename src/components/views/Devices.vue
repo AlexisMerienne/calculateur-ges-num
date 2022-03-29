@@ -4,14 +4,14 @@
         <h3>Mes appareils</h3>
         <Popup
           textbutton="?"
-          content="Ajoute les appareils numériques que t'utilise dans une journée type de travail et renseigne leur durée d'utilisation"
+          content="Ajoutez les appareils numériques que vous utilisez dans une journée type et renseignez leur durée d'utilisation"
           ></Popup>
       </div>
       <div v-for="device in devices" :key="device.id">
         <DeviceDisplay v-bind:id="device.id"/>
       </div>
       <div id="buttons">
-        <b-dropdown class="mx-1" right text="Ajouter un appareil" style="margin: 5px;">
+        <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
           <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>

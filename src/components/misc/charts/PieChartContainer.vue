@@ -67,7 +67,7 @@ export default {
       if (this.isChart){
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent = this.$store.getters.getNarData;
-        this.isChart=false
+        this.isChart=false;
         this.$store.commit('SET_iS_CHART',false);
       }else{
       this.loaded=false;

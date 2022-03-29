@@ -3,16 +3,27 @@
     <div id="displat-txt-label" style="display: flex;flex-direction: row">
       <h6 v-bind:id="idtxtlabel"></h6><div style="width: 2px"></div><h6><strong>{{this.temps}}h</strong></h6>
     </div>
-    <Slider
-      :min=0
-      :max=24
-      :id="id"
-      v-bind:ivalue=parseInt(this.device.temps[0])
-      @send-value="setValue">
-    </Slider>
+    <div v-if="isfirefox">
+      <Slider
+        :min=0
+        :max=24
+        :id="id"
+        v-bind:ivalue=parseInt(this.device.temps[0])
+        @send-value="setValue">
+      </Slider>
+    </div>
+    <div v-else>
+      <range-slider
+          class="slider"
+          min="0"
+          max="24"
+          step="1"
+          v-model="temps">
+      </range-slider>
+    </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
-        <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+        <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
       </div>
     </div>
   </div>
@@ -20,6 +31,9 @@
 
 
 <script>
+
+import RangeSlider from 'vue-range-slider'
+import 'vue-range-slider/dist/vue-range-slider.css'
 import Slider from "@/components/Slider";
 import {setTextDevice} from "@/utils/parseText"
 
@@ -29,7 +43,8 @@ export default {
     id : Number
   },
   components: {
-    Slider
+    Slider,
+    RangeSlider
   },
   data() {
     return {
@@ -37,6 +52,7 @@ export default {
       temps : 0,
       description :"",
       idtxtlabel : "",
+      isfirefox : false,
     }
   },
   methods : {
@@ -59,8 +75,10 @@ export default {
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)
+    this.isfirefox = this.$store.getters.getIsFirefox;
   },
   updated() {
+    this.device.temps[0] = this.temps;
     this.$store.commit('SET_VALUE_DEVICE',this.device)
   },
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="popup-wrapper">
-    <b-button id="button-popup" variant="outline-primary" v-on:click="onClickPopup">{{ textbutton }}</b-button>
+    <b-button pill id="button-popup" variant="outline-primary" v-on:click="onClickPopup">{{ textbutton }}</b-button>
     <div id="myModal" class="modal">
       <div id="modal-content" class="modal-content" style="width: 50%">
         <div class="close" style="display: flex;justify-content: right;text-align: left">

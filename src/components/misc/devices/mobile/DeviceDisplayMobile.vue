@@ -8,11 +8,11 @@
         min="0"
         max="12"
         step="1"
-        v-model="device.temps[0]">
+        v-model="temps">
     </range-slider>
     <div class="d-button" style="width:100%">
-      <div class="d-button-container" style="display: flex;justify-content:right">
-        <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+      <div class="d-button-container"  style="display: flex;justify-content:right">
+        <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@ export default {
     }
   },
   beforeMount() {
-    this.idtxtlabel = "txt-label-"+this.device.id
     this.device = this.$store.getters.getDevice(this.id);
+    this.idtxtlabel = "txt-label-"+this.device.id
   },
   mounted() {
     if (this.$store.getters.getIsMobile){document.getElementById('displayer').style.margin='5px'}
@@ -64,6 +64,7 @@ export default {
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)
   },
   updated() {
+    this.device.temps[0] = this.temps;
     this.$store.commit('SET_VALUE_DEVICE',this.device)
   }
 }

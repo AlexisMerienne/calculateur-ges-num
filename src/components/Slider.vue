@@ -44,7 +44,7 @@ export default {
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 15px;
+  height: 7px;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
@@ -61,22 +61,22 @@ export default {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background:  #0070ff;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  background: #0033ff;
   cursor: pointer;
 }
 .slider::-moz-range-progress {
   border-radius: 5px;
-  height: 15px;
-  background-color: #93c0ff;
+  height: 7px;
+  background-color: #0033ff;
 }
 .slider::-moz-range-thumb {
-  width: 40px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   border-radius: 20px;
-  background: #0070ff;
+  background:#0033ff;
   cursor: pointer;
 }
 </style>

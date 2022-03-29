@@ -1,7 +1,7 @@
 exports.setTextDevice = (device) => {
     switch(device){
         case 'smartphone' :
-            return "J'utilise mon <strong> smartpone </strong> pendant "
+            return "J'utilise mon <strong> smartphone </strong> pendant "
         case 'laptop' :
             return "J'utilise mon <strong> laptop </strong> pendant "
         case 'tele' :

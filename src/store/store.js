@@ -13,7 +13,8 @@ export default new Vuex.Store( {
         views : ['home','actions','charts'],
         currentview : 'home',
         update_charts : false,
-        is_mobile : false
+        is_mobile : false,
+        isFirefox : false,
     },
     getters : {
         getCurrentView (state) {
@@ -32,7 +33,10 @@ export default new Vuex.Store( {
         },
         getIsMobile (state) {
             return state.is_mobile;
-        }
+        },
+        getIsFirefox (state){
+          return state.isFirefox;
+        },
     },
     mutations : {
         SET_VIEW (state) {
@@ -52,6 +56,9 @@ export default new Vuex.Store( {
         SET_IS_MOBILE (state,ismobile) {
             state.is_mobile = ismobile
         },
+        SET_IS_FIREFOX (state){
+            state.isFirefox = true;
+        }
     },
     modules: {
         deviceModule: deviceModule,

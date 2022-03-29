@@ -5,7 +5,6 @@
         <img :src="require(`../../assets/${icon[i-1]}`)" height="50" width="50">
       </div>
     </div>
-    <div id="some-space" style="width: 100%;height: 30px"></div>
   </div>
 </template>
 
@@ -31,7 +30,7 @@ export default {
 
     let htmlObject = document.createElement('h5');
 
-    htmlObject.marginTop = "10px"
+    htmlObject.style.marginTop = "30px"
     htmlObject.className = "w3-left w3-animate-bottom"
     htmlObject.innerHTML = s;
     htmlObject.style.textAlign='left'

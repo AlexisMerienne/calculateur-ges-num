@@ -8,7 +8,12 @@ export const actionModule = {
     },
     getters : {
         getActions (state) {return state.action;},
-        getAction: (state) => (id) => {return state.action.find(d=>d.id===id)}
+        getAction: (state) => (id) => {return state.action.find(d=>d.id===id)},
+        getMail (state) {
+            let indexmail = state.action.findIndex(a=>a.label==='mail')
+            return indexmail !== -1 ? state.action[indexmail] : null;
+
+        }
     },
     mutations: {
         CREATE_ACTION (state,action) {

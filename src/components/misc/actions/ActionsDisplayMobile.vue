@@ -2,8 +2,8 @@
   <div id="displayer" shadow="">
     <div v-if="action.label==='mail'">
       Les {{action.label}}s que j'ai envoyé aujourd'hui :
-      <b-form-input id="mail" v-model="action.value_1" placeholder="mails"></b-form-input>
-      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails avec pièces jointes"></b-form-input>
+      <b-form-input id="mail" v-model="action.value_1" placeholder="mails" type="number" min="0" max="1000"></b-form-input>
+      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails avec pièces jointes" type="number" min="0" max="1000"></b-form-input>
     </div>
     <div v-else style="display: flex;flex-direction: column">
       <h6>{{printDescription()}} </h6>
@@ -17,7 +17,7 @@
     </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
-        <b-button id="b-delete" variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+        <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
       </div>
     </div>
   </div>

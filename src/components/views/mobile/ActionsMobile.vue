@@ -5,14 +5,14 @@
       <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
-          content="Ajoute les actions que tu fais pendant une journée de travail."
+          content="Ajoutez les actions que vous faites pendant une journée type."
       ></Popup>
     </div>
     <div v-for="action in actions" :key="action.id">
       <ActionsDisplayMobile v-bind:id="action.id"/>
     </div>
     <div id="buttons">
-      <b-dropdown class="mx-1" right text="Ajouter une action numérique" style="margin: 5px">
+      <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
         <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('insta')">réseaux (a)sociaux</b-dropdown-item>

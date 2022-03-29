@@ -312,9 +312,9 @@
             "icon" : ["devices.svg","right-arrow.svg","network.svg","right-arrow.svg","database.svg"]
         },
         "nar-gesproduction" : {
-            "nar" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils. En effet, avant d'atterrir dans nos mains, ces appareils ont déjà émis plus de la moitié du Co2 total de leur cycle de vie. Cette consommation est liée à la phase de fabrication qui est très couteuse en ressources et énergie. <br><br>Mais regardons plutôt à combien de Co2 cela correspond",
-            "nbricon" : 0,
-            "icon" : []
+            "nar" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils. En effet, avant d'atterrir dans nos mains, ces appareils ont déjà émis plus de la moitié du Co2 total de leur cycle de vie. Cette consommation est liée à la phase de fabrication qui est très couteuse en ressources et énergies. <br><br>Mais regardons plutôt à combien de Co2 cela correspond",
+            "nbricon" : 3,
+            "icon" : ["factory.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesutilisationproduction":{
             "nar" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'utilisation avec la phase de production. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par sa durée de vie moyenne.<br>Ainsi, pour un smartphone, la durée de vie moyenne est de 2,25 ans, pour un laptop elle est de 5 ans et pour une télévision de 4 ans",

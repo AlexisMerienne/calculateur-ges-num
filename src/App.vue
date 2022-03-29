@@ -47,18 +47,27 @@ export default {
   },
   methods:{
     goToNext() {
-      this.$router.push({name : this.$store.getters.getNextView});
-      this.$store.commit('SET_VIEW');
-      this.currentviews = this.$store.getters.getCurrentView;
-      this.displayLeftButton();
-      this.displayRightButton()
+      if(this.checkNegValue()){
+        window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+      }else {
+        this.$router.push({name: this.$store.getters.getNextView});
+        this.$store.commit('SET_VIEW');
+        this.currentviews = this.$store.getters.getCurrentView;
+        this.displayLeftButton();
+        this.displayRightButton();
+      }
+
     },
     goToPrev() {
-      this.$router.push({name : this.$store.getters.getPrevView});
-      this.$store.commit('SET_VIEW_PREV');
-      this.currentviews = this.$store.getters.getCurrentView
-      this.displayLeftButton();
-      this.displayRightButton()
+      if(this.checkNegValue()){
+        window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+      }else {
+        this.$router.push({name: this.$store.getters.getPrevView});
+        this.$store.commit('SET_VIEW_PREV');
+        this.currentviews = this.$store.getters.getCurrentView
+        this.displayLeftButton();
+        this.displayRightButton()
+      }
     },
     displayLeftButton() {
       if (!(/home/.test(this.currentviews))){
@@ -71,6 +80,13 @@ export default {
         this.displaynext=true;
       }else{this.displaynext=false;}
     },
+    checkNegValue() {
+      if (this.$store.getters.getMail !== null){
+        if (this.$store.getters.getMail.value_1<0 || this.$store.getters.getMail.value_2<0){
+          return true;
+        }else return false;
+      }else return false;
+    }
   },
   computed: {
     currentRouteName() {
@@ -100,6 +116,7 @@ export default {
       if (window.innerHeight>900){
         document.getElementById('footer').style.marginTop = "600px"
       }
+      typeof InstallTrigger !== 'undefined' ? this.$store.commit("SET_IS_FIREFOX") : null;
   }
 
 }
