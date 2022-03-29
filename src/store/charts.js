@@ -43,6 +43,13 @@ export const chartsModule = {
         getIsChart (state) {
             return state.isChart;
         },
+        getConclusionData (state) {
+            const consodiesel = 136.1
+            const consototale =  chartData(state.gesdata,state.scenario,state.currentid).total;
+            const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
+            const consodistancediesel = Math.round(consodistance*100)/100
+            return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong>km"
+        }
     },
     mutations : {
         SET_NEXT_CHARTID (state) {
@@ -52,6 +59,10 @@ export const chartsModule = {
         SET_NEXT_NARID (state) {
             const indexNar = state.narids.findIndex(id => id === state.currentnarid);
             state.currentnarid = indexNar < state.narids.length-1 ? state.narids[indexNar+1] : state.narids[0]
+        },
+        SET_NARID_END (state) {
+            state.currentnarid = "nar-gesdevice";
+            state.currentid = "chart-gesdoubleutilisationproduction"
         },
         SET_iS_CHART (state,ischart) {
             state.isChart = ischart;

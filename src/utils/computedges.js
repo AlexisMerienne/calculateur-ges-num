@@ -51,7 +51,7 @@ function getGESAction(data,scenario){
     return {
         'data' : [roundDecimal(ges_mail), roundDecimal(ges_video), roundDecimal(ges_insta)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
-        'labels' : ['mail','video','insta'],
+        'labels' : ['mail','video','réseaux sociaux'],
         'title': 'Emmission de GES des actions numériques',
         'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
         'src' : src
@@ -228,6 +228,9 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'src' : src
     };
 }
+
+
+
 function getBrique(data,scenario){
     let ges_terminaux=0
     let ges_resaux=0
@@ -283,6 +286,8 @@ function getBrique(data,scenario){
         'src' : src
     };
 }
+
+
 
 
 function roundDecimal(x){

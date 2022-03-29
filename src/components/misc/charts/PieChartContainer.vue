@@ -1,5 +1,6 @@
 <template>
   <div class="container" style="max-height: 60%">
+    <div v-if="!conclusion">
     <div v-if="isChart">
     {{this.title}}
     <div id='flex-row' style="display: flex;flex-direction: row">
@@ -26,7 +27,10 @@
     <div id="next-chart" v-on:click="nextChart">
       <img src="../../../assets/caret-down.svg" width="50" height="50">
     </div>
-
+  </div>
+  <div v-else>
+    <Conclusion/>
+  </div>
   </div>
 </template>
 <script>
@@ -34,13 +38,15 @@
 import PieChart from "@/components/misc/charts/PieChart";
 import Popup from "@/components/Popup";
 import Narratif from "@/components/misc/Narratif";
+import Conclusion from "@/components/misc/Conclusion";
 
 export default {
   name : "myPieChart",
   components: {
     Narratif,
     PieChart,
-    Popup
+    Popup,
+    Conclusion,
   },
   data () {
     return {
@@ -59,17 +65,21 @@ export default {
       },
       loaded : false,
       isChart : false,
-      narcontent : ""
+      narcontent : "",
+      conclusion : false,
     }
   },
   methods : {
     nextChart() {
-      if (this.isChart){
+      if (this.isChart && !this.conclusion){
+        console.log("here   ");
         this.$store.commit('SET_NEXT_NARID');
-        this.narcontent = this.$store.getters.getNarData;
+        this.narcontent =   this.$store.getters.getNarData;
         this.isChart=false;
         this.$store.commit('SET_iS_CHART',false);
-      }else{
+        this.conclusion = this.narcontent.isEnd;
+        this.conclusion ? this.$store.commit('SET_NARID_END') : null;
+      }else if (!this.conclusion){
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
       const data = this.$store.getters.getChartData
