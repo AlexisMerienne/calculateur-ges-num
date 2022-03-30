@@ -5,7 +5,7 @@ exports.chartData = (data,scenario,id) => {
         case 'chart-gesdevice' :
             return getGESDevice(data,scenario);
         case 'chart-gesproduction' :
-            return getGESProduction(data);
+            return getGESProduction(data,scenario);
         case 'chart-gesutilisationproduction' :
             return getGESProdUtilisation(data,scenario);
         case 'chart-gesbrique':
@@ -103,17 +103,19 @@ function getGESDevice(data,scenario){
     };
 }
 
-function getGESProduction(data){
+function getGESProduction(data,scenario){
 
-    const ges_smartphone_daily_prod = data.production.GES.smartphone
+    const ges_smartphone_daily_prod = getTempsTotalUtilisation(scenario,"smartphone")!=0 ? data.production.GES.smartphone : 0
 
 
-    const ges_laptop_daily = data.production.GES.laptop
+    const ges_laptop_daily = getTempsTotalUtilisation(scenario,"laptop")!=0 ?data.production.GES.laptop : 0
+    
+    const ges_tele_daily = getTempsTotalUtilisation(scenario,"tele")!=0 ? data.production.GES.tele_connectee : 0
 
-    const ges_tele_daily = data.production.GES.tele_connectee
+    const ges_ordifix_daily = getTempsTotalUtilisation(scenario,"ordinateurfixe") !=0 ? data.production.GES.ordinateurfixe : 0
 
     const initialValue=0;
-    const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)].reduce(
+    const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue);
 
@@ -131,9 +133,9 @@ function getGESProduction(data){
             src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
         }]
     return {
-        'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily)],
+        'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)],
         'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
-        'labels' : ['smartphone','laptop','tele'],
+        'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
         'title': "Emmission de GES de la production des appareils",
         'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
         'src' : src

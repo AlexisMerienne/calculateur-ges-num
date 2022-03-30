@@ -72,7 +72,6 @@ export default {
   methods : {
     nextChart() {
       if (this.isChart && !this.conclusion){
-        console.log("here   ");
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent =   this.$store.getters.getNarData;
         this.isChart=false;

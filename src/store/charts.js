@@ -48,7 +48,7 @@ export const chartsModule = {
             const consototale =  chartData(state.gesdata,state.scenario,state.currentid).total;
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100
-            return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong>km"
+            return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong> km"
         }
     },
     mutations : {

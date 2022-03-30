@@ -1,6 +1,6 @@
 <template>
-  <div id="wrapper" shadow="">
-    <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-between">
+  <div id="wrapper">
+    <div id="title-and-question" style="width:80%;display: flex;flex-direction: row;justify-content: space-between;">
       <h3>Mes appareils</h3>
       <div id="some-space" style="width: 20px"></div>
       <Popup
@@ -8,11 +8,16 @@
           content="Ajoutez les appareils numériques que vous utilisez dans une journée type et renseignez leur durée d'utilisation"
       ></Popup>
     </div>
-    <div v-for="device in devices" :key="device.id">
-      <DeviceDisplayMobile v-bind:id="device.id"/>
+    <div id="devices-column">
+      <div  v-for="device in devices" :key="device.id">
+        <DeviceDisplayMobile v-bind:id="device.id"/>
+      </div>
     </div>
     <div id="buttons">
-      <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
+      <b-dropdown  id="dropdown-device" size="lg" variant="primary" pill style="margin: 5px;" no-caret>
+        <template #button-content>
+          <b-icon icon="plus" scale="2"></b-icon>
+        </template>
         <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
@@ -54,9 +59,14 @@ export default {
   align-items: center;
   min-width: 275px;
 }
+
 #buttons{
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
   margin: 5px 10px;
+}
+devices-column{
+  width: 90%;
 }
 </style>

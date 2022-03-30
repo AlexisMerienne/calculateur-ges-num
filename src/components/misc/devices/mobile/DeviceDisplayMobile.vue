@@ -6,7 +6,7 @@
     <range-slider
         class="slider"
         min="0"
-        max="12"
+        max="24"
         step="1"
         v-model="temps">
     </range-slider>
@@ -79,6 +79,7 @@ export default {
   align-items: center;
   margin : 5px;
   background-color: #eff4f9;
+  min-width: 100%;
 }
 #b-delete{
   margin : 3px
