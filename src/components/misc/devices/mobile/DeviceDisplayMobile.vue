@@ -10,6 +10,10 @@
         step="1"
         v-model="temps">
     </range-slider>
+    <div id="display-dette-ddv" style="margin-top: 10px">
+      <h6>Je possède cet appareil depuis <strong>{{device.dette_fabrication}} an(s)</strong></h6>
+      <b-form-input id="dette-ddv" v-model.number="device.dette_fabrication" placeholder="En année" type="number" min=0 max=20 step="1"></b-form-input>
+    </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container"  style="display: flex;justify-content:right">
         <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>

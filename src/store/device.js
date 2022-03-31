@@ -37,7 +37,13 @@ export const deviceModule = {
             state.devices[index_device].label==='ordinateurfixe' ? scenario.ordinateurfixe.dette_fabrication = device.dette_fabrication : null;
         },
         DELETE_DEVICE (state,id) {
+            let index_device = state.devices.findIndex(d => d.id === id)
+
+            scenario[state.devices[index_device].label].temps[0] = 0
+            scenario[state.devices[index_device].label].dette_fabrication = 0
+
             state.devices.splice(state.devices.findIndex(d => d.id === id), 1);
+
         }
     }
 }
