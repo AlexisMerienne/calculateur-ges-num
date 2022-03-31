@@ -44,7 +44,10 @@ export const chartsModule = {
             return state.isChart;
         },
         getConclusionData (state) {
-            const consodiesel = 136.1
+
+            //source : https://climate.selectra.com/fr/empreinte-carbone/voiture
+            const consodiesel = 293
+
             const consototale =  chartData(state.gesdata,state.scenario,state.currentid).total;
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100

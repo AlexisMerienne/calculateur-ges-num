@@ -8,11 +8,16 @@
           content="Ajoutez les actions que vous faites pendant une journée type."
       ></Popup>
     </div>
-    <div v-for="action in actions" :key="action.id">
-      <ActionsDisplayMobile v-bind:id="action.id"/>
+    <div id="actions-column">
+      <div v-for="action in actions" :key="action.id">
+        <ActionsDisplayMobile v-bind:id="action.id"/>
+      </div>
     </div>
     <div id="buttons">
-      <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
+      <b-dropdown  id="dropdown-device" size="lg" variant="white" pill style="margin: 5px;" no-caret>
+        <template #button-content>
+          <b-icon icon="plus-circle-fill" scale="3" variant="primary"></b-icon>
+        </template>
         <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('insta')">réseaux (a)sociaux</b-dropdown-item>
@@ -55,9 +60,13 @@ export default {
   min-width: 275px;
 }
 #buttons{
-  display: flex;
-  justify-content: center;
-  margin: 5px 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 30px 20px;
+}
+actions-column{
+  width: 90%;
 }
 
 

@@ -109,10 +109,12 @@ function getGESProduction(data,scenario){
 
 
     const ges_laptop_daily = getTempsTotalUtilisation(scenario,"laptop")!=0 ?data.production.GES.laptop : 0
-    
+
     const ges_tele_daily = getTempsTotalUtilisation(scenario,"tele")!=0 ? data.production.GES.tele_connectee : 0
 
     const ges_ordifix_daily = getTempsTotalUtilisation(scenario,"ordinateurfixe") !=0 ? data.production.GES.ordinateurfixe : 0
+
+
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)].reduce(
@@ -155,9 +157,10 @@ function getGESProdUtilisation(data,scenario){
     );
 
     let ges_production = 0;
-    ges_production += data.production.GES.smartphone * Math.pow(10,3) / (data.production.duree_de_vie.smartphone * 365.25)
-    ges_production+= data.production.GES.laptop * Math.pow(10,3) / (data.production.duree_de_vie.laptop * 365.25)
-    ges_production+= data.production.GES.tele_connectee*Math.pow(10,3) / (data.production.duree_de_vie.tele_connectee * 365.25)
+    ges_production += getTempsTotalUtilisation(scenario,"smartphone")!=0?data.production.GES.smartphone * Math.pow(10,3) / (getDetteDevices(scenario,data).smartphone * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (getDetteDevices(scenario,data).laptop * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"tele")!=0?data.production.GES.tele_connectee*Math.pow(10,3) / (getDetteDevices(scenario,data).tele * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"ordinateurfixe")!=0?data.production.GES.ordinateurfixe*Math.pow(10,3) / (getDetteDevices(scenario,data).ordinateurfixe * 365.25) : 0
 
 
     const initialValue=0;
@@ -200,9 +203,10 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
     );
 
     let ges_production = 0;
-    ges_production += data.production.GES.smartphone * Math.pow(10,3) / (2*data.production.duree_de_vie.smartphone * 365.25)
-    ges_production+= data.production.GES.laptop * Math.pow(10,3) / (2*data.production.duree_de_vie.laptop * 365.25)
-    ges_production+= data.production.GES.tele_connectee*Math.pow(10,3) / (2*data.production.duree_de_vie.tele_connectee * 365.25)
+    ges_production += getTempsTotalUtilisation(scenario,"smartphone")!=0?data.production.GES.smartphone * Math.pow(10,3) / (2*getDetteDevices(scenario,data).smartphone * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (2*getDetteDevices(scenario,data).laptop * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"tele")!=0?data.production.GES.tele_connectee*Math.pow(10,3) / (2*getDetteDevices(scenario,data).tele * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"ordinateurfixe")!=0?data.production.GES.ordinateurfixe*Math.pow(10,3) / (2*getDetteDevices(scenario,data).ordinateurfixe * 365.25) : 0
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(
@@ -300,3 +304,24 @@ function getTempsTotalUtilisation(scenario,str_device){
     return scenario[str_device].temps[0]
 }
 
+/**
+ *
+ * @param scenario définit par l'utilisateur
+ * @param data
+ * @returns Si le nombre d'année que l'utilisateur possède l'appareil n'est pas renseigné, alors le durée de vie et la durée de vie moyenne de l'appareil
+ */
+function getDetteDevices(scenario,data){
+
+
+    let ddv_smartphone = scenario.smartphone.dette_fabrication != 0 ? scenario.smartphone.dette_fabrication : data.production.duree_de_vie.smartphone
+    let ddv_laptop = scenario.laptop.dette_fabrication != 0 ? scenario.laptop.dette_fabrication : data.production.duree_de_vie.laptop
+    let ddv_tele = scenario.tele.dette_fabrication != 0 ? scenario.tele.dette_fabrication : data.production.duree_de_vie.ordinateurfixe
+    let ddv_ordinateurfixe = scenario.ordinateurfixe.dette_fabrication != 0 ? scenario.ordinateurfixe.dette_fabrication : data.production.duree_de_vie.ordinateurfixe
+
+    return {
+        "smartphone" : ddv_smartphone,
+        "laptop" : ddv_laptop,
+        "tele": ddv_tele,
+        "ordinateurfixe" : ddv_ordinateurfixe
+    }
+}

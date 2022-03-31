@@ -15,10 +15,10 @@ export default {
 
 .header{
   display: flex;
+  justify-content: space-around;
   height: 55px;
   text-align: left;
   align-items: center;
-  #border: solid;
   border-radius: 7px;
   margin-bottom: 30px;
   margin-top: 40px;

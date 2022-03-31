@@ -1,7 +1,7 @@
 <template>
   <div id="displayer" shadow="">
-    <div id="displat-txt-label" style="display: flex;flex-direction: row">
-      <h6 v-bind:id="idtxtlabel"></h6><div style="width: 2px"></div><h6><strong>{{this.temps}}h</strong></h6>
+    <div id="displat-txt-label" style="display: flex;flex-direction: column">
+      <h6 v-bind:id="idtxtlabel" style="margin-bottom: 0px"></h6><h6><strong>{{this.temps}}h </strong>dans une journée</h6>
     </div>
     <div v-if="isfirefox">
       <Slider
@@ -20,6 +20,10 @@
           step="1"
           v-model="temps">
       </range-slider>
+    </div>
+    <div id="display-dette-ddv" style="margin-top: 10px">
+      <h6>Je possède cet appareil depuis <strong>{{device.dette_fabrication}} an(s)</strong></h6>
+        <b-form-input id="dette-ddv" v-model.number="device.dette_fabrication" placeholder="En année" type="number" min=0 max=20 step="1"></b-form-input>
     </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
@@ -72,6 +76,7 @@ export default {
     this.temps = this.device.temps[0];
     this.description = setTextDevice(this.device.label);
     let htmldescription = document.createElement('p');
+    htmldescription.style.marginBottom = "0px"
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)

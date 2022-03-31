@@ -4,14 +4,18 @@
         <h3>Mes appareils</h3>
         <Popup
           textbutton="?"
-          content="Ajoutez les appareils numériques que vous utilisez dans une journée type et renseignez leur durée d'utilisation"
+          content="Bienvenue sur l'outil de calcule des émissions en gaz à effet de serre de votre utilisation du numérique."
+          v-bind:sources=txtpopup
           ></Popup>
       </div>
       <div v-for="device in devices" :key="device.id">
         <DeviceDisplay v-bind:id="device.id"/>
       </div>
       <div id="buttons">
-        <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
+        <b-dropdown toggle-class="rounded-circle px-2.8" size="lg" variant="white" pill right style="margin: 5px;" no-caret>
+          <template #button-content>
+            <b-icon id="icon-plus" icon="plus-circle-fill" scale="2" variant="primary"></b-icon>
+          </template>
           <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
           <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
@@ -32,6 +36,10 @@ export default {
   data() {
     return {
       devices: this.$store.getters.getDevices,
+      txtpopup : [{
+        id: 0,
+        src: "Pour commencer, ajouter les appareils numériques que vous avez utilisés aujourd'hui en renseignant le temps d'utilisation ainsi le nombre d'année que vous le possédez"
+      }]
     }
   },
   methods:{

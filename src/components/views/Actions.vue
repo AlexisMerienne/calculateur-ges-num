@@ -11,8 +11,10 @@
       <ActionDisplay v-bind:id="action.id"/>
     </div>
     <div id="buttons">
-      <b-dropdown toggle-class="rounded-circle px-2.8" variant="primary" text="+" pill right style="margin: 5px;" no-caret>
-        <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
+      <b-dropdown toggle-class="rounded-circle px-2.8" size="lg" variant="white" pill right style="margin: 5px;" no-caret>
+        <template #button-content>
+          <b-icon id="icon-plus" icon="plus-circle-fill" scale="2" variant="primary"></b-icon>
+        </template>        <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
         <b-dropdown-item v-on:click="addAction('insta')">réseaux (a)sociaux</b-dropdown-item>
       </b-dropdown>

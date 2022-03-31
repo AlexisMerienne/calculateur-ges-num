@@ -2,22 +2,26 @@
   "smartphone": {
     "label": "smartphone",
     "item": 0,
-    "temps": [0]
+    "temps": [0],
+    "dette_fabrication" : 0
   },
   "laptop": {
     "label": "odinateur",
     "item": 0,
-    "temps": [0]
+    "temps": [0],
+    "dette_fabrication" : 0
   },
   "tele": {
     "label": "t\u00e9l\u00e9vision",
     "item": 0,
-    "temps": [0]
+    "temps": [0],
+    "dette_fabrication" : 0
   },
   "ordinateurfixe": {
     "label": "Ordinateur fixe",
     "item": 0,
-    "temps": [0]
+    "temps": [0],
+    "dette_fabrication" : 0
   },
   "actions": {
     "mail": {

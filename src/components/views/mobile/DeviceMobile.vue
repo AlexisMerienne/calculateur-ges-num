@@ -14,9 +14,9 @@
       </div>
     </div>
     <div id="buttons">
-      <b-dropdown  id="dropdown-device" size="lg" variant="primary" pill style="margin: 5px;" no-caret>
+      <b-dropdown  id="dropdown-device" size="lg" variant="white" pill style="margin: 5px;" no-caret>
         <template #button-content>
-          <b-icon icon="plus" scale="2"></b-icon>
+          <b-icon id="icon-plus" icon="plus-circle-fill" scale="3" variant="primary"></b-icon>
         </template>
         <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
@@ -64,7 +64,10 @@ export default {
   position: fixed;
   bottom: 0;
   right: 0;
-  margin: 5px 10px;
+  margin: 30px 20px;
+}
+icon-plus{
+  margin: 30px 20px;
 }
 devices-column{
   width: 90%;

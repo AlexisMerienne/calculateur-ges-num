@@ -71,6 +71,7 @@ export default {
   align-items: center;
   margin: 5px;
   background-color: #eff4f9;
+  min-width: 100%;
 }
 #b-delete{
   margin : 3px
