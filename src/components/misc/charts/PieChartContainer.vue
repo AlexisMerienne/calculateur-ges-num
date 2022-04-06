@@ -77,7 +77,10 @@ export default {
         this.isChart=false;
         this.$store.commit('SET_iS_CHART',false);
         this.conclusion = this.narcontent.isEnd;
-        this.conclusion ? this.$store.commit('SET_NARID_END') : null;
+        if(this.conclusion) {
+          this.$store.commit('SET_NARID_END');
+          this.$store.commit('DELETE_ROWS')
+        }
       }else if (!this.conclusion){
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
