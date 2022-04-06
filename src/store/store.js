@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import {deviceModule} from "@/store/device";
 import {actionModule} from "@/store/actions";
 import {chartsModule} from "@/store/charts";
+import {resumeModule} from "@/store/resume";
 
 
 Vue.use(Vuex);
@@ -63,7 +64,8 @@ export default new Vuex.Store( {
     modules: {
         deviceModule: deviceModule,
         actionModule : actionModule,
-        chartsModule : chartsModule
+        chartsModule : chartsModule,
+        resumeModule : resumeModule
     }
 
 })

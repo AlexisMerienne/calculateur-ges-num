@@ -82,6 +82,7 @@ export default {
         this.loaded = false;
         this.$store.commit('SET_NEXT_CHARTID');
         const data = this.$store.getters.getChartData
+        console.log(data)
         this.chartdata = data.chartdata
         this.title = data.title
         this.focus = data.focus
@@ -90,6 +91,7 @@ export default {
         this.loaded = true;
         this.isChart=true;
         this.$store.commit('SET_iS_CHART',true);
+
       }
     }
 

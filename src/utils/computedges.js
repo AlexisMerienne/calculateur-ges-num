@@ -51,10 +51,13 @@ function getGESAction(data,scenario){
     return {
         'data' : [roundDecimal(ges_mail), roundDecimal(ges_video), roundDecimal(ges_insta)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'totalTab' : roundDecimal(ges_total),
         'labels' : ['mail','video','réseaux sociaux'],
         'title': 'Emmission de GES des actions numériques',
         'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
-        'src' : src
+        'src' : src,
+        'addrow' : true,
+        'rowlabel' : 'utilisation services num'
     };
 }
 
@@ -96,10 +99,13 @@ function getGESDevice(data,scenario){
     return {
         'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
         'title': "Emmission de GES de l'utilisation des appareils numérique",
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
-        'src' : src
+        'src' : src,
+        'addrow' : true,
+        'rowlabel' : 'utilisation appareils'
     };
 }
 
@@ -137,10 +143,13 @@ function getGESProduction(data,scenario){
     return {
         'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)],
         'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
+        'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
         'title': "Emmission de GES de la production des appareils",
         'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
-        'src' : src
+        'src' : src,
+        'addrow' : false,
+        'rowlabel' : ''
     };
 }
 
@@ -183,10 +192,13 @@ function getGESProdUtilisation(data,scenario){
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'totalTab' : roundDecimal(ges_production),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
-        'src' : src
+        'src' : src,
+        'addrow' : true,
+        'rowlabel' : 'production'
     };
 }
 
@@ -228,10 +240,13 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'totalTab' : roundDecimal(ges_total),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
-        'src' : src
+        'src' : src,
+        'addrow' : false,
+        'rowlabel' : ''
     };
 }
 
@@ -286,10 +301,13 @@ function getBrique(data,scenario){
     return {
         'data' : [roundDecimal(ges_terminaux), roundDecimal(ges_resaux), roundDecimal(ges_datacenter)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'totalTab' : roundDecimal(ges_total),
         'labels' : ['terminaux','réseaux','datacenter'],
         'title': "GES par 'brique numérique'",
         'focus' : "On calcule les émissions de GES par brique numérique",
-        'src' : src
+        'src' : src,
+        'addrow' : false,
+        'rowlabel' : ''
     };
 }
 

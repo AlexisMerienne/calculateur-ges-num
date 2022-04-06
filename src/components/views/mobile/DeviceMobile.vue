@@ -67,7 +67,7 @@ export default {
   margin: 30px 20px;
 }
 icon-plus{
-  margin: 30px 20px;
+  margin: 60px 20px;
 }
 devices-column{
   width: 90%;

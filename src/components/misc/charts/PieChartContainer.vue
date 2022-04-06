@@ -90,6 +90,10 @@ export default {
       this.loaded=true;
       this.isChart=true
       this.$store.commit('SET_iS_CHART',true);
+      if (data.addrow){
+        this.$store.commit('ADD_ROW',data)
+      }
+      this.$emit('undisplayTab')
       }
     }
   },

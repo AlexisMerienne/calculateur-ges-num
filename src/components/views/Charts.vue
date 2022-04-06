@@ -1,11 +1,17 @@
 <template>
-  <div id="wrapper" shadow="">
-    <PieChartContainer/>
+  <div id="chart-view">
+    <div id="wrapper" shadow="">
+      <PieChartContainer v-on:undisplayTab="updateTab"/>
+    </div>
+    <div id="tab-continus-backup" style="position:absolute;top:95px;right: 0px">
+      <Tableau v-if="displayTab" v-bind:data="tabdata"></Tableau>
+    </div>
   </div>
 </template>
 <script>
 
 import PieChartContainer from "@/components/misc/charts/PieChartContainer";
+import Tableau from "@/components/Tableau";
 
 export default {
   name: "PieChart",
@@ -13,10 +19,23 @@ export default {
     return {
       chartdata : null,
       loaded : false,
+      displayTab : false,
+      tabdata : {}
     }
   },
   components : {
-    PieChartContainer
+    PieChartContainer,
+    Tableau
+  },
+  methods: {
+    updateTab(){
+      this.displayTab = false
+      this.tabdata = {
+        colspan:this.$store.getters.getColspan,
+        items:this.$store.getters.getItems
+      }
+      this.displayTab = true
+    }
   },
   mounted() {
   }

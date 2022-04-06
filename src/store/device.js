@@ -3,8 +3,18 @@ import scenario from "@/data/scenario.json";
 export const deviceModule = {
     namespaced: false,
     state : {
-        devices : [],
-        count : 0
+        devices : [{
+            id : 0,
+            label : 'smartphone',
+            temps : [2],
+            dette_fabrication : 0,
+        },{
+            id : 1,
+            label : 'laptop',
+            temps : [8],
+            dette_fabrication : 0,
+        }],
+        count : 2
     },
     getters : {
         getDevices (state) {return state.devices;},

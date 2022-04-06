@@ -63,7 +63,7 @@ export default {
   position: fixed;
   bottom: 0;
   right: 0;
-  margin: 30px 20px;
+  margin: 60px 20px;
 }
 actions-column{
   width: 90%;

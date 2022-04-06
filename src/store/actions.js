@@ -3,7 +3,22 @@ import scenario from '../data/scenario.json'
 export const actionModule = {
     namespaced: false,
     state : {
-        action : [],
+        action : [{
+            id : 0,
+            label : 'mail',
+            value_1 : 10,
+            value_2 : 2,
+        },{
+            id : 1,
+            label : 'video',
+            value_1 : 2,
+            value_2 : null,
+        },{
+            id : 2,
+            label : 'insta',
+            value_1 : 2,
+            value_2 : null,
+        }],
         count : 0
     },
     getters : {
@@ -33,6 +48,14 @@ export const actionModule = {
             state.action[index_action].label==='insta' ? scenario.actions.insta.temps = Number(action.value_1)*60 : null;
         },
         DELETE_ACTION (state,id) {
+            const indexaction = state.action.findIndex(d => d.id === id)
+
+            if (state.action[indexaction].label==='mail'){
+                scenario.actions.mail.nbr_mail=0
+                scenario.actions.mail.nbr_mail_pj=0
+            }else {
+                scenario.actions[state.action[indexaction].label].temps = 0
+            }
             state.action.splice(state.action.findIndex(d => d.id === id), 1);
         }
     }
