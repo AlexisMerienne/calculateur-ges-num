@@ -28,7 +28,7 @@ function getGESAction(data,scenario){
     const ges_video = mn_video*nrj_video*data.ges_elec_france.valeur
 
     const mn_insta = scenario.actions.insta.temps
-    const nrj_insta  = data.utilisation.actions.insta.conso * (data.utilisation.actions.onebyte.wifi.energie_par_byte* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
+    const nrj_insta  = data.utilisation.actions.insta.conso * ((data.utilisation.actions.onebyte.wifi.energie_par_byte+data.utilisation.actions.onebyte.mobile.quatreG.energie_par_byte)* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
     const ges_insta = mn_insta*nrj_insta*data.ges_elec_france.valeur
 
     const src = [{

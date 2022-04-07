@@ -98,6 +98,9 @@ export default {
       }
       this.$emit('undisplayTab')
       }
+    },
+    previousChart(){
+
     }
   },
   updated() {

@@ -6,13 +6,13 @@
     <div class="some-space" style="width:100%;height:15px"></div>
     <div class="label-header">
       <div class="title-elmt"  v-for="field in fields" :key="field.key">
-        <strong>{{field.label}}</strong>
+        <strong>{{field.label}} <div v-if="field.key==='equivalent'"><br>(pour une journée)</div></strong>
       </div>
     </div>
     <div class="some-space" style="width:100%;height:15px"></div>
     <div class="items-container">
       <div id='item-row' class="item-row" v-for="item in items" :key="item.key">
-        <div id='value-row' class="value-row" v-for="value in colspan" :key="value">
+        <div id='value-row' class="value-row" v-for="value in colspan" :key="value" style="text-align: left">
           <h6>{{item.value[value-1]}}</h6>
         </div>
       </div>
@@ -66,7 +66,7 @@
 .value-row{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 30%;
 }
 .items-container{

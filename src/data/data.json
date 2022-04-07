@@ -170,12 +170,13 @@
                     "energie_par_byte" : 0.0000000000565,
                     "unite" : "kWh/byte"
                 },
-                "mobile" : {"3G" : {
+                "mobile" : {
+                    "3G" : {
                         "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ",
                         "energie_par_byte" : 0.00000000214,
                         "unite" : "kWh/byte"
                     },
-                    "4G" : {
+                    "quatreG" : {
                         "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ",
                         "energie_par_byte" : 0.00000000009,
                         "unite" : "kWh/byte"

@@ -14,7 +14,7 @@
   "tele": {
     "label": "t\u00e9l\u00e9vision",
     "item": 0,
-    "temps": [2],
+    "temps": [0],
     "dette_fabrication" : 0
   },
   "ordinateurfixe": {
