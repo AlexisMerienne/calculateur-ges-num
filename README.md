@@ -58,3 +58,14 @@ firebase deploy
     2. Calcule des GES
 
 
+#### I. Components
+
+
+L'application est divisée en trois pages :
+
+  - La saisie des appareils numériques
+  - La saisie des services numériques
+  - Le bilan de consommation
+
+
+
