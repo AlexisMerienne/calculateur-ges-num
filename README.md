@@ -44,11 +44,17 @@ m your choices. Hosting: Configure files for Firebase Hosting and (optionally) s
 ? File ./index.html already exists. Overwrite? No
 
 ```
-Quand vous avez de configurer firebase, on peut déployer l'application :
+Quand vous avez fini de configurer firebase, on peut déployer l'application :
 
 ```
 firebase deploy
 ```
 
+### Documentation 
+
+##### Plan
+  
+    1. Components
+    2. Calcule des GES
 
 
