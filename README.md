@@ -1,32 +1,71 @@
 # calculateur-ges-num
 
-## Project setup
+### Présentation
+
+Ce projet a pour vocation de développer un outil permettant de mesurer l'impact carbone de votre utilisation du numérique. Il se présente sous la forme d'une interface intuitive parlaquelle on peut spécifier les apparails numériques que l'on utilise en une journée ainsi que les services numériques que l'on effectue.
+
+Vous pouvez trouver une version du site sur : https://mon-impact-numerique.web.app/
+
+
+
+### Project setup
+
+Ce projet est développé en Vue 2. Ce choix a été fait pour le caractère component-oriented du framework et pour sa capacité à monter rapidemment en fonctionnalités. 
+
+Pour installer les dépendances : 
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+Pour lancer l'environnement de développement
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+Pour build le projet
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Push to production 
-
-#### to do only after bulding the app
+Le projet est déployé sur le service d'hébergement Firebase. Après chaque build, pour déployer l'application, il faut effectuer :
 ```
 cd dist
+firebase init
 
+```
+
+Faires les choix suivants : 
+
+```
+Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confir
+m your choices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+? What do you want to use as your public directory? .
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? No
+? File ./index.html already exists. Overwrite? No
+
+```
+Quand vous avez fini de configurer firebase, on peut déployer l'application :
+
+```
 firebase deploy
 ```
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Documentation 
+
+##### Plan
+  
+    1. Components
+    2. Calcule des GES
+
+
+#### I. Components
+
+
+L'application est divisée en trois pages :
+
+  - La saisie des appareils numériques
+  - La saisie des services numériques
+  - Le bilan de consommation
+
+
+
