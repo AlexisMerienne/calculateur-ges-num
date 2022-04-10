@@ -10,14 +10,14 @@ Vous pouvez trouver une version du site sur : https://mon-impact-numerique.web.a
 
 ### Project setup
 
-Ce projet est développer en Vue 2. Ce choix a été fait pour le caractère component-oriented du framework et pour sa capacité à monter rapidemment en fonctionnalité. 
+Ce projet est développé en Vue 2. Ce choix a été fait pour le caractère component-oriented du framework et pour sa capacité à monter rapidemment en fonctionnalités. 
 
 Pour installer les dépendances : 
 ```
 npm install
 ```
 
-Pour lancer l'environnement développement
+Pour lancer l'environnement de développement
 ```
 npm run serve
 ```
