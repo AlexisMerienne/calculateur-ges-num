@@ -21,14 +21,18 @@ export const resumeModule = {
     },
     mutations : {
         ADD_ROW (state,data)  {
-            state.key++,
-            state.items.splice(state.items.length-1,0,{
-                key: state.key,
-                value : [data.rowlabel, data.totalTab + " gCO2", computeEquiv(data.totalTab)]
-            })
-            const sizeitems = state.items.length
-            state.items[sizeitems-1].value[1] = Math.round(state.items[sizeitems-1].value[1]+data.totalTab*100)/100
-            state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
+            state.key++;
+            const index = state.items.findIndex(elm => elm.value[0] === data.rowlabel);
+            if (index==-1) {
+                state.items.splice(state.items.length - 1, 0, {
+                    key: state.key,
+                    value: [data.rowlabel, data.totalTab + " gCO2", computeEquiv(data.totalTab)]
+                })
+                const sizeitems = state.items.length
+                state.items[sizeitems-1].value[1] += Math.round(data.totalTab*100)/100
+                state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
+            }
+
         },
         DELETE_ROWS (state) {
             state.items = [{

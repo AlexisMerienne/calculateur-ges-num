@@ -1,6 +1,9 @@
 <template>
   <div class="container" style="max-height: 60%">
     <div v-if="!conclusion">
+    <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
+      <img src="../../../assets/caret-up.svg" width="50" height="50">
+    </div>
     <div v-if="isChart">
     {{this.title}}
     <div id='flex-row' style="display: flex;flex-direction: row">
@@ -56,6 +59,7 @@ export default {
       btext : "D'où viennent les données ?",
       total : null,
       chartdata : null,
+      firstnar : true,
       options: {
         legend: {
           display: true
@@ -72,6 +76,7 @@ export default {
   methods : {
     nextChart() {
       if (this.isChart && !this.conclusion){
+        this.firstnar = false;
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent =   this.$store.getters.getNarData;
         this.isChart=false;
@@ -82,6 +87,7 @@ export default {
           this.$store.commit('DELETE_ROWS')
         }
       }else if (!this.conclusion){
+      this.firstnar = false;
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
       const data = this.$store.getters.getChartData
@@ -100,7 +106,31 @@ export default {
       }
     },
     previousChart(){
-
+        if (this.isChart && !this.conclusion){
+          this.$store.commit('SET_PREVIOUS_CHART');
+          if (this.$store.getters.getCurrentNarId==='nar-gesdevice'){
+            this.firstnar=true
+          }else this.firstnar = false;
+          this.narcontent = this.$store.getters.getNarData;
+          this.isChart=false;
+          this.$store.commit('SET_iS_CHART',false);
+        }else if (!this.conclusion){
+          this.firstnar = false;
+          this.loaded=false;
+          this.$store.commit('SET_PREVIOUS_NARID');
+          const data = this.$store.getters.getChartData
+          this.chartdata = data.chartdata
+          this.title = data.title
+          this.focus = data.focus
+          this.source = data.src
+          this.total = data.total
+          this.loaded=true;
+          this.isChart=true
+          this.$store.commit('SET_iS_CHART',true);
+          this.$emit('undisplayTab')
+        }
+        console.log(this.$store.getters.getCurrentChartId)
+        console.log(this.$store.getters.getCurrentNarId)
     }
   },
   updated() {
@@ -127,7 +157,15 @@ export default {
   margin: 10px;
   border-radius: 7px;
 }
+#previous-chart{
+  margin: 10px;
+  border-radius: 7px;
+}
 #next-chart:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+#previous-chart:hover{
   background-color: lightgray;
   cursor: pointer;
 }

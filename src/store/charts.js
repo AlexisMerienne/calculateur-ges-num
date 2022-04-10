@@ -15,7 +15,8 @@ export const chartsModule = {
         isChart : false,
     },
     getters : {
-        getCurrentChartId (state) {return state.chartsids;},
+        getCurrentChartId (state) {return state.currentid;},
+        getCurrentNarId (state) {return state.currentnarid;},
         getData (state) {return state.gesdata;},
         getChartData  (state) {
             const datages = chartData(state.gesdata,state.scenario,state.currentid)
@@ -65,6 +66,21 @@ export const chartsModule = {
         SET_NEXT_NARID (state) {
             const indexNar = state.narids.findIndex(id => id === state.currentnarid);
             state.currentnarid = indexNar < state.narids.length-1 ? state.narids[indexNar+1] : state.narids[0]
+        },
+        SET_PREVIOUS_CHART (state) {
+            const indexChart = state.chartsids.findIndex(id => id === state.currentid);
+            if (indexChart > 0){
+                state.currentid  = state.chartsids[indexChart-1]
+            }else{
+                console.log('HERE')
+                state.currentid= state.chartsids[state.chartsids.length-1]
+            }
+            console.log(state.currentid)
+
+        },
+        SET_PREVIOUS_NARID (state) {
+            const indexNar = state.narids.findIndex(id => id === state.currentnarid);
+            state.currentnarid = indexNar >0 ? state.narids[indexNar-1] : state.narids[state.narids.length-1]
         },
         SET_NARID_END (state) {
             state.currentnarid = "nar-gesdevice";
