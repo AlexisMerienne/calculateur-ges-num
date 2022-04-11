@@ -6,7 +6,7 @@
     <div class="some-space" style="width:100%;height:15px"></div>
     <div class="label-header">
       <div class="title-elmt"  v-for="field in fields" :key="field.key">
-        <strong>{{field.label}} <div v-if="field.key==='equivalent'"><br>(pour une journée)</div></strong>
+        <strong>{{field.label}} <div v-if="field.key==='equivalent'">(pour une journée)</div></strong>
       </div>
     </div>
     <div class="some-space" style="width:100%;height:15px"></div>
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 400px;
+  max-width: 350px;
 }
 .title-header{
   background-color: #6C89FFE8;

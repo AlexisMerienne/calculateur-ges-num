@@ -8,15 +8,21 @@
       <Header/>
     </div>
 
-      <div v-if="displayprev" id="b-prev" v-on:click="goToPrev">
-        <img id="b-prev-icon" src="../src/assets/chevron-left-arrow.svg" alt="left-arrow" width="50" height="50">
+      <div id="nav-bar" class="nav-bar">
+        <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
+            Mes appareils
+        </div>
+        <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
+            Mes actions
+        </div>
+        <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilan">
+            Mon bilan
+        </div>
       </div>
       <div id="wrapper">
         <router-view/>
       </div>
-      <div v-if="displaynext" id="b-next" v-on:click="goToNext">
-           <img id="b-next-icon" src="../src/assets/chevron-right-arrow.svg" alt="right-arrow" width="50" height="50">
-      </div>
+
     </div>
     <div id="footer">
       <Footer/>
@@ -40,9 +46,8 @@ export default {
     return {
       currentviews : this.$store.getters.getCurrentView,
       isMobile : false,
-      displayprev : false,
-      displaynext : true,
       windowsheight : 0,
+      viewscliked : [true,false,false],
     }
   },
   created() {
@@ -52,39 +57,39 @@ export default {
     window.removeEventListener("resize", this.myEventHandler);
   },
   methods:{
-    goToNext() {
+    goToDevice(){
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
-      }else {
-        this.$router.push({name: this.$store.getters.getNextView});
-        this.$store.commit('SET_VIEW');
-        this.currentviews = this.$store.getters.getCurrentView;
-        this.displayLeftButton();
-        this.displayRightButton();
+      }else if (!this.viewscliked[0]){
+        this.$router.push({name:"home"})
+        this.setIsClickCss(document.getElementById('device-view-button'));
+        this.setIsNotClickCss(document.getElementById('actions-view-button'));
+        this.setIsNotClickCss(document.getElementById('charts-view-button'));
+        this.viewscliked=[true,false,false]
+      }
+    },
+    goToAction(){
+      if(this.checkNegValue()){
+        window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+      }else if (!this.viewscliked[1]) {
+        this.$router.push({name:"actions"})
+        this.setIsClickCss(document.getElementById('actions-view-button'));
+        this.setIsNotClickCss(document.getElementById('device-view-button'));
+        this.setIsNotClickCss(document.getElementById('charts-view-button'));
+        this.viewscliked=[false,true,false]
       }
 
     },
-    goToPrev() {
+    goToBilan(){
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
-      }else {
-        this.$router.push({name: this.$store.getters.getPrevView});
-        this.$store.commit('SET_VIEW_PREV');
-        this.currentviews = this.$store.getters.getCurrentView
-        this.displayLeftButton();
-        this.displayRightButton()
+      }else if (!this.viewscliked[2]){
+        this.$router.push({name:"charts"})
+        this.setIsClickCss(document.getElementById('charts-view-button'));
+        this.setIsNotClickCss(document.getElementById('device-view-button'));
+        this.setIsNotClickCss(document.getElementById('actions-view-button'));
+        this.viewscliked=[false,false,true]
       }
-    },
-    displayLeftButton() {
-      if (!(/home/.test(this.currentviews))){
-        this.displayprev=true;
-      }else{this.displayprev=false;}
-
-    },
-    displayRightButton(){
-      if (!(/charts/.test(this.currentviews))){
-        this.displaynext=true;
-      }else{this.displaynext=false;}
     },
     checkNegValue() {
       if (this.$store.getters.getMail !== null){
@@ -98,6 +103,14 @@ export default {
       let footer = document.getElementById("footer");
       footer.style.marginTop = (screeneheight-200).toString() + "px";
     },
+    setIsClickCss(el){
+      el.style.marginRight = '2px 2px;'
+      el.style.backgroundColor='#6887ff'
+    },
+    setIsNotClickCss(el){
+      el.style.marginRight = '2px 5px;'
+      el.style.backgroundColor='#eff4f9'
+    }
   },
   computed: {
     currentRouteName() {
@@ -155,6 +168,36 @@ export default {
   margin-top: 400px;
   height: 200px;
   background-color: #eff4f9;
+}
+
+.nav-bar{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  justify-content: space-around;
+}
+.device-view-button {
+  text-align: center;
+  background-color: #6887ff;
+  border-radius: 7px 7px 0px 0px;
+  width: 100%;
+  margin: 2px 5px;
+}
+
+.actions-view-button {
+  text-align: center;
+  background-color: #eff4f9;
+  border-radius: 7px 7px 0px 0px;
+  width: 100%;
+  margin: 2px 5px;
+}
+.charts-view-button{
+  text-align: center;
+  background-color: #eff4f9;
+  border-radius: 7px 7px 0px 0px;
+  width: 100%;
+  margin: 2px 5px;
 }
 
 #wrapper{

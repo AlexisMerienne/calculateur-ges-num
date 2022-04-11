@@ -47,7 +47,7 @@ export default {
   position: relative;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 100%;
   min-width: 275px;
 }
 
