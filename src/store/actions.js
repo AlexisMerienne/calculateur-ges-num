@@ -19,7 +19,7 @@ export const actionModule = {
             value_1 : 2,
             value_2 : null,
         }],
-        count : 0
+        count : 3
     },
     getters : {
         getActions (state) {return state.action;},
