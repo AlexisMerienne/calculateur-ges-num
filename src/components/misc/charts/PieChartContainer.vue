@@ -1,9 +1,6 @@
 <template>
   <div class="container" style="max-height: 60%">
     <div v-if="!conclusion">
-    <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
-      <img src="../../../assets/caret-up.svg" width="50" height="50">
-    </div>
     <div v-if="isChart">
     {{this.title}}
     <div id='flex-row' style="display: flex;flex-direction: row">
@@ -27,9 +24,15 @@
       <Narratif
           v-bind:content="narcontent"/>
     </div>
-    <div id="next-chart" v-on:click="nextChart">
-      <img src="../../../assets/caret-down.svg" width="50" height="50">
+    <div id="nav-charts" style="display: flex;flex-direction: row;justify-content: space-between">
+      <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
+        <img src="../../../assets/caret-left.svg" width="50" height="50">
+      </div>
+      <div id="next-chart" v-on:click="nextChart">
+        <img src="../../../assets/caret-right.svg" width="50" height="50">
+      </div>
     </div>
+
   </div>
   <div v-else>
     <Conclusion/>
@@ -154,11 +157,13 @@ export default {
 
 <style scoped>
 #next-chart{
-  margin: 10px;
+  margin: 10px 30px;
+  width: 100%;
   border-radius: 7px;
 }
 #previous-chart{
-  margin: 10px;
+  margin: 10px 30px;
+  width: 100%;
   border-radius: 7px;
 }
 #next-chart:hover{

@@ -1,6 +1,5 @@
 import data from "../data/data.json"
 import scenario from "../data/scenario.json"
-import {getColors} from "@/utils/colors";
 import {chartData} from "@/utils/computedges";
 
 export const chartsModule = {
@@ -34,7 +33,7 @@ export const chartsModule = {
                         {
                             label: 'Emmission de GES des actions',
                             data: datages.data,
-                            backgroundColor: [getColors().backgroundColor[0],getColors().backgroundColor[1],getColors().backgroundColor[4],getColors().backgroundColor[11]],
+                            backgroundColor: datages.backgroundColor,
                         }
                     ]
                 }

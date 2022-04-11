@@ -1,5 +1,29 @@
 exports.getColors = () => {
     let allColors = {
+        elecColor : [
+            '#cd8900',
+            '#ff8801',
+            '#ffbb33',
+            '#ffd737',
+            '#fff177',
+            '#ff7a1b',
+        ],
+        actionsColors :[
+            '#0066cd',
+            '#00cdcd',
+            '#00cd67',
+            '#00cd01',
+            '#66cd00'
+
+        ],
+        prodColors : [
+            '#e70000',
+            '#ff8d1a',
+            '#ffff1a',
+            '#cdcd00',
+            '#8dff1a'
+
+        ],
         backgroundColor: [
             'rgba(211,145,36,0.8)',
             'rgba(54, 162, 235,0.8)',

@@ -1,3 +1,6 @@
+const {getColors} = require("./colors");
+
+
 exports.chartData = (data,scenario,id) => {
     switch (id) {
         case  'chart-gesaction' :
@@ -18,10 +21,12 @@ exports.chartData = (data,scenario,id) => {
 function getGESAction(data,scenario){
 
     const nbr_mail_sans_pj = scenario.actions.mail.nbr_mail-scenario.actions.mail.nbr_mail_pj
+    console.log("nbr mail = ",scenario.actions.mail.nbr_mail)
     const nbr_mail_pj = scenario.actions.mail.nbr_mail_pj
     const nrj_mail  = data.utilisation.actions.mail.conso * (data.utilisation.actions.onebyte.wifi.energie_par_byte* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
     const nrj_mail_pj  = data.utilisation.actions.mail_piece_jointe.conso*(data.utilisation.actions.onebyte.wifi.energie_par_byte*Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
     const ges_mail = (nbr_mail_sans_pj*nrj_mail + nbr_mail_pj*nrj_mail_pj)*data.ges_elec_france.valeur
+    console.log("GES mail = ",ges_mail)
 
     const mn_video = scenario.actions.video.temps
     const nrj_video  = data.utilisation.actions.video.conso * (data.utilisation.actions.onebyte.wifi.energie_par_byte* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
@@ -57,7 +62,8 @@ function getGESAction(data,scenario){
         'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
         'src' : src,
         'addrow' : true,
-        'rowlabel' : 'utilisation services num'
+        'rowlabel' : 'utilisation services num',
+        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]]
     };
 }
 
@@ -105,7 +111,8 @@ function getGESDevice(data,scenario){
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
         'src' : src,
         'addrow' : true,
-        'rowlabel' : 'utilisation appareils'
+        'rowlabel' : 'utilisation appareils',
+        'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]]
     };
 }
 
@@ -149,7 +156,8 @@ function getGESProduction(data,scenario){
         'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
         'src' : src,
         'addrow' : false,
-        'rowlabel' : ''
+        'rowlabel' : '',
+        'backgroundColor' : [getColors().prodColors[0],getColors().prodColors[1],getColors().prodColors[2],getColors().prodColors[3],getColors().prodColors[4],getColors().prodColors[5]]
     };
 }
 
@@ -198,7 +206,8 @@ function getGESProdUtilisation(data,scenario){
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
         'src' : src,
         'addrow' : true,
-        'rowlabel' : 'production'
+        'rowlabel' : 'production',
+        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]]
     };
 }
 
@@ -246,7 +255,8 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
         'src' : src,
         'addrow' : false,
-        'rowlabel' : ''
+        'rowlabel' : '',
+        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]]
     };
 }
 
