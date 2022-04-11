@@ -29,7 +29,7 @@ export const resumeModule = {
                     value: [data.rowlabel, data.totalTab + " gCO2", computeEquiv(data.totalTab)]
                 })
                 const sizeitems = state.items.length
-                state.items[sizeitems-1].value[1] = Math.round((data.totalTab+state.items[sizeitems-1].value[1])*100)/100
+                state.items[sizeitems-1].value[1] = (Math.round((data.totalTab+state.items[sizeitems-1].value[1])*100)/100)
                 state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
             }
 

@@ -16,6 +16,7 @@ export default new Vuex.Store( {
         update_charts : false,
         is_mobile : false,
         isFirefox : false,
+        justArrive : true,
     },
     getters : {
         getCurrentView (state) {
@@ -38,6 +39,9 @@ export default new Vuex.Store( {
         getIsFirefox (state){
           return state.isFirefox;
         },
+        getJustArrive (state){
+          return state.justArrive;
+        }
     },
     mutations : {
         SET_VIEW (state) {
@@ -59,6 +63,9 @@ export default new Vuex.Store( {
         },
         SET_IS_FIREFOX (state){
             state.isFirefox = true;
+        },
+        SET_JUST_ARRIVE_TO_FALSE (state){
+            state.justArrive = false;
         }
     },
     modules: {

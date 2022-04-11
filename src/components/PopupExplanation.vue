@@ -43,6 +43,10 @@ export default {
     htmlObject.innerHTML = content;
     htmlObject.style.textAlign='left'
     document.getElementById('modal-content').appendChild(htmlObject)
+    if (this.$store.getters.getJustArrive){
+      this.onClickPopup();
+      this.$store.commit('SET_JUST_ARRIVE_TO_FALSE');
+    }
   }
 }
 </script>
