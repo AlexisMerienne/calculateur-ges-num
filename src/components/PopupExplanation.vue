@@ -5,10 +5,6 @@
       <div id="modal-content" class="modal-content" style="width: 50%">
         <div class="close" style="display: flex;justify-content: right;text-align: left">
           <span class="close" v-on:click="closePopup">&times;</span></div>
-        <h5 style="text-align: left;">{{ content }}</h5>
-        <div v-for="src in sources" :key="src.id">
-          <p style="text-align: left">[{{(Number(src.id)+1).toString()}}] <a v-bind:href="src.link" target="_blank">{{src.src}}</a></p>
-        </div>
       </div>
     </div>
   </div>
@@ -20,7 +16,6 @@ export default {
   props: {
     textbutton : String,
     content : String,
-    sources : Array,
   },
   data() {
     return {
@@ -41,6 +36,13 @@ export default {
       document.getElementById('modal-content').style.margin="5px"
       document.getElementById('modal-content').style.width="90%"
     }
+    let content = this.content;
+    let htmlObject = document.createElement('h5');
+
+    htmlObject.style.marginTop = "5px"
+    htmlObject.innerHTML = content;
+    htmlObject.style.textAlign='left'
+    document.getElementById('modal-content').appendChild(htmlObject)
   }
 }
 </script>

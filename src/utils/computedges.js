@@ -37,17 +37,26 @@ function getGESAction(data,scenario){
     const ges_insta = mn_insta*nrj_insta*data.ges_elec_france.valeur
 
     const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
+            id : 0,
+            src : 'base-carbone ADEME',
+            link : data.links.base_carbone
+        },
         {
             id : 1,
-            src : "Rapport The Shift Project numérique 2018"
+            src : "Rapport The Shift Project numérique 2018",
+            link: data.links.shift_project_rapport_2018
         },
         {
             id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
-        }]
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+            link : data.links.rapport_citizen
+        },
+        {
+            id : 3,
+            src :"Rapport RTE Co2 2019 : https://assets.rte-france.com/prod/public/2020-07/Note_Bilan_CO2_2019.pdf,\n[2] CITIZING : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? '",
+            link : data.links.RTE_2019
+        }
+    ]
     const initialValue=0;
     const ges_total = [roundDecimal(ges_mail), roundDecimal(ges_video), roundDecimal(ges_insta)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
@@ -58,12 +67,13 @@ function getGESAction(data,scenario){
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['mail','video','réseaux sociaux'],
-        'title': 'Emmission de GES des actions numériques',
-        'focus' : 'Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données',
+        'title': 'Emmission de GES des actions numériques (en gCO2e)',
+        'focus' : "Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données. Pour les mails ainsi que les vidéos, nous avons pris l'hypothèse que l'utilisateur est sur un réseua wi-fi. Pour les réseaux sociaux, l'utilisateur est en 4G.",
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation services num',
-        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]]
+        'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]]
+
     };
 }
 
@@ -85,16 +95,24 @@ function getGESDevice(data,scenario){
     const ges_ordifixe=(nrj_ordifixe_daily*data.ges_elec_france.valeur)
 
     const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
+            id : 0,
+            src : 'base-carbone ADEME',
+            link : data.links.base_carbone
+        },
         {
             id : 1,
-            src : "Rapport The Shift Project numérique 2018"
+            src : "Rapport The Shift Project numérique 2018",
+            link: data.links.shift_project_rapport_2018
         },
         {
             id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+            link : data.links.rapport_citizen
+        },
+        {
+            id : 3,
+            src :"Rapport RTE Co2 2019 : https://assets.rte-france.com/prod/public/2020-07/Note_Bilan_CO2_2019.pdf,\n[2] CITIZING : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? '",
+            link : data.links.RTE_2019
         }]
 
     const initialValue=0;
@@ -112,7 +130,8 @@ function getGESDevice(data,scenario){
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation appareils',
-        'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]]
+        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]]
+
     };
 }
 
@@ -136,17 +155,21 @@ function getGESProduction(data,scenario){
 
 
     const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
+            id : 0,
+            src : 'base-carbone ADEME',
+            link : data.links.base_carbone
+        },
         {
-            id : 1,
-            src : "Rapport The Shift Project numérique 2018"
+            id:1,
+            src : 'LEAN ICT Materials - Le Shift Project',
+            link: data.links.Lean_ICT_Materials
         },
         {
             id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
-        }]
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+            link : data.links.rapport_citizen
+        }
+        ]
     return {
         'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)],
         'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
@@ -186,16 +209,29 @@ function getGESProdUtilisation(data,scenario){
         initialValue);
 
     const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
+            id : 0,
+            src : 'base-carbone ADEME',
+            link : data.links.base_carbone
+        },
         {
             id : 1,
-            src : "Rapport The Shift Project numérique 2018"
+            src : "Rapport The Shift Project numérique 2018",
+            link: data.links.shift_project_rapport_2018
         },
         {
             id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+            link : data.links.rapport_citizen
+        },
+        {
+            id : 3,
+            src :"Rapport RTE Co2 2019 : https://assets.rte-france.com/prod/public/2020-07/Note_Bilan_CO2_2019.pdf,\n[2] CITIZING : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? '",
+            link : data.links.RTE_2019
+        },
+        {
+            id:4,
+            src : 'LEAN ICT Materials - Le Shift Project',
+            link: data.links.Lean_ICT_Materials
         }]
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
@@ -203,7 +239,7 @@ function getGESProdUtilisation(data,scenario){
         'totalTab' : roundDecimal(ges_production),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
-        'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
+        'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la dette carbone des appareils liée à leur production",
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'production',
@@ -235,16 +271,29 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         initialValue);
 
     const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
+            id : 0,
+            src : 'base-carbone ADEME',
+            link : data.links.base_carbone
+        },
         {
             id : 1,
-            src : "Rapport The Shift Project numérique 2018"
+            src : "Rapport The Shift Project numérique 2018",
+            link: data.links.shift_project_rapport_2018
         },
         {
             id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
+            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020",
+            link : data.links.rapport_citizen
+        },
+        {
+            id : 3,
+            src :"Rapport RTE Co2 2019 : https://assets.rte-france.com/prod/public/2020-07/Note_Bilan_CO2_2019.pdf,\n[2] CITIZING : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? '",
+            link : data.links.RTE_2019
+        },
+        {
+            id:4,
+            src : 'LEAN ICT Materials - Le Shift Project',
+            link: data.links.Lean_ICT_Materials
         }]
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
@@ -252,7 +301,7 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
-        'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la somme des émissions de GES de la production des appareils",
+        'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la dette carbone des appareils liée à leur production divisée par deux",
         'src' : src,
         'addrow' : false,
         'rowlabel' : '',

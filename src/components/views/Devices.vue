@@ -2,11 +2,10 @@
   <div id="wrapper" shadow="">
       <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
         <h3>Mes appareils</h3>
-        <Popup
+        <PopupExplanation
           textbutton="?"
-          content="Bienvenue sur l'outil de calcule des émissions en gaz à effet de serre de votre utilisation du numérique."
-          v-bind:sources=txtpopup
-          ></Popup>
+          content="Bienvenue sur l'outil de calcule des émissions en gaz à effet de serre de votre utilisation du numérique.<br><br>Le simulateur présente un scénario 'type' de l'utilisation d'une jounrée de numérique par un étudiant<br><br>A vous de renseigner les paramètres de votre utlisation pour avoir un bilan correspondant à votre profil"
+          ></PopupExplanation>
       </div>
       <div v-for="device in devices" :key="device.id">
         <DeviceDisplay v-bind:id="device.id"/>
@@ -28,18 +27,14 @@
 <script>
 
 import DeviceDisplay from "@/components/misc/devices/DeviceDisplay";
-import Popup from "@/components/Popup";
+import PopupExplanation from "@/components/PopupExplanation";
 
 export default {
   name: "WrapperDevice",
-  components: {DeviceDisplay,Popup},
+  components: {DeviceDisplay,PopupExplanation},
   data() {
     return {
       devices: this.$store.getters.getDevices,
-      txtpopup : [{
-        id: 0,
-        src: "Pour commencer, ajouter les appareils numériques que vous avez utilisés aujourd'hui en renseignant le temps d'utilisation ainsi le nombre d'année que vous le possédez"
-      }]
     }
   },
   methods:{

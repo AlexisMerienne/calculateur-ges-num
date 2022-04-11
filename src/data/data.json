@@ -1,4 +1,12 @@
 {
+    "links": {
+        "base_carbone" : "https://data.ademe.fr/datasets/base-carbone(r)",
+        "shift_project_rapport_2018" : "https://theshiftproject.org/wp-content/uploads/2018/11/Rapport-final-v8-WEB.pdf",
+        "rapport_citizen": "https://www.citizing-consulting.com/wp-content/uploads/Rapport_Empreinte-carbone-du-num%C3%A9rique-2019-%C3%A0-2040_Citizing-1.pdf",
+        "rapport_ademe_num_2022" : "https://librairie.ademe.fr/consommer-autrement/5226-evaluation-de-l-impact-environnemental-du-numerique-en-france-et-analyse-prospective.html",
+        "Lean_ICT_Materials" : "https://theshiftproject.org/wp-content/uploads/2019/10/Lean-ICT-Materials-Liens-%C3%A0-t%C3%A9l%C3%A9charger-r%C3%A9par%C3%A9-le-29-10-2019.pdf",
+        "RTE_2019" : "https://www.concerte.fr/system/files/concertation/Note%20Bilans%20CO2%20V3.pdf"
+    },
     "production": {
         "duree_de_vie" : {
             "msg" : "durée de vie des appareils",

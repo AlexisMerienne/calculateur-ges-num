@@ -31,7 +31,7 @@
     },
     "video": {
       "label": "video streaming",
-      "temps": 0
+      "temps": 120
     },
     "tweet": {
       "label": "tweet",
@@ -39,7 +39,7 @@
     },
     "insta": {
       "label": "insta",
-      "temps": 0
+      "temps": 120
     }
   }
 }
