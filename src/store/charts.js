@@ -12,6 +12,7 @@ export const chartsModule = {
         narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction','nar-sobrieteproduction'],
         currentnarid : 'nar-gesdevice',
         isChart : false,
+        progress : 1
     },
     getters : {
         getCurrentChartId (state) {return state.currentid;},
@@ -56,6 +57,9 @@ export const chartsModule = {
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100
             return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong> km"
+        },
+        getProgress (state) {
+            return state.progress;
         }
     },
     mutations : {
@@ -88,6 +92,9 @@ export const chartsModule = {
         },
         SET_iS_CHART (state,ischart) {
             state.isChart = ischart;
+        },
+        SET_PROGRESS (state,x){
+            state.progress +=x
         }
     }
 }

@@ -71,7 +71,7 @@ function getGESAction(data,scenario){
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation services num',
-        'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]]
+        'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]],
 
     };
 }

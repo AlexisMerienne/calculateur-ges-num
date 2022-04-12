@@ -108,6 +108,8 @@ export default {
       }
       this.$emit('undisplayTab')
       }
+      this.$store.commit('SET_PROGRESS',1)
+      this.$emit('changeProgress')
     },
     previousChart(){
         if (this.isChart && !this.conclusion){
@@ -134,8 +136,8 @@ export default {
           this.$store.commit('SET_iS_CHART',true);
           this.$emit('undisplayTab')
         }
-        console.log(this.$store.getters.getCurrentChartId)
-        console.log(this.$store.getters.getCurrentNarId)
+      this.$store.commit('SET_PROGRESS',-1)
+      this.$emit('changeProgress')
     }
   },
   updated() {

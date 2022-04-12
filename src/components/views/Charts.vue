@@ -1,7 +1,11 @@
 <template>
   <div id="chart-view">
+    <div id="progress-wrapper" style="display: flex;flex-direction: row;justify-content:center;width: 100%">
+      <progress v-bind:value="progress" max="11">70 %</progress>
+      <h6 style="margin-left: 10px">{{progress}}/11</h6>
+    </div>
     <div id="wrapper" shadow="">
-      <PieChartContainer v-on:undisplayTab="updateTab"/>
+      <PieChartContainer v-on:undisplayTab="updateTab" v-on:changeProgress="updateProgress"/>
     </div>
     <div id="tab-continus-backup" style="position:absolute;top:95px;right: 0px">
       <Tableau v-if="displayTab" v-bind:data="tabdata"></Tableau>
@@ -20,7 +24,8 @@ export default {
       chartdata : null,
       loaded : false,
       displayTab : false,
-      tabdata : {}
+      tabdata : {},
+      progress : 0,
     }
   },
   components : {
@@ -35,9 +40,20 @@ export default {
         items:this.$store.getters.getItems
       }
       this.displayTab = true
+    },
+    updateProgress(){
+      this.progress = this.$store.getters.getProgress
     }
   },
   mounted() {
+    this.progress = this.$store.getters.getProgress
+    if(this.$store.getters.getItems.length>1){
+      this.tabdata = {
+        colspan:this.$store.getters.getColspan,
+        items:this.$store.getters.getItems
+      }
+      this.displayTab=true
+    }
   }
 }
 </script>
