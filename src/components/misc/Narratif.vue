@@ -1,10 +1,12 @@
 <template>
   <div id="narratif-wrapper" class="w3-container">
+    <div id="first-content"/>
     <div style="display: flex;flex-direction: row;justify-content: space-between">
       <div v-for="i in nbricon" :key="i">
         <img :src="require(`../../assets/${icon[i-1]}`)" :alt="icon[i-1]" height="50" width="50">
       </div>
     </div>
+    <div id="second-content"/>
   </div>
 </template>
 
@@ -26,17 +28,28 @@ export default {
   },
   mounted() {
 
-    let s = this.content.nar;
+    let s1 = this.content.narfirst;
 
-    let htmlObject = document.createElement('h5');
+    let htmlObjectFirstContent = document.createElement('h5');
 
-    htmlObject.style.marginTop = "30px"
-    htmlObject.className = "w3-left w3-animate-bottom"
-    htmlObject.innerHTML = s;
-    htmlObject.style.textAlign='left'
+    htmlObjectFirstContent.style.marginTop = "30px"
+    htmlObjectFirstContent.className = "first-content-txt"
+    htmlObjectFirstContent.innerHTML = s1;
+    htmlObjectFirstContent.style.textAlign='left'
 
 
-    document.getElementById('narratif-wrapper').appendChild(htmlObject)
+    document.getElementById('first-content').appendChild(htmlObjectFirstContent)
+
+    let s2 = this.content.narsecond;
+
+    let htmlObjectSecondContent = document.createElement('h5');
+
+    htmlObjectSecondContent.style.marginTop = "30px"
+    htmlObjectSecondContent.className = "second-content-txt"
+    htmlObjectSecondContent.innerHTML = s2;
+    htmlObjectSecondContent.style.textAlign='left'
+    document.getElementById('second-content').appendChild(htmlObjectSecondContent)
+
 
   }
 

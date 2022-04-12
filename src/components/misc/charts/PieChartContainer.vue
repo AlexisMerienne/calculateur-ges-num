@@ -12,7 +12,6 @@
         <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
           Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
         </div>
-
     </div>
   <Popup
         :textbutton="btext"
