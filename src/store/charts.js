@@ -20,6 +20,7 @@ export const chartsModule = {
         getChartData  (state) {
             const datages = chartData(state.gesdata,state.scenario,state.currentid)
             let data = {
+                id : state.currentid,
                 title : datages.title,
                 focus : datages.focus,
                 src : datages.src,

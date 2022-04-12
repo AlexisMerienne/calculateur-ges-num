@@ -10,7 +10,7 @@
                   :width='300'
                   :height='300'/>
       <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-        Consommation totale <div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
+        Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
       </div>
     </div>
 
@@ -67,6 +67,7 @@ export default {
       isChart : false,
       narcontent : "",
       conclusion : false,
+      isForOnDay : ""
     }
   },
   methods : {
@@ -102,6 +103,7 @@ export default {
     this.focus = data.focus
     this.source = data.src
     this.total = data.total
+    data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay="(d'une journée)"
     this.loaded=true
     this.isChart = this.$store.getters.getIsChart;
   },
