@@ -26,25 +26,7 @@ Pour build le projet
 ```
 npm run build
 ```
-Le projet est déployé sur le service d'hébergement Firebase. Après chaque build, pour déployer l'application, il faut effectuer :
-```
-cd dist
-firebase init
-
-```
-
-Faires les choix suivants : 
-
-```
-Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confir
-m your choices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
-? What do you want to use as your public directory? .
-? Configure as a single-page app (rewrite all urls to /index.html)? Yes
-? Set up automatic builds and deploys with GitHub? No
-? File ./index.html already exists. Overwrite? No
-
-```
-Quand vous avez fini de configurer firebase, on peut déployer l'application :
+Le projet est déployé sur le service d'hébergement Firebase. La commande pour déployer l'application est :
 
 ```
 firebase deploy
