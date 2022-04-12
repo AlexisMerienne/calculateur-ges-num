@@ -15,7 +15,7 @@
         <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
           <span >Mes actions</span>
         </div>
-        <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilan">
+        <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
           <span>Mon bilan</span>
         </div>
       </div>
@@ -76,11 +76,18 @@ export default {
         this.viewscliked=[false,true,false]
       }
     },
-    goToBilan(){
+    goToBilanonClick(){
+      if (this.isMobile==true){
+        this.goToBilan("chartsmobile")
+      }else{
+        this.goToBilan("charts")
+      }
+    },
+    goToBilan(route){
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
       }else if (!this.viewscliked[2]){
-        this.$router.push({name:"charts"})
+        route === 'charts' ? this.$router.push({name:"charts"}) : this.$router.push({name:"chartsmobile"})
         this.setIsClickCss(document.getElementById('charts-view-button'));
         this.setIsNotClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
@@ -128,7 +135,6 @@ export default {
     this.$store.commit('SET_IS_MOBILE',check);
     this.isMobile = this.$store.getters.getIsMobile;
     if (this.isMobile==true){
-      document.getElementById('b-next').style.right = '0%';
       document.getElementById('app').style.margin = '0';
       this.$router.push({name : 'homemobile'});
       this.$store.commit('SET_CURRENT_VIEW','homemobile')

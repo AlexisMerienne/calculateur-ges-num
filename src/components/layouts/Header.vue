@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-      <h5>Outil de cacule d'émission en GES de nos <span class="text-blue-600">actions numériques</span></h5>
+      <h5>Outil de cacul d'émission de GES de nos <span class="text-blue-600">actions numériques</span></h5>
     <div id="logo-img" alt="logo-i3S" v-on:click="goToI3s">
       <img id="img-logo-i3s" src="../../assets/NewlogoI3S_0.png" alt="I3S logo">
     </div>
