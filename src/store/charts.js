@@ -42,6 +42,30 @@ export const chartsModule = {
             };
             return data
         },
+        getChartDataSpec : (state) => (id) =>{
+            const datages = chartData(state.gesdata,state.scenario,id)
+            let data = {
+                id : id,
+                title : datages.title,
+                focus : datages.focus,
+                src : datages.src,
+                total : datages.total,
+                totalTab : datages.totalTab,
+                addrow : datages.addrow,
+                rowlabel : datages.rowlabel,
+                chartdata : {
+                    labels: datages.labels,
+                    datasets: [
+                        {
+                            label: 'Emmission de GES des actions',
+                            data: datages.data,
+                            backgroundColor: datages.backgroundColor,
+                        }
+                    ]
+                }
+            };
+            return data
+        },
         getNarData (state) {
             return data.narratif[state.currentnarid];
         },

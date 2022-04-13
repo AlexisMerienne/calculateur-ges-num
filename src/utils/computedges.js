@@ -299,7 +299,7 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['utilisation','production'],
-        'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation",
+        'title': "Comparaison entre la part d'émission provenant de la production et de l'utilisation en doublant la durée de vie des appareils",
         'focus' : "On fait la somme des émissions de GES des actions et de l'utilisation des appareils numérique que l'on compare à la dette carbone des appareils liée à leur production divisée par deux",
         'src' : src,
         'addrow' : false,

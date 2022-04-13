@@ -11,6 +11,11 @@
                  :height='320'/>
         <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
           Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
+          <div v-if="compareToSobriete">
+            <div id="button-compare-sobriete" v-on:mouseover="showGraph" v-on:mouseleave="stopShowGraph">
+              Graphe sans sobriété
+            </div>
+          </div>
         </div>
     </div>
   <Popup
@@ -74,6 +79,7 @@ export default {
       narcontent : "",
       conclusion : false,
       isForOnDay : "",
+      compareToSobriete :false,
     }
   },
   methods : {
@@ -100,6 +106,7 @@ export default {
       this.source = data.src
       this.total = data.total
       data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay="(d'une journée)"
+      data.id==='chart-gesdoubleutilisationproduction'?this.compareToSobriete=true: this.compareToSobriete=false;
       this.loaded=true;
       this.isChart=true
       this.$store.commit('SET_iS_CHART',true);
@@ -126,6 +133,7 @@ export default {
           this.$store.commit('SET_PREVIOUS_NARID');
           const data = this.$store.getters.getChartData
           data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay="(d'une journée)"
+          data.id==='chart-gesdoubleutilisationproduction'?this.compareToSobriete=true: this.compareToSobriete=false;
           this.chartdata = data.chartdata
           this.title = data.title
           this.focus = data.focus
@@ -138,6 +146,28 @@ export default {
         }
       this.$store.commit('SET_PROGRESS',-1)
       this.$emit('changeProgress')
+    },
+    showGraph(){
+      console.log('here')
+      this.isChart=false;
+      const data = this.$store.getters.getChartDataSpec('chart-gesutilisationproduction')
+      this.chartdata = data.chartdata
+      this.title = data.title
+      this.focus = data.focus
+      this.source = data.src
+      this.total = data.total
+      this.isChart=true
+    },
+    stopShowGraph(){
+      this.isChart=false;
+      const data = this.$store.getters.getChartDataSpec('chart-gesdoubleutilisationproduction')
+      this.chartdata = data.chartdata
+      this.title = data.title
+      this.focus = data.focus
+      this.source = data.src
+      this.total = data.total
+      this.isChart=true
+
     }
   },
   updated() {
@@ -178,5 +208,14 @@ export default {
 #previous-chart:hover{
   background-color: lightgray;
   cursor: pointer;
+}
+#button-compare-sobriete{
+  margin-top: 10px;
+  background-color: #7993ff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+#button-compare-sobriete:hover{
+  background-color: lightgrey;
 }
 </style>
