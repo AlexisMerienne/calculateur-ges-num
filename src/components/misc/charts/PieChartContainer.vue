@@ -85,7 +85,6 @@ export default {
   methods : {
     nextChart() {
       if (this.isChart && !this.conclusion){
-        this.firstnar = false;
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent =   this.$store.getters.getNarData;
         this.isChart=false;
@@ -96,7 +95,7 @@ export default {
           this.$store.commit('DELETE_ROWS')
         }
       }else if (!this.conclusion){
-      this.firstnar = false;
+      this.firstnar=false
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
       const data = this.$store.getters.getChartData
@@ -120,15 +119,13 @@ export default {
     },
     previousChart(){
         if (this.isChart && !this.conclusion){
+          this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
           this.$store.commit('SET_PREVIOUS_CHART');
-          if (this.$store.getters.getCurrentNarId==='nar-gesdevice'){
-            this.firstnar=true
-          }else this.firstnar = false;
           this.narcontent = this.$store.getters.getNarData;
           this.isChart=false;
           this.$store.commit('SET_iS_CHART',false);
         }else if (!this.conclusion){
-          this.firstnar = false;
+          this.firstnar=false;
           this.loaded=false;
           this.$store.commit('SET_PREVIOUS_NARID');
           const data = this.$store.getters.getChartData
@@ -142,6 +139,9 @@ export default {
           this.loaded=true;
           this.isChart=true
           this.$store.commit('SET_iS_CHART',true);
+          if (data.addrow){
+            this.$store.commit('ADD_ROW',data)
+          }
           this.$emit('undisplayTab')
         }
       this.$store.commit('SET_PROGRESS',-1)
@@ -183,6 +183,11 @@ export default {
     console.log(data.id)
     this.loaded=true;
     this.isChart = this.$store.getters.getIsChart;
+    this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
+    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
+    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
+    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
+
   },
   beforeMount() {
     this.narcontent = this.$store.getters.getNarData

@@ -32,7 +32,18 @@ export const resumeModule = {
                 state.items[sizeitems-1].value[1] = (Math.round((data.totalTab+state.items[sizeitems-1].value[1])*100)/100)
                 state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
             }
-
+        },
+        SET_NEW_RESUME_VALUE (state,data) {
+            state.key++;
+            const index = state.items.findIndex(elm => elm.value[0] === data.rowlabel);
+            if (index!=-1) {
+                const preValu = parseFloat(state.items[index].value[1])
+                console.log(preValu)
+                state.items[index].value = [data.rowlabel,data.totalTab + "gC02",computeEquiv(data.totalTab)]
+                const sizeitems = state.items.length
+                state.items[sizeitems-1].value[1] = (Math.round(((data.totalTab-preValu)+state.items[sizeitems-1].value[1])*100)/100)
+                state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
+            }
         },
         DELETE_ROWS (state) {
             state.items = [{
