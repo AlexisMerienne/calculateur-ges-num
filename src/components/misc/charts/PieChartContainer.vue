@@ -2,7 +2,7 @@
   <div class="container" style="max-height: 60%">
     <div v-if="!conclusion">
     <div v-if="isChart">
-    {{this.title}}
+      <h5 style="height: 75px;text-align: left">{{this.title}}</h5>
     <div id='flex-row' style="display: flex;flex-direction: row">
       <pie-chart v-if="loaded"
                  :chartdata="chartdata"
