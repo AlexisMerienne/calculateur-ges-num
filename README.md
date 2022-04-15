@@ -51,7 +51,12 @@ L'application est divisée en trois pages :
   
   
   - La saisie des services numériques
+
+![pageaction](documentation/PageAction.PNG)
+
   - Le bilan de consommation
+
+![pageaction](documentation/PageBilan.PNG)
 
 
 
