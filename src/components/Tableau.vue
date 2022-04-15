@@ -53,7 +53,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 350px;
+  width: 80%;
+
 }
 .title-header{
   background-color: #6C89FFE8;

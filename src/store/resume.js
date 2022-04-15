@@ -26,7 +26,7 @@ export const resumeModule = {
             if (index==-1) {
                 state.items.splice(state.items.length - 1, 0, {
                     key: state.key,
-                    value: [data.rowlabel, data.totalTab + " gCO2", computeEquiv(data.totalTab)]
+                    value: [data.rowlabel, data.totalTab + " gCO2e", computeEquiv(data.totalTab)]
                 })
                 const sizeitems = state.items.length
                 state.items[sizeitems-1].value[1] = (Math.round((data.totalTab+state.items[sizeitems-1].value[1])*100)/100)
@@ -39,7 +39,7 @@ export const resumeModule = {
             if (index!=-1) {
                 const preValu = parseFloat(state.items[index].value[1])
                 console.log(preValu)
-                state.items[index].value = [data.rowlabel,data.totalTab + "gC02",computeEquiv(data.totalTab)]
+                state.items[index].value = [data.rowlabel,data.totalTab + " gCO2e",computeEquiv(data.totalTab)]
                 const sizeitems = state.items.length
                 state.items[sizeitems-1].value[1] = (Math.round(((data.totalTab-preValu)+state.items[sizeitems-1].value[1])*100)/100)
                 state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])

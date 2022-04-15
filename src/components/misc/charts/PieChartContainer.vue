@@ -13,7 +13,7 @@
           Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
           <div v-if="compareToSobriete">
             <div id="button-compare-sobriete" v-on:mouseover="showGraph" v-on:mouseleave="stopShowGraph">
-              Graphe sans sobriété
+              <h6 style="margin: 5px">Graphe sans sobriété</h6>
             </div>
           </div>
         </div>
@@ -22,20 +22,22 @@
         :textbutton="btext"
         v-bind:sources="source"
         v-bind:content="focus"
+        v-bind:isEquation="isEquation"
+        v-bind:src_equation="src_equation"
         style="margin: 5px"></Popup>
     </div>
     <div v-else>
       <Narratif
           v-bind:content="narcontent"/>
     </div>
-    <div id="nav-charts" style="display: flex;flex-direction: row;justify-content: space-between">
-      <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
-        <img src="../../../assets/caret-left.svg" width="50" height="50">
+      <div id="nav-charts" style="display: flex;flex-direction: row;justify-content: space-between">
+        <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
+          <img src="../../../assets/caret-left.svg" width="50" height="50">
+        </div>
+        <div id="next-chart" v-on:click="nextChart">
+          <img src="../../../assets/caret-right.svg" width="50" height="50">
+        </div>
       </div>
-      <div id="next-chart" v-on:click="nextChart">
-        <img src="../../../assets/caret-right.svg" width="50" height="50">
-      </div>
-    </div>
 
   </div>
   <div v-else>
@@ -80,6 +82,8 @@ export default {
       conclusion : false,
       isForOnDay : "",
       compareToSobriete :false,
+      isEquation : false,
+      src_equation : ""
     }
   },
   methods : {
@@ -104,10 +108,12 @@ export default {
       this.focus = data.focus
       this.source = data.src
       this.total = data.total
+      this.isEquation = data.isEquation
+      this.src_equation=data.src_equation
       data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay="(d'une journée)"
       data.id==='chart-gesdoubleutilisationproduction'?this.compareToSobriete=true: this.compareToSobriete=false;
       this.loaded=true;
-      this.isChart=true
+      this.isChart=true;
       this.$store.commit('SET_iS_CHART',true);
       if (data.addrow){
         this.$store.commit('ADD_ROW',data)
@@ -136,6 +142,8 @@ export default {
           this.focus = data.focus
           this.source = data.src
           this.total = data.total
+          this.isEquation = data.isEquation
+          this.src_equation=data.src_equation
           this.loaded=true;
           this.isChart=true
           this.$store.commit('SET_iS_CHART',true);
@@ -215,10 +223,13 @@ export default {
   cursor: pointer;
 }
 #button-compare-sobriete{
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
   background-color: #7993ff;
   border-radius: 7px;
   cursor: pointer;
+  min-height: 30px;
 }
 #button-compare-sobriete:hover{
   background-color: lightgrey;

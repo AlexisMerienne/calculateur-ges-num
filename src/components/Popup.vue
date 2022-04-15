@@ -6,6 +6,9 @@
         <div class="close" style="display: flex;justify-content: right;text-align: left">
           <span class="close" v-on:click="closePopup">&times;</span></div>
         <h5 style="text-align: left;">{{ content }}</h5>
+        <div v-if="isEquation">
+          <img :src="require(`../assets/${src_equation}`)" :alt="src_equation">
+        </div>
         <div v-for="src in sources" :key="src.id">
           <p style="text-align: left">[{{(Number(src.id)+1).toString()}}] <a v-bind:href="src.link" target="_blank">{{src.src}}</a></p>
         </div>
@@ -21,10 +24,13 @@ export default {
     textbutton : String,
     content : String,
     sources : Array,
+    isEquation : Boolean,
+    src_equation:String,
   },
   data() {
     return {
       isMobile : false,
+      src: ""
     };
   },
   methods : {

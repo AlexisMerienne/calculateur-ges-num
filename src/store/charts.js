@@ -29,6 +29,8 @@ export const chartsModule = {
                 totalTab : datages.totalTab,
                 addrow : datages.addrow,
                 rowlabel : datages.rowlabel,
+                isEquation : datages.isEquation,
+                src_equation : datages.src_equation,
                 chartdata : {
                     labels: datages.labels,
                     datasets: [

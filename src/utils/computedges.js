@@ -72,6 +72,8 @@ function getGESAction(data,scenario){
         'addrow' : true,
         'rowlabel' : 'utilisation services num',
         'backgroundColor' : [getColors().actionsColors[0],getColors().actionsColors[1],getColors().actionsColors[2],getColors().actionsColors[3],getColors().actionsColors[4],getColors().actionsColors[5]],
+        'isEquation' :true,
+        'src_equation' : 'formuleconsoservicenum.png'
 
     };
 }
@@ -129,7 +131,9 @@ function getGESDevice(data,scenario){
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation appareils',
-        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]]
+        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]],
+        'isEquation' :true,
+        'src_equation' : 'formuleconsodevice.png'
 
     };
 }
@@ -179,7 +183,9 @@ function getGESProduction(data,scenario){
         'src' : src,
         'addrow' : false,
         'rowlabel' : '',
-        'backgroundColor' : [getColors().prodColors[0],getColors().prodColors[1],getColors().prodColors[2],getColors().prodColors[3],getColors().prodColors[4],getColors().prodColors[5]]
+        'backgroundColor' : [getColors().prodColors[0],getColors().prodColors[1],getColors().prodColors[2],getColors().prodColors[3],getColors().prodColors[4],getColors().prodColors[5]],
+        'isEquation' :false,
+        'src_equation' : ''
     };
 }
 
@@ -242,7 +248,9 @@ function getGESProdUtilisation(data,scenario){
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'production',
-        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]]
+        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]],
+        'isEquation' :false,
+        'src_equation' : ''
     };
 }
 
@@ -304,7 +312,9 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'src' : src,
         'addrow' : false,
         'rowlabel' : '',
-        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]]
+        'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]],
+        'isEquation' :false,
+        'src_equation' : ''
     };
 }
 
