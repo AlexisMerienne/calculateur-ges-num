@@ -249,8 +249,8 @@ function getGESProdUtilisation(data,scenario){
         'addrow' : true,
         'rowlabel' : 'production',
         'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]],
-        'isEquation' :false,
-        'src_equation' : ''
+        'isEquation' :true,
+        'src_equation' : 'dettecarbone.png'
     };
 }
 

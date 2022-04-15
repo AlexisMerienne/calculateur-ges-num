@@ -7,7 +7,7 @@
           <span class="close" v-on:click="closePopup">&times;</span></div>
         <h5 style="text-align: left;">{{ content }}</h5>
         <div v-if="isEquation">
-          <img :src="require(`../assets/${src_equation}`)" :alt="src_equation">
+          <img id="img-equation" :src="require(`../assets/${src_equation}`)" :alt="src_equation">
         </div>
         <div v-for="src in sources" :key="src.id">
           <p style="text-align: left">[{{(Number(src.id)+1).toString()}}] <a v-bind:href="src.link" target="_blank">{{src.src}}</a></p>
@@ -47,6 +47,8 @@ export default {
       document.getElementById('modal-content').style.margin="5px"
       document.getElementById('modal-content').style.width="90%"
     }
+    const lpopup = document.getElementById('popup-wrapper').offsetWidth
+    document.getElementById('img-equation').style.width= lpopup.toString() + 'px'
   }
 }
 </script>
@@ -70,7 +72,7 @@ export default {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
