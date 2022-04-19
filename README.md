@@ -36,18 +36,27 @@ firebase deploy
 
 ##### Plan
   
-    1. Components
+    1. Structures
     2. Calcule des GES
 
 
-#### I. Components
+#### I. Structures
 
 
 L'application est divisée en trois pages :
 
   - La saisie des appareils numériques
+
+  ![pagedevice](documentation/PageDevice.PNG)
+  
+  
   - La saisie des services numériques
+
+![pageaction](documentation/PageAction.PNG)
+
   - Le bilan de consommation
+
+![pageaction](documentation/PageBilan.PNG)
 
 
 
