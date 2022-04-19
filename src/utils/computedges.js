@@ -193,7 +193,7 @@ function getGESProdUtilisation(data,scenario){
 
 
     const initialValue_1 = 0;const initialValue_2 = 0;
-    const ges_utilisation_action = getGESAction(data,scenario).data.reduce(
+    const ges_utilisation = getGESAction(data,scenario).data.reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue_1
     ) + getGESDevice(data,scenario).data.reduce(
@@ -209,7 +209,7 @@ function getGESProdUtilisation(data,scenario){
 
 
     const initialValue=0;
-    const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(
+    const ges_total = [roundDecimal(ges_utilisation), roundDecimal(ges_production)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue);
 
@@ -239,7 +239,7 @@ function getGESProdUtilisation(data,scenario){
             link: data.links.Lean_ICT_Materials
         }]
     return {
-        'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
+        'data' : [roundDecimal(ges_utilisation), roundDecimal(ges_production)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'totalTab' : roundDecimal(ges_production),
         'labels' : ['utilisation','production'],

@@ -74,19 +74,40 @@ export const chartsModule = {
         getIsChart (state) {
             return state.isChart;
         },
+
+        /**
+         * Cette méthode calcule plusieurs valeurs :
+         *  -
+         * @param state
+         * @returns {string}
+         */
         getConclusionData (state) {
 
             //source : https://climate.selectra.com/fr/empreinte-carbone/voiture
             const consodiesel = 293
 
-            const consototale =  chartData(state.gesdata,state.scenario,'chart-gesutilisationproduction').total;
+            const chartdata = chartData(state.gesdata,state.scenario,'chart-gesutilisationproduction')
+
+
+
+            const consototale =  chartdata.total;
+            const consoutil = chartdata.data[0];
+            const consoproduction = chartdata.data[1]
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100
-            return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong> km"
+
+            const intenscarbonefr = data.ges_elec_france.valeur;
+            const intenscarbinede = data.ges_elec_allemagne.valeur;
+
+            let consode = consoutil*(intenscarbinede/intenscarbonefr) + consoproduction
+            consode = Math.round(consode*100)/100
+            return "Pour conclure, aujourd'hui, en prenant en compte l'utilisation de vos appareils ainsi que leurs coûts carbones liés à la production, vous avez émis <strong>" + consototale.toString() + "</strong><br><br>" +
+                "<br>Cet impact carbone dépend du mix énergétique du pays dans lequel on se trouve. Par exemple, si vous êtiez en Allemagne, votre impact carbone serait de : <strong>"+consode.toString()+" gC02e</strong>. <br><br> "+
+                "Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong>"+consodistancediesel.toString()+"</strong> km"
         },
         getProgress (state) {
             return state.progress;
-        }
+        },
     },
     mutations : {
         SET_NEXT_CHARTID (state) {

@@ -303,6 +303,11 @@
         "valeur[1]" : 36.1,
         "valeur[2]" : 57.1
     },
+    "ges_elec_allemagne" : {
+        "src" : "Bilan GES ADEME",
+        "unite" : "gCO2e/kWh",
+        "valeur" : 461
+    },
     "ges_elec_us" : {
         "src" : "[CITIZING] Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ", 
         "unite" : "gCO2e/kWh",
@@ -332,7 +337,7 @@
         },
         "nar-gesutilisationproduction":{
             "isEnd" : false,
-            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'utilisation avec la phase de production. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par sa durée de vie moyenne.<br>Ainsi, pour un smartphone, la durée de vie moyenne est de 2,25 ans, pour un laptop elle est de 5 ans et pour une télévision de 4 ans",
+            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'<strong style='color:#6887ff;'>utilisation</strong> avec la phase de <strong style='color:#6887ff;'>production</strong>. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par sa durée de vie moyenne.<br>Ainsi, pour un smartphone, la durée de vie moyenne est de 2,25 ans, pour un laptop elle est de 5 ans et pour une télévision de 4 ans",
             "narsecond" : "",
             "nbricon" : 0,
             "icon" : []

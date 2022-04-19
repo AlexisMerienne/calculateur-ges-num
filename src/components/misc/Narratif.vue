@@ -38,7 +38,7 @@ export default {
     htmlObjectFirstContent.style.textAlign='left'
 
 
-    document.getElementById('first-content').appendChild(htmlObjectFirstContent)
+    document.getElementById('first-content') != null ? document.getElementById('first-content').appendChild(htmlObjectFirstContent) : null
 
     let s2 = this.content.narsecond;
 
@@ -48,7 +48,7 @@ export default {
     htmlObjectSecondContent.className = "second-content-txt"
     htmlObjectSecondContent.innerHTML = s2;
     htmlObjectSecondContent.style.textAlign='left'
-    document.getElementById('second-content').appendChild(htmlObjectSecondContent)
+    document.getElementById('second-content') != null ?document.getElementById('second-content').appendChild(htmlObjectSecondContent) : null
 
 
   }
