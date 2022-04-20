@@ -321,7 +321,7 @@
     "empreinte_carbone_fr_2050": {
         "src" : "https://www.statistiques.developpement-durable.gouv.fr/sites/default/files/2020-01/datalab-essentiel-204-l-empreinte-carbone-des-francais-reste-%20stable-janvier2020.pdf",
         "unite" : "tCO2e",
-        "valeur" : 2
+        "valeur" : 2.8
     },
     "narratif" : {
         "nar-gesdevice" : {

@@ -22,7 +22,9 @@
         <router-view/>
       </div>
     </div>
+    <div style="margin: 60px 0px;position: absolute;left: 30%">
     <CarbonBadge/>
+    </div>
     <div id="footer">
       <Footer/>
     </div>

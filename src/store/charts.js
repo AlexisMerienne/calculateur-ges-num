@@ -104,7 +104,7 @@ export const chartsModule = {
 
             let consode = consoutil*(intenscarbinede/intenscarbonefr) + consoproduction
             consode = Math.round(consode*100)/100
-            let consodiff = consode-parseFloat(consototale)
+            let consodiff = Math.round((consode-parseFloat(consototale))*100)/100
 
 
             let partgestot = (((parseFloat(consototale)*365.25)/1000000) / data.empreinte_carbone_fr.valeur)*100
