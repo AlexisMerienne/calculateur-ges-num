@@ -7,9 +7,14 @@
   </div>
 </template>
 
+
 <script>
+
+
 export default {
   name: "Header",
+  components:{
+  },
   methods : {
     goToI3s(){
       window.open("https://www.i3s.unice.fr/", "_blank");

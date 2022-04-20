@@ -1,6 +1,10 @@
 <template>
   <div id="wrapper" shadow="">
-    <PieChartMobile/>
+    <div id="progress-wrapper" style="display: flex;flex-direction: row;justify-content:center;width: 100%">
+      <progress id="progress" v-bind:value="progress" max="11">70 %</progress>
+      <h6 style="margin-left: 10px">{{progress}}/11</h6>
+    </div>
+    <PieChartMobile v-on:changeProgress="updateProgress"/>
   </div>
 </template>
 <script>
@@ -13,14 +17,21 @@ export default {
     return {
       chartdata : null,
       loaded : false,
+      progress : 0,
     }
   },
   components : {
     PieChartMobile
   },
+  methods:{
+    updateProgress(){
+      this.progress = this.$store.getters.getProgress
+    },
+  },
   mounted() {
     let wrapper = document.getElementById("wrapper");
     wrapper.scrollIntoView();
+    this.progress = this.$store.getters.getProgress
   }
 }
 </script>

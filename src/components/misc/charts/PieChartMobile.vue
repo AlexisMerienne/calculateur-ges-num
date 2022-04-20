@@ -91,8 +91,9 @@ export default {
         this.loaded = true;
         this.isChart=true;
         this.$store.commit('SET_iS_CHART',true);
-
       }
+      this.$store.commit('SET_PROGRESS',1)
+      this.$emit('changeProgress')
     }
 
   },

@@ -7,7 +7,6 @@
       <div v-else>
         <Header/>
       </div>
-
       <div id="nav-bar" class="nav-bar">
         <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
           <span>Mes appareils</span>
@@ -23,6 +22,7 @@
         <router-view/>
       </div>
     </div>
+    <CarbonBadge/>
     <div id="footer">
       <Footer/>
     </div>

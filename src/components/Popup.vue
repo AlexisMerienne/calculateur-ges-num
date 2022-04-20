@@ -48,7 +48,7 @@ export default {
       document.getElementById('modal-content').style.width="90%"
     }
     const lpopup = document.getElementById('popup-wrapper').offsetWidth
-    document.getElementById('img-equation').style.width= lpopup.toString() + 'px'
+    document.getElementById('img-equation') != null?document.getElementById('img-equation').style.width= lpopup.toString() + 'px':null;
   }
 }
 </script>

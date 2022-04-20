@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h5>Impactomètre <br> <span style="text-color:blue;"> CO2</span> du numérique</h5>
+    <h5><strong>Impactomètre carbone du <span style="color:#6887ff">numérique</span></strong></h5>
     <img src="../../assets/NewlogoI3S_0.png" alt="logo-i3S" width="150">
   </div>
 </template>

@@ -156,7 +156,6 @@ export default {
       this.$emit('changeProgress')
     },
     showGraph(){
-      console.log('here')
       this.isChart=false;
       const data = this.$store.getters.getChartDataSpec('chart-gesutilisationproduction')
       this.chartdata = data.chartdata
@@ -188,7 +187,6 @@ export default {
     this.focus = data.focus
     this.source = data.src
     this.total = data.total
-    console.log(data.id)
     this.loaded=true;
     this.isChart = this.$store.getters.getIsChart;
     this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
