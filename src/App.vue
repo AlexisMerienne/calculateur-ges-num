@@ -106,7 +106,7 @@ export default {
     myEventHandler() {
       const screeneheight = window.screen.height;
       let footer = document.getElementById("footer");
-      footer.style.marginTop = (screeneheight-200).toString() + "px";
+      footer.style.marginTop = (screeneheight-300).toString() + "px";
     },
     setIsClickCss(el){
       el.style.marginRight = '2px 2px;'
@@ -147,12 +147,12 @@ export default {
     }
     this.windowsheight = window.innerHeight;
     if (window.innerHeight>900){
-      document.getElementById('footer').style.marginTop = "600px"
+      document.getElementById('footer').style.marginTop = "300px"
     }
     typeof InstallTrigger !== 'undefined' ? this.$store.commit("SET_IS_FIREFOX") : null;
     const screeneheight = window.screen.height;
     let footer = document.getElementById("footer");
-    footer.style.marginTop = (screeneheight-200).toString() + "px";
+    footer.style.marginTop = (screeneheight-300).toString() + "px";
   }
 }
 </script>
