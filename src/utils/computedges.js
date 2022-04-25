@@ -179,7 +179,7 @@ function getGESProduction(data,scenario){
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
         'title': "Emmission de GES de la production des appareils",
-        'focus' : "Pour chaque appareil, on calcule le coût carbone de production que l'on divise par la durée d'utilisation moyenne",
+        'focus' : "Ce graphique présente la quantité de gaz à effet de serre émis lors de la production de chaque appareil",
         'src' : src,
         'addrow' : false,
         'rowlabel' : '',
@@ -313,8 +313,8 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'addrow' : false,
         'rowlabel' : '',
         'backgroundColor' : [getColors().actionsColors[1],getColors().prodColors[1]],
-        'isEquation' :false,
-        'src_equation' : ''
+        'isEquation' :true,
+        'src_equation' : 'dettecarbonesobriete.png'
     };
 }
 
