@@ -59,4 +59,4 @@ L'application est divisée en trois pages :
 ![pageaction](documentation/PageBilan.PNG)
 
 
-
+Les implémentations de ces trois pages se trouvent dans le dossier *views*. On navigue de l'une à l'autre grâce à la barre de navigation composée de trois onglets. Les implémentations des composants qui composent ces trois pages sont regroupées dans le dossier *misc*.
