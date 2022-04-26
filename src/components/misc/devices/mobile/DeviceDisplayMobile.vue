@@ -82,7 +82,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin : 5px;
-  background-color: #eff4f9;
+  background-color: #b4c3fe;
   min-width: 100%;
 }
 #b-delete{

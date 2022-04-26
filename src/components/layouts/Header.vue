@@ -2,7 +2,7 @@
   <div class="header">
       <h5><strong>Impactomètre carbone du <span style="color:#6887ff">numérique</span></strong></h5>
     <div id="logo-img" alt="logo-i3S" v-on:click="goToI3s">
-      <img id="img-logo-i3s" src="../../assets/NewlogoI3S_0.png" alt="I3S logo">
+      <img id="img-logo-i3s" src="../../assets/NewlogoI3S_0.png" alt="I3S logo" width="100%">
     </div>
   </div>
 </template>

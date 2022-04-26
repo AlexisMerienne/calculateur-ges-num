@@ -98,7 +98,7 @@ export default {
   align-items: center;
   text-align: left;
   margin : 10px 10%;
-  background-color: #eff4f9;
+  background-color: #b4c3fe;
 }
 #b-delete{
   margin : 3px
