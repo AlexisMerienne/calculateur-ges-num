@@ -9,13 +9,13 @@
       </div>
       <div id="nav-bar" class="nav-bar">
         <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
-          <span>Mes appareils</span>
+          <span>1.Mes appareils</span>
         </div>
         <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
-          <span >Mes actions</span>
+          <span >2.Mes applications</span>
         </div>
         <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
-          <span>Mon bilan</span>
+          <span>3.Mon bilan</span>
         </div>
       </div>
       <div id="wrapper">

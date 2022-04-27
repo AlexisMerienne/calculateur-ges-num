@@ -1,31 +1,31 @@
 <template>
   <div class="container" style="max-height: 60%">
     <div v-if="!conclusion">
-    <div v-if="isChart">
-      <h5 style="height: 75px;text-align: left">{{this.title}}</h5>
-    <div id='flex-row' style="display: flex;flex-direction: row">
-      <pie-chart v-if="loaded"
-                 :chartdata="chartdata"
-                 :options="options"
-                 :width='320'
-                 :height='320'/>
-        <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-          Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
-          <div v-if="compareToSobriete">
-            <div id="button-compare-sobriete" v-on:mouseover="showGraph" v-on:mouseleave="stopShowGraph">
-              <h6 style="margin: 5px">Graphe sans sobriété</h6>
+      <div v-if="isChart">
+        <h5 style="height: 75px;text-align: left">{{this.title}}</h5>
+      <div id='flex-row' style="display: flex;flex-direction: row">
+        <pie-chart v-if="loaded"
+                   :chartdata="chartdata"
+                   :options="options"
+                   :width='320'
+                   :height='320'/>
+          <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
+            Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
+            <div v-if="compareToSobriete">
+              <div id="button-compare-sobriete" v-on:mouseover="showGraph" v-on:mouseleave="stopShowGraph">
+                <h6 style="margin: 5px">Graphe sans sobriété</h6>
+              </div>
             </div>
           </div>
-        </div>
-    </div>
-  <Popup
-        :textbutton="btext"
-        v-bind:sources="source"
-        v-bind:content="focus"
-        v-bind:isEquation="isEquation"
-        v-bind:src_equation="src_equation"
-        style="margin: 5px"></Popup>
-    </div>
+      </div>
+    <Popup
+          :textbutton="btext"
+          v-bind:sources="source"
+          v-bind:content="focus"
+          v-bind:isEquation="isEquation"
+          v-bind:src_equation="src_equation"
+          style="margin: 5px"></Popup>
+      </div>
     <div v-else>
       <Narratif
           v-bind:content="narcontent"/>
@@ -41,7 +41,14 @@
 
   </div>
   <div v-else>
-    <Conclusion/>
+    <Conclusion v-bind:firstbilan="firstbilan"/>
+    <div id="nav-charts-bilan" style="display: flex;justify-content: center;align-items: center;">
+      <div v-if="firstbilan" style="display:flex;justify-content:center;width: 100%">
+        <div id="next-chart-bilan" v-on:click="nextChartBilan" style="display: flex;justify-content: center;">
+          <img src="../../../assets/caret-right.svg" width="50" height="50">
+        </div>
+      </div>
+    </div>
   </div>
   </div>
 </template>
@@ -83,10 +90,27 @@ export default {
       isForOnDay : "",
       compareToSobriete :false,
       isEquation : false,
-      src_equation : ""
+      src_equation : "",
+      firstbilan : true
     }
   },
   methods : {
+
+    nextChartBilan() {
+      this.conclusion=false;
+      const data = this.$store.getters.getChartData
+      this.chartdata = data.chartdata
+      this.title = data.title
+      this.focus = data.focus
+      this.source = data.src
+      this.total = data.total
+      this.loaded=true;
+      this.isChart = this.$store.getters.getIsChart;
+      this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
+      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
+      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
+      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
+    },
     nextChart() {
       if (this.isChart && !this.conclusion){
         this.$store.commit('SET_NEXT_NARID');
@@ -96,7 +120,8 @@ export default {
         this.conclusion = this.narcontent.isEnd;
         if(this.conclusion) {
           this.$store.commit('SET_NARID_END');
-          this.$store.commit('DELETE_ROWS')
+          this.$store.commit('DELETE_ROWS');
+          this.firstbilan = false;
         }
       }else if (!this.conclusion){
       this.firstnar=false
@@ -181,19 +206,7 @@ export default {
     if (document.getElementById('wrapper').offsetWidth < 490 && this.isChart){document.getElementById('flex-row').style.flexDirection='column'}
   },
   mounted() {
-    const data = this.$store.getters.getChartData
-    this.chartdata = data.chartdata
-    this.title = data.title
-    this.focus = data.focus
-    this.source = data.src
-    this.total = data.total
-    this.loaded=true;
-    this.isChart = this.$store.getters.getIsChart;
-    this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
-    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
-    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
-    this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
-
+    this.conclusion =true
   },
   beforeMount() {
     this.narcontent = this.$store.getters.getNarData
@@ -217,6 +230,24 @@ export default {
   cursor: pointer;
 }
 #previous-chart:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+#next-chart-bilan{
+  margin: 10px 30px;
+  width: 100%;
+  border-radius: 7px;
+}
+#previous-chart-bilan{
+  margin: 10px 30px;
+  width: 100%;
+  border-radius: 7px;
+}
+#next-chart-bilan:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+#previous-chart-bilan:hover{
   background-color: lightgray;
   cursor: pointer;
 }

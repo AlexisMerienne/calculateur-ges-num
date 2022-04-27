@@ -19,7 +19,7 @@ exports.getColors = () => {
         prodColors : [
             '#e70000',
             '#ff8d1a',
-            '#ffff1a',
+            '#ffd536',
             '#cdcd00',
             '#8dff1a'
 

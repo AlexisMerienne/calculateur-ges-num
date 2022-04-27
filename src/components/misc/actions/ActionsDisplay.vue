@@ -91,7 +91,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 10px 10%;
-  background-color: #b4c3fe;
+  background-color: #eff4f9;
 }
 #b-delete{
   margin : 3px

@@ -84,6 +84,41 @@ export const chartsModule = {
          * @param state
          * @returns {string}
          */
+        getBilanData (state) {
+
+            //source : https://climate.selectra.com/fr/empreinte-carbone/voiture
+            const consodiesel = 293
+
+            const chartdata = chartData(state.gesdata,state.scenario,'chart-gesutilisationproduction')
+
+
+
+            const consototale =  chartdata.total;
+            const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
+            const consodistancediesel = Math.round(consodistance*100)/100
+
+
+
+
+            let partgestot = (((parseFloat(consototale)*365.25)/1000000) / data.empreinte_carbone_fr.valeur)*100
+            partgestot = Math.round(partgestot*100)/100
+            let partgestot2050 = (((parseFloat(consototale)*365.25)/1000000) / data.empreinte_carbone_fr_2050.valeur)*100
+            partgestot2050 = Math.round(partgestot2050*100)/100
+
+            return "Aujourd'hui, votre bilan carbone numérique est : <strong style='color:#6887ff'>" + consototale.toString() + "</strong>. Cette valeur comprend les émissions en gaz à effet de serre des terminaux, du réseau et des datacenter.<br><br>" +
+                "Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong style='color:#6887ff'>"+consodistancediesel.toString()+"  km</strong>"+
+                "<br><br>Vos émissions carbone représente <strong style='color:#6887ff'>"+partgestot+"%</strong> de votre empreinte carbone sur une année. Cependant, si votre empreinte carbone répond à l'<a href='https://datagir.ademe.fr/blog/budget-empreinte-carbone-c-est-quoi/'>objectif</a> dicté par la COP21, alors vos émissions de carbone liés au numérique représente <strong style='color:#6887ff'>"+partgestot2050+"%</strong>de cet objectif<br>"
+        },
+
+        /**
+         * Cette méthode calcule plusieurs valeurs :
+         *  les émissions total en GES du scénario établit
+         *  les émissions total en GES en prenant l'hypothèse que l'utilisateur se trouve en Allemagne
+         *
+         *  -
+         * @param state
+         * @returns {string}
+         */
         getConclusionData (state) {
 
             //source : https://climate.selectra.com/fr/empreinte-carbone/voiture

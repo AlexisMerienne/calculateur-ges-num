@@ -326,28 +326,28 @@
     "narratif" : {
         "nar-gesdevice" : {
             "isEnd" : true,
-            "narfirst" : "Les appareils que l'on utilise quotidiennement pour accéder au numérique <strong>consomment de l'électricité </strong>.<br><br>",
-            "narsecond" : "Cette électricité génère des gaz à effet de serre pendant sa phase de production.<br><br> Voyons ce que vos appareils ont émis comme Co2 pendant votre journée:",
+            "narfirst" : "L'électricité consommée par les terminaux génère des gaz à effet de serre pendant sa phase de production.<br><br> ",
+            "narsecond" : "Voyons ce que vos appareils ont émis comme Co2 pendant votre journée:",
             "nbricon" : 3,
             "icon" : ["power-plant.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesaction" :{
             "isEnd" : false,
-            "narfirst": "Ajoutons un peu plus de complexité. <br><br> Ces appareils nous permettent d'accéder à des services numériques (mails, réseaux sociaux, plateforme de streaming ...). Chacun de ces services sont accesibles via un <strong>réseau </strong> et sont hébérgés dans des <strong>centres de données</strong>. Ces deux infrastructures sont également émétrices de Co2. <br><br>",
+            "narfirst": "Nous allons maintenant vous présenter la consommation en GES du réseau et des datacenter<br><br>",
             "narsecond" : " Regardons combien nos actions numériques consomment au travers de ces deux infrastructures: ",
             "nbricon" : 5,
             "icon" : ["devices.svg","right-arrow.svg","network.svg","right-arrow.svg","database.svg"]
         },
         "nar-gesproduction" : {
             "isEnd" : false,
-            "narfirst" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils. En effet, avant d'atterrir dans nos mains, ces appareils ont déjà émis plus de la moitié du Co2 total de leur cycle de vie. Cette consommation est liée à la phase de fabrication qui est très couteuse en ressources et énergies. <br><br>",
-            "narsecond" : "Mais regardons plutôt à combien de Co2 cela correspond",
+            "narfirst" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils.<br><br>",
+            "narsecond" : "Regardons la quantité de gaz à effet de serre rejeter pendant la fabrication de vos appareils",
             "nbricon" : 3,
             "icon" : ["factory.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesutilisationproduction":{
             "isEnd" : false,
-            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'<strong style='color:#6887ff;'>utilisation</strong> avec la phase de <strong style='color:#6887ff;'>production</strong>. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par sa durée de vie moyenne.<br>Ainsi, pour un smartphone, la durée de vie moyenne est de 2,25 ans, pour un laptop elle est de 5 ans et pour une télévision de 4 ans",
+            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'<strong style='color:#6887ff;'>utilisation</strong> avec la phase de <strong style='color:#6887ff;'>production</strong>. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par son âge",
             "narsecond" : "",
             "nbricon" : 0,
             "icon" : []

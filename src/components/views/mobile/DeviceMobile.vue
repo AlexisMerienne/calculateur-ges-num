@@ -16,7 +16,12 @@
     <div id="buttons">
       <b-dropdown  id="dropdown-device" size="lg" variant="white" pill style="margin: 5px;" no-caret>
         <template #button-content>
-          <b-icon id="icon-plus" icon="plus-circle-fill" scale="3" variant="primary"></b-icon>
+          <div id="round-button" style="display:flex;justify-content:center;align-items:center;height: 60px;width: 60px;background-color: #0033ff;border-radius: 50%;z-index: 98;border-width: 1px;border-color:#0029cc">
+            <img
+                src="../../../assets/plus.svg"
+                alt="plus icon"
+            />
+          </div>
         </template>
         <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
         <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
@@ -65,6 +70,7 @@ export default {
   bottom: 0;
   right: 0;
   margin: 30px 20px;
+  z-index: 99;
 }
 icon-plus{
   margin: 60px 20px;

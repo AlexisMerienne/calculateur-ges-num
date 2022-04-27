@@ -1,7 +1,7 @@
 <template>
   <div id="actions-wrapper" shadow="">
     <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
-      <h3>Mes actions</h3>
+      <h3>2. Mes applications</h3>
       <Popup
           textbutton="?"
           content="Ajoutez les actions que vous faites pendant une journée type."
