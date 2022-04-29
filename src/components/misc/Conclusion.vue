@@ -43,7 +43,7 @@ export default {
 
       document.getElementById('conclusion-wrapper').appendChild(htmlObject)
 
-      this.$store.commit('SET_PROGRESS',-10)
+      this.$store.commit('SET_PROGRESS',-11)
     }
 
 

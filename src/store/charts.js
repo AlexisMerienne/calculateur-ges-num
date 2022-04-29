@@ -12,7 +12,8 @@ export const chartsModule = {
         narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction','nar-sobrieteproduction'],
         currentnarid : 'nar-gesdevice',
         isChart : false,
-        progress : 1
+        progress : 1,
+        showBilan : true,
     },
     getters : {
         getCurrentChartId (state) {return state.currentid;},
@@ -107,9 +108,9 @@ export const chartsModule = {
 
             return "Aujourd'hui, votre bilan carbone numérique est : <strong style='color:#6887ff'>" + consototale.toString() + "</strong>. Cette valeur comprend les émissions en gaz à effet de serre des terminaux, du réseau et des datacenter.<br><br>" +
                 "Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong style='color:#6887ff'>"+consodistancediesel.toString()+"  km</strong>"+
-                "<br><br>Vos émissions carbone représente <strong style='color:#6887ff'>"+partgestot+"%</strong> de votre empreinte carbone sur une année. Cependant, si votre empreinte carbone répond à l'<a href='https://datagir.ademe.fr/blog/budget-empreinte-carbone-c-est-quoi/'>objectif</a> dicté par la COP21, alors vos émissions de carbone liés au numérique représente <strong style='color:#6887ff'>"+partgestot2050+"%</strong>de cet objectif<br>"
+                "<br><br>Si vos émissions en CO2eq est égale à la moyenne française, votre utilisation du numérique représente   <strong style='color:#6887ff'>"+partgestot+"%</strong> de votre empreinte carbone sur une année. Cependant, si votre empreinte carbone répond à l'<a href='https://datagir.ademe.fr/blog/budget-empreinte-carbone-c-est-quoi/'>objectif</a> dicté par la COP21, alors vos émissions de carbone liés au numérique représente <strong style='color:#6887ff'>"+partgestot2050+"%</strong>de cet objectif<br>"+
+                "<br>Cliquez sur le boutton ci-dessous pour connaître le détail de ces émissions."
         },
-
         /**
          * Cette méthode calcule plusieurs valeurs :
          *  les émissions total en GES du scénario établit
@@ -155,6 +156,9 @@ export const chartsModule = {
         getProgress (state) {
             return state.progress;
         },
+        getShowBilan(state){
+            return state.showBilan;
+        }
     },
     mutations : {
         SET_NEXT_CHARTID (state) {
@@ -189,6 +193,10 @@ export const chartsModule = {
         },
         SET_PROGRESS (state,x){
             state.progress +=x
+        },
+        SET_SHOW_BILAN(state,bool){
+            state.showBilan=bool;
         }
+
     }
 }

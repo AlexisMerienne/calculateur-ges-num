@@ -411,3 +411,4 @@ function getDetteDevices(scenario,data){
         "ordinateurfixe" : ddv_ordinateurfixe
     }
 }
+

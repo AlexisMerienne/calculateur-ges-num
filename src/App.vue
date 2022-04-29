@@ -203,7 +203,7 @@ export default {
   background-color: #eff4f9;
   border-radius: 7px 7px 0px 0px;
   width: 100%;
-  margin: 2px 5px;
+  margin: 2px 5px 0px 5px;
   cursor: pointer;
 }
 .charts-view-button{
@@ -214,21 +214,10 @@ export default {
   background-color: #eff4f9;
   border-radius: 7px 7px 0px 0px;
   width: 100%;
-  margin: 2px 5px;
+  margin: 2px 5px 0px 5px;
   cursor: pointer;
 }
 #wrapper{
   width: 100%;
-}
-#b-next{
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 50%;
-  right: 20%;
-  z-index: 1;
 }
 </style>

@@ -110,6 +110,9 @@ export default {
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
+      this.$store.commit('SET_PROGRESS',1);
+      this.$emit('changeProgress')
+      this.$store.commit('SET_SHOW_BILAN',false);
     },
     nextChart() {
       if (this.isChart && !this.conclusion){
@@ -121,6 +124,7 @@ export default {
         if(this.conclusion) {
           this.$store.commit('SET_NARID_END');
           this.$store.commit('DELETE_ROWS');
+          this.$store.commit('SET_SHOW_BILAN',true);
           this.firstbilan = false;
         }
       }else if (!this.conclusion){
@@ -206,7 +210,15 @@ export default {
     if (document.getElementById('wrapper').offsetWidth < 490 && this.isChart){document.getElementById('flex-row').style.flexDirection='column'}
   },
   mounted() {
-    this.conclusion =true
+    this.conclusion =this.$store.getters.getShowBilan;
+    const data = this.$store.getters.getChartData
+    this.chartdata = data.chartdata
+    this.title = data.title
+    this.focus = data.focus
+    this.source = data.src
+    this.total = data.total
+    this.loaded=true;
+    this.isChart = this.$store.getters.getIsChart;
   },
   beforeMount() {
     this.narcontent = this.$store.getters.getNarData
