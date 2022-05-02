@@ -60,7 +60,9 @@ export default {
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
       }else if (!this.viewscliked[0]){
-        this.$router.push({name:"home"})
+        if (this.isMobile){
+          this.$router.push({name:"homemobile"})
+        }else this.$router.push({name:"home"})
         this.setIsClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
         this.setIsNotClickCss(document.getElementById('charts-view-button'));
@@ -71,7 +73,9 @@ export default {
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
       }else if (!this.viewscliked[1]) {
-        this.$router.push({name:"actions"})
+        if(this.isMobile){
+          this.$router.push({name:"actionsmobile"})
+        }else this.$router.push({name:"actions"})
         this.setIsClickCss(document.getElementById('actions-view-button'));
         this.setIsNotClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('charts-view-button'));
@@ -79,7 +83,7 @@ export default {
       }
     },
     goToBilanonClick(){
-      if (this.isMobile==true){
+      if (this.isMobile){
         this.goToBilan("chartsmobile")
       }else{
         this.goToBilan("charts")

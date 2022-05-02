@@ -31,7 +31,7 @@
           v-bind:content="narcontent"/>
     </div>
       <div id="nav-charts" style="display: flex;flex-direction: row;justify-content: space-between">
-        <div v-if="!firstnar" id="previous-chart" v-on:click="previousChart">
+        <div id="previous-chart" v-on:click="previousChart">
           <img src="../../../assets/caret-left.svg" width="50" height="50">
         </div>
         <div id="next-chart" v-on:click="nextChart">
@@ -75,7 +75,6 @@ export default {
       btext : "D'où viennent les données ?",
       total : null,
       chartdata : null,
-      firstnar : true,
       options: {
         legend: {
           display: true
@@ -106,7 +105,6 @@ export default {
       this.total = data.total
       this.loaded=true;
       this.isChart = this.$store.getters.getIsChart;
-      this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
       this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
@@ -128,7 +126,6 @@ export default {
           this.firstbilan = false;
         }
       }else if (!this.conclusion){
-      this.firstnar=false
       this.loaded=false;
       this.$store.commit('SET_NEXT_CHARTID');
       const data = this.$store.getters.getChartData
@@ -154,30 +151,33 @@ export default {
     },
     previousChart(){
         if (this.isChart && !this.conclusion){
-          this.$store.getters.getCurrentNarId==='nar-gesdevice'?this.firstnar=true:this.firstnar=false
           this.$store.commit('SET_PREVIOUS_CHART');
           this.narcontent = this.$store.getters.getNarData;
           this.isChart=false;
           this.$store.commit('SET_iS_CHART',false);
         }else if (!this.conclusion){
-          this.firstnar=false;
-          this.loaded=false;
-          this.$store.commit('SET_PREVIOUS_NARID');
-          const data = this.$store.getters.getChartData
-          data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay="(d'une journée)"
-          data.id==='chart-gesdoubleutilisationproduction'?this.compareToSobriete=true: this.compareToSobriete=false;
-          this.chartdata = data.chartdata
-          this.title = data.title
-          this.focus = data.focus
-          this.source = data.src
-          this.total = data.total
-          this.isEquation = data.isEquation
-          this.src_equation=data.src_equation
-          this.loaded=true;
-          this.isChart=true
-          this.$store.commit('SET_iS_CHART',true);
-          if (data.addrow){
-            this.$store.commit('ADD_ROW',data)
+          if(this.$store.getters.getCurrentNarId==='nar-gesdevice'){
+            this.$store.commit('SET_SHOW_BILAN',true);
+            this.conclusion = this.$store.getters.getShowBilan
+          }else {
+            this.loaded = false;
+            this.$store.commit('SET_PREVIOUS_NARID');
+            const data = this.$store.getters.getChartData
+            data.id === 'chart-gesproduction' ? this.isForOnDay = "" : this.isForOnDay = "(d'une journée)"
+            data.id === 'chart-gesdoubleutilisationproduction' ? this.compareToSobriete = true : this.compareToSobriete = false;
+            this.chartdata = data.chartdata
+            this.title = data.title
+            this.focus = data.focus
+            this.source = data.src
+            this.total = data.total
+            this.isEquation = data.isEquation
+            this.src_equation = data.src_equation
+            this.loaded = true;
+            this.isChart = true
+            this.$store.commit('SET_iS_CHART', true);
+            if (data.addrow) {
+              this.$store.commit('ADD_ROW', data)
+            }
           }
           this.$emit('undisplayTab')
         }

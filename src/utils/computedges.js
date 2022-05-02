@@ -18,15 +18,36 @@ exports.chartData = (data,scenario,id) => {
     }
 }
 
+/**
+ *
+ * @param data
+ * @param scenario
+ * @returns {{total: string, backgroundColor: string[], rowlabel: string, data: *[], isEquation: boolean, src: [{src: string, link: *, id: number},{src: string, link: *, id: number},{src: string, link: *, id: number},{src: string, link: *, id: number}], totalTab: *, focus: string, title: string, src_equation: string, labels: string[], addrow: boolean}}
+ *
+ * Méthode qui calcule la consommaton des services numériques.
+ * Il faut prendre en compte le coût carbone du réseau et des data centres
+ */
 function getGESAction(data,scenario){
 
+    //On récupère le nbr de mails avec et sans pièce jointe envoyés
     const nbr_mail_sans_pj = scenario.actions.mail.nbr_mail-scenario.actions.mail.nbr_mail_pj
     const nbr_mail_pj = scenario.actions.mail.nbr_mail_pj
+
+    /*
+    data.utilisation.actions.mail.conso -> la taille en Mo d'un mail envoyé
+    data.utilisation.actions.onebyte.wifi.energie_par_byte -> le coût énergétique en Kwh d'un 1 byte dans le réseau
+    data.utilisation.actions.onebyte.datacenter.energie -> le coût énergétique en Kwh d'un byte dans le centre de donnée
+     */
     const nrj_mail  = data.utilisation.actions.mail.conso * (data.utilisation.actions.onebyte.wifi.energie_par_byte* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
     const nrj_mail_pj  = data.utilisation.actions.mail_piece_jointe.conso*(data.utilisation.actions.onebyte.wifi.energie_par_byte*Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
+    /*
+    On émet l'hypothèse que le réseau et le centre de donnée se situent en France
+
+    data.ges_elec_france.valeur -> l'intensité carbone en France
+     */
     const ges_mail = (nbr_mail_sans_pj*nrj_mail + nbr_mail_pj*nrj_mail_pj)*data.ges_elec_france.valeur
 
-
+    //mêmes principes de calcule que pour les mails
     const mn_video = scenario.actions.video.temps
     const nrj_video  = data.utilisation.actions.video.conso * (data.utilisation.actions.onebyte.wifi.energie_par_byte* Math.pow(10,6) +  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6)))
     const ges_video = mn_video*nrj_video*data.ges_elec_france.valeur
@@ -67,7 +88,7 @@ function getGESAction(data,scenario){
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['mail','video','réseaux sociaux'],
         'title': 'Emmission de GES des actions numériques (en gCO2e)',
-        'focus' : "Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseux auquel on additionne le coût carbone lié aux centres de données. Pour les mails ainsi que les vidéos, nous avons pris l'hypothèse que l'utilisateur est sur un réseua wi-fi. Pour les réseaux sociaux, l'utilisateur est en 4G.",
+        'focus' : "Pour chaque action, on calcule le nombre de données necessaires à sa réalisation. Ensuite, on calcule le coût carbone de ses données dans le réseau auquel on additionne le coût carbone lié aux centres de données. Pour les mails ainsi que les vidéos, nous avons pris l'hypothèse que l'utilisateur est sur un réseau wi-fi. Pour les réseaux sociaux, l'utilisateur est en 4G.",
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation services num',
@@ -78,7 +99,21 @@ function getGESAction(data,scenario){
     };
 }
 
+/**
+ *
+ * @param data
+ * @param scenario
+ * @returns {{total: string, backgroundColor: *[], rowlabel: string, data: *[], isEquation: boolean, src: [{src: string, link: *, id: number},{src: string, link: *, id: number},{src: string, link: *, id: number},{src: string, link: *, id: number}], totalTab: *, focus: string, title: string, src_equation: string, labels: string[], addrow: boolean}}
+ *
+ * Méthode qui calcule l'empreinte carbone (EC) des terminaux
+ * On calcule l'énergie consommée par les appareils selon le scénario établit par l'utilisateur
+ * On multiplie cette énergie par l'intensité carbone française pour obtenir l'EC
+ */
 function getGESDevice(data,scenario){
+
+    /*
+    On récupère le temps
+     */
     const temps_smartphone = getTempsTotalUtilisation(scenario,"smartphone")
     const nrj_smartphone_daily = (data.utilisation.equipement.smartphone.energie / (365.25 * 24))*temps_smartphone
     const ges_smarpthone = nrj_smartphone_daily*data.ges_elec_france.valeur

@@ -1,7 +1,7 @@
 <template>
   <div id="displayer" shadow="">
     <div id="displat-txt-label" style="display: flex;flex-direction: column">
-      <h6 v-bind:id="idtxtlabel" style="margin-bottom: 0px"></h6><h6><strong>{{this.temps}}h </strong>dans une journée</h6>
+      <div v-bind:id="idtxtlabel" style="margin-bottom: 0px"></div>
     </div>
     <div v-if="isfirefox">
       <Slider
@@ -66,6 +66,15 @@ export default {
     setValue(payload) {
       this.device.temps[0] = payload;
       this.temps = payload;
+      const element = document.getElementById("description-"+this.id.toString());
+      element.remove();
+      this.description = setTextDevice(this.device.label,this.temps);
+      let htmldescription = document.createElement('h6');
+      htmldescription.id = "description-"+this.id.toString()
+      htmldescription.style.marginBottom = "0px"
+      htmldescription.innerHTML = this.description;
+      htmldescription.style.textAlign='left'
+      document.getElementById(this.idtxtlabel).appendChild(htmldescription)
     }
   },
   beforeMount() {
@@ -74,8 +83,10 @@ export default {
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
     this.temps = this.device.temps[0];
-    this.description = setTextDevice(this.device.label);
-    let htmldescription = document.createElement('p');
+    this.description = setTextDevice(this.device.label,this.temps);
+    let htmldescription = document.createElement('h6');
+    htmldescription.id = "description-"+this.id.toString()
+    console.log("description-"+this.id)
     htmldescription.style.marginBottom = "0px"
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'
