@@ -7,8 +7,8 @@
       <h6 style="text-align: left">Dont avec pièces jointes</h6>
       <b-form-input id="mailpj" v-model.number="action.value_2" placeholder="mails avec pièces jointes" type="number" min=0 max=1000></b-form-input>
     </div>
-    <div v-else style="display: flex;flex-direction: column">
-      <h6>{{printDescription()}} </h6>
+    <div v-else id="descr-service-num" style="display: flex;flex-direction: column">
+      <div v-html="printDescription()"></div>
       <div v-if="isfirefox">
         <Slider
             :min=0
@@ -65,8 +65,8 @@ export default {
       this.$store.commit('DELETE_ACTION',this.id)
     },
     printDescription(){
-      if (this.action.label==='video'){return "Je regarde " + this.value1 + "h de vidéos par jour";}
-      if (this.action.label==='insta'){return "Je passe " + this.value1 + "h sur les réseaux sociaux";}
+      if (this.action.label==='video'){return '<h6>Je regarde  <strong style="color: #2852f9;">' +this.value1 + 'h</strong> de vidéos par jour</h6>';}
+      if (this.action.label==='insta'){return '<h6>Je passe <strong style="color:#2852f9;">' + this.value1 + 'h</strong> sur les réseaux sociaux</h6>';}
     },
     setValue(payload) {
       this.value1 = payload;

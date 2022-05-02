@@ -21,9 +21,11 @@
           v-model="temps">
       </range-slider>
     </div>
-    <div id="display-dette-ddv" style="margin-top: 10px">
-      <h6>Je possède cet appareil depuis <strong>{{device.dette_fabrication}} an(s)</strong></h6>
+    <div id="display-dette-ddv" style="flex-direction:column;margin-top: 10px;width: 100%">
+      <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{device.dette_fabrication}} an(s)</strong></h6>
+      <div id="input" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width: 80%;">
         <b-form-input id="dette-ddv" v-model.number="device.dette_fabrication" placeholder="En année" type="number" min=0 max=20 step="1"></b-form-input>
+      </div>
     </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container" style="display: flex;justify-content:right">
@@ -86,7 +88,6 @@ export default {
     this.description = setTextDevice(this.device.label,this.temps);
     let htmldescription = document.createElement('h6');
     htmldescription.id = "description-"+this.id.toString()
-    console.log("description-"+this.id)
     htmldescription.style.marginBottom = "0px"
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'

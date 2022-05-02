@@ -71,7 +71,7 @@ export default {
     },
     goToAction(){
       if(this.checkNegValue()){
-        window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+        window.alert('Vous avez indiqué une valeur négative là où il ne faut pas')
       }else if (!this.viewscliked[1]) {
         if(this.isMobile){
           this.$router.push({name:"actionsmobile"})
@@ -91,7 +91,7 @@ export default {
     },
     goToBilan(route){
       if(this.checkNegValue()){
-        window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+        window.alert('Vous avez entré une valeur négative là où il ne faut pas')
       }else if (!this.viewscliked[2]){
         route === 'charts' ? this.$router.push({name:"charts"}) : this.$router.push({name:"chartsmobile"})
         this.setIsClickCss(document.getElementById('charts-view-button'));
@@ -101,11 +101,16 @@ export default {
       }
     },
     checkNegValue() {
+      let negValues = false;
       if (this.$store.getters.getMail !== null){
-        if (this.$store.getters.getMail.value_1<0 || this.$store.getters.getMail.value_2<0){
-          return true;
-        }else return false;
-      }else return false;
+        negValues = this.$store.getters.getMail.value_1<0 || this.$store.getters.getMail.value_2<0
+      }
+      for (let i=0;i<this.$store.getters.getDevices.length;i++){
+        if(this.$store.getters.getDevices[i].dette_fabrication < 0){
+          negValues=true;
+        }
+      }
+      return negValues;
     },
     myEventHandler() {
       const screeneheight = window.screen.height;

@@ -12,7 +12,7 @@
           <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
             Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
             <div v-if="compareToSobriete">
-              <div id="button-compare-sobriete" v-on:mouseover="showGraph" v-on:mouseleave="stopShowGraph">
+              <div id="button-compare-sobriete" v-on:click="showGraph">
                 <h6 style="margin: 5px">Graphe sans sobriété</h6>
               </div>
             </div>
@@ -90,7 +90,8 @@ export default {
       compareToSobriete :false,
       isEquation : false,
       src_equation : "",
-      firstbilan : true
+      firstbilan : true,
+      showgraph : true,
     }
   },
   methods : {
@@ -185,14 +186,24 @@ export default {
       this.$emit('changeProgress')
     },
     showGraph(){
-      this.isChart=false;
-      const data = this.$store.getters.getChartDataSpec('chart-gesutilisationproduction')
-      this.chartdata = data.chartdata
-      this.title = data.title
-      this.focus = data.focus
-      this.source = data.src
-      this.total = data.total
-      this.isChart=true
+        if (this.showgraph){
+        this.isChart=false;
+        const data = this.$store.getters.getChartDataSpec('chart-gesutilisationproduction')
+        this.chartdata = data.chartdata
+        this.title = data.title
+        this.focus = data.focus
+        this.source = data.src
+        this.total = data.total
+        this.isChart=true
+        this.showgraph=false;
+        const element = document.getElementById("button-compare-sobriete");
+        element.style.backgroundColor = "lightgrey"
+        }else{
+          this.stopShowGraph()
+          this.showgraph=true;
+          const element = document.getElementById("button-compare-sobriete");
+          element.style.backgroundColor = "#7993ff"
+        }
     },
     stopShowGraph(){
       this.isChart=false;
@@ -267,12 +278,24 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  background-color: #7993ff;
-  border-radius: 7px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
   cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #7993ff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
   min-height: 30px;
 }
 #button-compare-sobriete:hover{
-  background-color: lightgrey;
+  background-color: #7993ff;
+}
+#button-compare-sobriete:active {
+  background-color: #7993ff;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 </style>

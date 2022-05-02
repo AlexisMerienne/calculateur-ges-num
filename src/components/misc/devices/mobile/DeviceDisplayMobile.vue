@@ -1,7 +1,7 @@
 <template>
   <div id="displayer" shadow="">
     <div id="displat-txt-label" style="display: flex;flex-direction: row">
-      <h6 v-bind:id="idtxtlabel"></h6><div style="width: 2px"></div><h6><strong>{{this.temps}}h</strong></h6>
+      <div v-bind:id="idtxtlabel"></div><div style="width: 2px"></div>
     </div>
     <range-slider
         class="slider"
@@ -47,10 +47,6 @@ export default {
   methods : {
     onDelete(){
       this.$store.commit('DELETE_DEVICE',this.id)
-    },
-    setValue(payload) {
-      this.device.temps[0] = payload.value;
-      this.temps = payload.value;
     }
   },
   beforeMount() {
@@ -61,15 +57,27 @@ export default {
     if (this.$store.getters.getIsMobile){document.getElementById('displayer').style.margin='5px'}
     this.device = this.$store.getters.getDevice(this.id);
     this.temps = this.device.temps[0];
-    this.description = setTextDevice(this.device.label);
-    let htmldescription = document.createElement('p');
+    this.description = setTextDevice(this.device.label,this.temps);
+    let htmldescription = document.createElement('h6');
+    htmldescription.id = "description-"+this.id.toString()
+    htmldescription.style.marginBottom = "0px"
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)
+    this.isfirefox = this.$store.getters.getIsFirefox;
   },
   updated() {
     this.device.temps[0] = this.temps;
     this.$store.commit('SET_VALUE_DEVICE',this.device)
+    const element = document.getElementById("description-"+this.id.toString());
+    element.remove();
+    this.description = setTextDevice(this.device.label,this.temps);
+    let htmldescription = document.createElement('h6');
+    htmldescription.id = "description-"+this.id.toString()
+    htmldescription.style.marginBottom = "0px"
+    htmldescription.innerHTML = this.description;
+    htmldescription.style.textAlign='left'
+    document.getElementById(this.idtxtlabel).appendChild(htmldescription)
   }
 }
 </script>
