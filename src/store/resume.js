@@ -38,7 +38,6 @@ export const resumeModule = {
             const index = state.items.findIndex(elm => elm.value[0] === data.rowlabel);
             if (index!=-1) {
                 const preValu = parseFloat(state.items[index].value[1])
-                console.log(preValu)
                 state.items[index].value = [data.rowlabel,data.totalTab + " gCO2e",computeEquiv(data.totalTab)]
                 const sizeitems = state.items.length
                 state.items[sizeitems-1].value[1] = (Math.round(((data.totalTab-preValu)+state.items[sizeitems-1].value[1])*100)/100)

@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+:root{
+    --clr-blue-main: #6887ff;
+    --clr-blue-scd: #007bff ;
+    --border-radius-main : 7px;
+    --border-radius-max : 10em;
+}
+
 div[shadow] {
     border: 0px solid black;
     padding: 10px 20px;
@@ -12,3 +19,37 @@ div[shadow] {
     background: #ffffff;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.form{
+    position: relative;
+    width: 20rem;
+    margin-bottom: 3rem;
+
+}
+.form-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 2px solid var(--clr-blue-scd);
+    border-radius:var(--border-radius-max);
+    color: black;
+    outline: none;
+    background: none;
+    padding: 1.25rem;
+    height: 3rem;
+}
+.form-input:hover{
+    border-color:var(--clr-blue-main);
+}
+.form-input:focus{
+    border-color: dimgrey;
+}

@@ -198,11 +198,13 @@ export default {
         this.showgraph=false;
         const element = document.getElementById("button-compare-sobriete");
         element.style.backgroundColor = "lightgrey"
+        element.style.boxShadow = "0 5px #666";
         }else{
           this.stopShowGraph()
           this.showgraph=true;
           const element = document.getElementById("button-compare-sobriete");
           element.style.backgroundColor = "#7993ff"
+          element.style.boxShadow = "0 9px #999";
         }
     },
     stopShowGraph(){
@@ -278,6 +280,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 25px;
   padding: 15px 25px;
   font-size: 24px;
   text-align: center;
