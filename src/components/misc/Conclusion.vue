@@ -1,7 +1,15 @@
 <template>
   <div v-if="firstbilan">
-    <div id="bilan-wrapper" class="w3-container">
-      <span><h5>-- <strong>Mon Bilan</strong> --</h5></span>
+    <div id="bilan-container"  class="w3-container">
+      <div id="bilan-wrapper">
+        <span><h5>-- <strong>Mon Bilan</strong> --</h5></span>
+      </div>
+      <div id="image-budget-carbone" v-on:click="goToSourceBudgetCarbone">
+        <img src='../../assets/ec_et_budget_carbone.png' alt='Budget carbone 2050' href="https://www.cigref.fr/wp/wp-content/uploads/2021/12/Cigref-INR-Sobriete-numerique-Piloter-empreinte-environnementale-numerique-par-mesure-Decembre-2021-MAJ-16122021.pdf">
+      </div>
+      <div style="text-align: left">
+        <h5><br>Cliquez sur le boutton ci-dessous pour connaître le détail de ces émissions.</h5>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -15,6 +23,11 @@ export default {
   name: "Conclusion",
   props : {
     firstbilan : Boolean
+  },
+  methods: {
+    goToSourceBudgetCarbone(){
+        window.open("https://www.cigref.fr/wp/wp-content/uploads/2021/12/Cigref-INR-Sobriete-numerique-Piloter-empreinte-environnementale-numerique-par-mesure-Decembre-2021-MAJ-16122021.pdf", "_blank");
+    }
   },
   mounted() {
 

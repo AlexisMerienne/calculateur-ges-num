@@ -17,31 +17,32 @@ export const resumeModule = {
         },
         getColspan(state){
             return state.colspan
-        }
+        },
     },
     mutations : {
         ADD_ROW (state,data)  {
             state.key++;
-            const index = state.items.findIndex(elm => elm.value[0] === data.rowlabel);
+            const index = state.items.findIndex(elm => elm.value[0] === data.data.rowlabel);
             if (index==-1) {
+                const percent = Math.round((data.data.totalTab/data.conso)*10000)/100
                 state.items.splice(state.items.length - 1, 0, {
                     key: state.key,
-                    value: [data.rowlabel, data.totalTab + " gCO2e", computeEquiv(data.totalTab)]
+                    value: [data.data.rowlabel, data.data.totalTab + " gCO2e<br><span style='color:#7993ff'>"+percent+"%</span>", computeEquiv(data.data.totalTab)]
                 })
                 const sizeitems = state.items.length
-                state.items[sizeitems-1].value[1] = (Math.round((data.totalTab+state.items[sizeitems-1].value[1])*100)/100)
-                state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
+                state.items[sizeitems-1].value[1] = data.conso
+                state.items[sizeitems-1].value[2] = computeEquiv(data.conso)
             }
         },
         SET_NEW_RESUME_VALUE (state,data) {
             state.key++;
-            const index = state.items.findIndex(elm => elm.value[0] === data.rowlabel);
+            const index = state.items.findIndex(elm => elm.value[0] === data.data.rowlabel);
             if (index!=-1) {
-                const preValu = parseFloat(state.items[index].value[1])
-                state.items[index].value = [data.rowlabel,data.totalTab + " gCO2e",computeEquiv(data.totalTab)]
+                const percent = Math.round((data.data.totalTab/data.conso)*10000)/100
+                state.items[index].value = [data.data.rowlabel,data.data.totalTab + " gCO2e<br><span style='color:#7993ff'>"+percent+"%</span>",computeEquiv(data.data.totalTab)]
                 const sizeitems = state.items.length
-                state.items[sizeitems-1].value[1] = (Math.round(((data.totalTab-preValu)+state.items[sizeitems-1].value[1])*100)/100)
-                state.items[sizeitems-1].value[2] = computeEquiv(state.items[sizeitems-1].value[1])
+                state.items[sizeitems-1].value[1] = data.conso
+                state.items[sizeitems-1].value[2] = computeEquiv(data.conso)
             }
         },
         DELETE_ROWS (state) {
@@ -61,5 +62,4 @@ function computeEquiv(consoges) {
     const consodistancediesel = Math.round(consodistance*100)/100
 
     return "une voiture diesel roulant " +  consodistancediesel.toString() + " m";
-
 }

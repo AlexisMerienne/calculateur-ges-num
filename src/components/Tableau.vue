@@ -13,7 +13,7 @@
     <div class="items-container">
       <div id='item-row' class="item-row" v-for="item in items" :key="item.key">
         <div id='value-row' class="value-row" v-for="value in colspan" :key="value" style="text-align: left;width: 100%">
-          <h6>{{item.value[value-1]}} <div v-if="value==2 && item.key==99"> gCO2e</div> </h6>
+          <h6><div v-html="item.value[value-1]"></div> <div v-if="value==2 && item.key==99"> gCO2e</div> </h6>
         </div>
       </div>
     </div>
@@ -80,6 +80,7 @@
   flex-direction: row;
 }
 .item-row:hover{
+  border-radius:var(--border-radius-main) ;
   background-color:rgb(241, 241, 241);
 }
 

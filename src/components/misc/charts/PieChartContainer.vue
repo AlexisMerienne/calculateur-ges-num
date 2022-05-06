@@ -92,6 +92,7 @@ export default {
       src_equation : "",
       firstbilan : true,
       showgraph : true,
+      consotot : 0
     }
   },
   methods : {
@@ -106,12 +107,10 @@ export default {
       this.total = data.total
       this.loaded=true;
       this.isChart = this.$store.getters.getIsChart;
-      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesdevice'))
-      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesaction'))
-      this.$store.commit('SET_NEW_RESUME_VALUE',this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'))
       this.$store.commit('SET_PROGRESS',1);
       this.$emit('changeProgress')
       this.$store.commit('SET_SHOW_BILAN',false);
+      this.consotot = this.$store.getters.getConsoTotal
     },
     nextChart() {
       if (this.isChart && !this.conclusion){
@@ -143,7 +142,10 @@ export default {
       this.isChart=true;
       this.$store.commit('SET_iS_CHART',true);
       if (data.addrow){
-        this.$store.commit('ADD_ROW',data)
+        this.$store.commit('ADD_ROW',{
+          data:data,
+          conso:this.consotot
+        })
       }
       this.$emit('undisplayTab')
       }
@@ -177,7 +179,10 @@ export default {
             this.isChart = true
             this.$store.commit('SET_iS_CHART', true);
             if (data.addrow) {
-              this.$store.commit('ADD_ROW', data)
+              this.$store.commit('ADD_ROW', {
+                data:data,
+                conso:this.consotot
+              })
             }
           }
           this.$emit('undisplayTab')

@@ -105,6 +105,20 @@ export default {
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
         this.viewscliked=[false,false,true]
       }
+      const consotot = this.$store.getters.getConsoTotal
+      //On met à jour les valeurs du tableau résumé
+      this.$store.commit('SET_NEW_RESUME_VALUE',{
+        data : this.$store.getters.getChartDataSpec('chart-gesdevice'),
+        conso : consotot
+      })
+      this.$store.commit('SET_NEW_RESUME_VALUE',{
+        data:this.$store.getters.getChartDataSpec('chart-gesaction'),
+        conso : consotot
+      })
+      this.$store.commit('SET_NEW_RESUME_VALUE', {
+        data: this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'),
+        conso : consotot
+      })
     },
     checkNegValue() {
       let negValues = false;

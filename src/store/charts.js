@@ -14,6 +14,7 @@ export const chartsModule = {
         isChart : false,
         progress : 1,
         showBilan : true,
+        consoTotale : 0
     },
     getters : {
         getCurrentChartId (state) {return state.currentid;},
@@ -75,6 +76,9 @@ export const chartsModule = {
         getIsChart (state) {
             return state.isChart;
         },
+        getConsoTotal(state){
+            return state.consoTotale;
+        },
 
         /**
          * Cette méthode calcule plusieurs valeurs :
@@ -95,8 +99,10 @@ export const chartsModule = {
 
 
             const consototale =  chartdata.total;
+            state.consoTotale = parseFloat(consototale)
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100
+
 
 
 
@@ -108,8 +114,7 @@ export const chartsModule = {
 
             return "Aujourd'hui, votre bilan carbone numérique est : <strong style='color:#6887ff'>" + consototale.toString() + "</strong>. Cette valeur comprend les émissions en gaz à effet de serre des terminaux, du réseau et des datacenter.<br><br>" +
                 "Si votre utilisation du numérique est la même chaque jour de l'année, alors en 1 an vous aurez émis autant de CO2 qu'une voiture diesel parcourant <strong style='color:#6887ff'>"+consodistancediesel.toString()+"  km</strong>"+
-                "<br><br>Si vos émissions en CO2eq est égale à la moyenne française, votre utilisation du numérique représente   <strong style='color:#6887ff'>"+partgestot+"%</strong> de votre empreinte carbone sur une année. Cependant, si votre empreinte carbone répond à l'<a href='https://datagir.ademe.fr/blog/budget-empreinte-carbone-c-est-quoi/'>objectif</a> dicté par la COP21, alors vos émissions de carbone liés au numérique représente <strong style='color:#6887ff'>"+partgestot2050+"%</strong>de cet objectif<br>"+
-                "<br>Cliquez sur le boutton ci-dessous pour connaître le détail de ces émissions."
+                "<br><br>Si vos émissions en CO2eq est égale à la moyenne française, votre utilisation du numérique représente   <strong style='color:#6887ff'>"+partgestot+"%</strong> de votre empreinte carbone sur une année. Cependant, si votre empreinte carbone répond à l'<a href='https://datagir.ademe.fr/blog/budget-empreinte-carbone-c-est-quoi/'>objectif</a> dicté par la COP21, alors vos émissions de carbone liés au numérique représente <strong style='color:#6887ff'>"+partgestot2050+"%</strong>de cet objectif<br>"
         },
         /**
          * Cette méthode calcule plusieurs valeurs :
