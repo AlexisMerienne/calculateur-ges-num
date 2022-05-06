@@ -26,11 +26,6 @@ Pour build le projet
 ```
 npm run build
 ```
-Le projet est déployé sur le service d'hébergement Firebase. La commande pour déployer l'application est :
-
-```
-firebase deploy
-```
 
 ### Documentation 
 
