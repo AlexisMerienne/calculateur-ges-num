@@ -1,6 +1,6 @@
 <template>
   <div id="displayer" shadow="">
-    <div id="displat-txt-label" style="display: flex;flex-direction: column;width: 100%">
+    <div id="displat-txt-label" style="display: flex;align-items:center;flex-direction: column;width: 100%">
       <div v-bind:id="idtxtlabel" style="margin-bottom: 0px"></div>
     </div>
     <div v-if="isfirefox">
@@ -22,10 +22,10 @@
           style="width: 50%;margin: 1em 0px">
       </range-slider>
     </div>
-    <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;margin-top: 10px;width: 100%;margin-bottom: 10px">
-      <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{device.dette_fabrication}} an(s)</strong></h6>
+    <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;align-items:center;margin-top: 10px;width: 100%;margin-bottom: 10px">
+      <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{setDetteTxt(device.dette_fabrication)}} an(s)</strong></h6>
       <div class="form">
-        <input id="dette-ddv-v2" class="form-input" inputmode=”numeric” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+        <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
       </div>
     </div>
     <div class="d-button" style="width:100%">
@@ -78,6 +78,10 @@ export default {
       htmldescription.innerHTML = this.description;
       htmldescription.style.textAlign='left'
       document.getElementById(this.idtxtlabel).appendChild(htmldescription)
+    },
+    setDetteTxt(el){
+      console.log(typeof el)
+      return Number(el)
     }
   },
   beforeMount() {

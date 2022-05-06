@@ -1,11 +1,15 @@
 <template>
   <div id="displayer" shadow="">
     <div v-if="action.label==='mail'">
-      <h6>Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
+      <h6 style="text-align: left">Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
       <h6 style="text-align: left">Mails totals</h6>
-      <b-form-input id="mail" v-model.number="action.value_1" placeholder="mails" type="number" min=0 max=1000 step="1"></b-form-input>
-      <h6 style="text-align: left">Dont avec pièces jointes</h6>
-      <b-form-input id="mailpj" v-model.number="action.value_2" placeholder="mails avec pièces jointes" type="number" min=0 max=1000></b-form-input>
+      <div class="form" >
+        <input id="mail" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_1">
+      </div>
+      <h6 style="text-align: left;">Dont avec pièces jointes</h6>
+      <div class="form">
+        <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
+      </div>
     </div>
     <div v-else id="descr-service-num" style="display: flex;flex-direction: column">
       <div v-html="printDescription()"></div>

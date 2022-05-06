@@ -1,12 +1,18 @@
 <template>
   <div id="displayer" shadow="">
     <div v-if="action.label==='mail'">
-      Les {{action.label}}s que j'ai envoyé aujourd'hui :
-      <b-form-input id="mail" v-model="action.value_1" placeholder="mails" type="number" min="0" max="1000"></b-form-input>
-      <b-form-input id="mailpj" v-model="action.value_2" placeholder="mails avec pièces jointes" type="number" min="0" max="1000"></b-form-input>
+      <h6 style="text-align: left">Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
+      <h6 style="text-align: left">Mails totals</h6>
+      <div class="form" >
+        <input id="mail" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_1">
+      </div>
+      <h6 style="text-align: left;">Dont avec pièces jointes</h6>
+      <div class="form">
+        <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
+      </div>
     </div>
     <div v-else style="display: flex;flex-direction: column">
-      <h6>{{printDescription()}} </h6>
+      <div v-html="printDescription()"></div>
       <range-slider
           class="slider"
           min="0"
@@ -48,8 +54,8 @@ export default {
       this.$store.commit('DELETE_ACTION',this.id)
     },
     printDescription(){
-      if (this.action.label==='video'){return "Je regarde " + this.value1 + "h de vidéos par jour";}
-      if (this.action.label==='insta'){return "Je passe " + this.value1 + "h sur les réseaux sociaux";}
+      if (this.action.label==='video'){return '<h6>Je regarde  <strong style="color: #2852f9;">' +this.value1 + 'h</strong> de vidéos par jour</h6>';}
+      if (this.action.label==='insta'){return '<h6>Je passe <strong style="color:#2852f9;">' + this.value1 + 'h</strong> sur les réseaux sociaux</h6>';}
     },
   },
   updated() {
@@ -69,7 +75,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin: 20px 0px;
   background-color: #eff4f9;
   min-width: 100%;
 }

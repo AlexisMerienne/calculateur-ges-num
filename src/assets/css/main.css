@@ -29,9 +29,11 @@ div[shadow] {
 
 
 .form{
+    display: flex;
+    justify-content:center;
     position: relative;
     width: 20rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 
 }
 .form-input{
@@ -52,4 +54,16 @@ div[shadow] {
 }
 .form-input:focus{
     border-color: dimgrey;
+}
+
+/* Chrome, Safari, Edge, Opera */
+form-input::-webkit-outer-spin-button,
+form-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+form-input[type=number] {
+    -moz-appearance: textfield;
 }

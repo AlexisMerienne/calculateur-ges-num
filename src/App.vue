@@ -59,6 +59,8 @@ export default {
     goToDevice(){
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué des valeurs négatives pour les mails envoyés')
+      }else if(this.checkNotNumberValue()){
+        window.alert('Veuillez indiquer des valeurs numériques dans les champs dédiés')
       }else if (!this.viewscliked[0]){
         if (this.isMobile){
           this.$router.push({name:"homemobile"})
@@ -72,6 +74,8 @@ export default {
     goToAction(){
       if(this.checkNegValue()){
         window.alert('Vous avez indiqué une valeur négative là où il ne faut pas')
+      }else if(this.checkNotNumberValue()){
+        window.alert('Veuillez indiquer des valeurs numériques dans les champs dédiés')
       }else if (!this.viewscliked[1]) {
         if(this.isMobile){
           this.$router.push({name:"actionsmobile"})
@@ -92,6 +96,8 @@ export default {
     goToBilan(route){
       if(this.checkNegValue()){
         window.alert('Vous avez entré une valeur négative là où il ne faut pas')
+      }else if(this.checkNotNumberValue()){
+        window.alert('Veuillez indiquer des valeurs numériques dans les champs dédiés')
       }else if (!this.viewscliked[2]){
         route === 'charts' ? this.$router.push({name:"charts"}) : this.$router.push({name:"chartsmobile"})
         this.setIsClickCss(document.getElementById('charts-view-button'));
@@ -111,6 +117,21 @@ export default {
         }
       }
       return negValues;
+    },
+    checkNotNumberValue(){
+      let notnumvalue = false;
+      if (this.$store.getters.getMail !== null){
+        notnumvalue = typeof this.$store.getters.getMail.value_1 !== "number" || typeof this.$store.getters.getMail.value_2 !== "number"
+      }
+      for (let i=0;i<this.$store.getters.getDevices.length;i++){
+        console.log(this.$store.getters.getDevices[i].dette_fabrication)
+        console.log(typeof this.$store.getters.getDevices[i].dette_fabrication)
+        if(typeof this.$store.getters.getDevices[i].dette_fabrication !== "number"){
+          notnumvalue=true;
+        }
+      }
+      return notnumvalue;
+
     },
     myEventHandler() {
       const screeneheight = window.screen.height;

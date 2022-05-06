@@ -12,7 +12,9 @@
     </range-slider>
     <div id="display-dette-ddv" style="margin-top: 10px">
       <h6>Je possède cet appareil depuis <strong>{{device.dette_fabrication}} an(s)</strong></h6>
-      <b-form-input id="dette-ddv" v-model.number="device.dette_fabrication" placeholder="En année" type="number" min=0 max=20 step="1"></b-form-input>
+      <div class="form">
+        <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+      </div>
     </div>
     <div class="d-button" style="width:100%">
       <div class="d-button-container"  style="display: flex;justify-content:right">
@@ -47,7 +49,7 @@ export default {
   methods : {
     onDelete(){
       this.$store.commit('DELETE_DEVICE',this.id)
-    }
+    },
   },
   beforeMount() {
     this.device = this.$store.getters.getDevice(this.id);
@@ -89,7 +91,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin : 5px;
+  margin : 20px 0px;
   background-color:#eff4f9;
   min-width: 100%;
 }
