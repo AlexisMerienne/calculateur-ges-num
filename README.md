@@ -27,7 +27,7 @@ Pour build le projet
 npm run build
 ```
 
-Cela génère le dossier **/dist** qui contient une version du site prête à être déployée.  
+Cela génère le dossier */dist* qui contient une version du site prête à être déployée.  
 
 ### Documentation 
 
