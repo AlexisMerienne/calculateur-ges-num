@@ -1,13 +1,13 @@
 <template>
   <div id="displayer" shadow="">
-    <div v-if="action.label==='mail'">
+    <div v-if="action.label==='mail'" style="display: flex;flex-direction: column;width: 100%;">
       <h6 style="text-align: left">Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
       <h6 style="text-align: left">Mails totals</h6>
-      <div class="form" >
+      <div class="form" style="width: 100%">
         <input id="mail" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_1">
       </div>
       <h6 style="text-align: left;">Dont avec pièces jointes</h6>
-      <div class="form">
+      <div class="form" style="width: 100%;">
         <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
       </div>
     </div>

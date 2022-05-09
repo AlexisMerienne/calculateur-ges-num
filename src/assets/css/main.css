@@ -39,6 +39,7 @@ div[shadow] {
 }
 .form-input{
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
     width: 100%;
@@ -87,6 +88,7 @@ form-input[type=number] {
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
+    width: 100%;
     background-color:#eff4f9;
     max-height: 0;
     overflow: hidden;
