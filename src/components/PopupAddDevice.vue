@@ -9,16 +9,16 @@
           <span class="close" v-on:click="closePopup">&times;</span>
         </div>
         <div class="device-chooser" v-on:click="addDevice('smartphone')">
-          <h6 class="device-chooser-txt">Smartphone</h6>
+          <h6 class="device-chooser-txt">Smartphone 📱</h6>
         </div>
         <div class="device-chooser" v-on:click="addDevice('laptop')">
-          <h6 class="device-chooser-txt">Laptop</h6>
+          <h6 class="device-chooser-txt">Laptop 💻</h6>
         </div>
         <div class="device-chooser" v-on:click="addDevice('tele')">
-          <h6 class="device-chooser-txt">Télé</h6>
+          <h6 class="device-chooser-txt">Télé 📺</h6>
         </div>
         <div class="device-chooser" v-on:click="addDevice('ordinateurfixe')">
-          <h6 class="device-chooser-txt">Ordinateur fixe</h6>
+          <h6 class="device-chooser-txt">Ordinateur fixe 🖥</h6>
         </div>
       </div>
     </div>

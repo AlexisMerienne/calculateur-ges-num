@@ -19,7 +19,7 @@
         </Slider>
       </div>
       <div v-else style="display:flex;justify-content:center;width: 100%">
-        <div id="range-slider-container" style="display: flex;justify-content:center;width:80%;margin-top:10px;background-color: rgba(119,136,153,0.73);border-radius: var(--border-radius-main)">
+        <div id="range-slider-container" style="display: flex;justify-content:center;width:80%;margin-top:10px;background-color: rgba(119,136,153,0.73);border-radius: var(--border-radius-max)">
         <range-slider
             class="slider"
             min="0"
