@@ -138,8 +138,6 @@ export default {
         notnumvalue = typeof this.$store.getters.getMail.value_1 !== "number" || typeof this.$store.getters.getMail.value_2 !== "number"
       }
       for (let i=0;i<this.$store.getters.getDevices.length;i++){
-        console.log(this.$store.getters.getDevices[i].dette_fabrication)
-        console.log(typeof this.$store.getters.getDevices[i].dette_fabrication)
         if(typeof this.$store.getters.getDevices[i].dette_fabrication !== "number"){
           notnumvalue=true;
         }

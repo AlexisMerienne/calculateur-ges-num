@@ -4,7 +4,7 @@
         <div v-bind:id="idtxtlabel" style="display:flex;margin-bottom: 0px;margin-right: 20px;width: 80%"></div>
         <div id="caret-down-container" style="width: 20%">
           <div id="caret-down" style="display: flex;justify-content: flex-end">
-            <img src="../../../assets/caret-down.svg" alt="caret-down" height="24">
+            <img v-bind:id="idcaret" v-bind:src="srcImg" alt="caret-down" height="24">
           </div>
         </div>
     </div>
@@ -69,7 +69,9 @@ export default {
       description :"",
       idtxtlabel : "",
       idpanellabel:"",
+      idcaret:"",
       isfirefox : false,
+      srcImg : ""
     }
   },
   methods : {
@@ -90,21 +92,23 @@ export default {
       document.getElementById(this.idtxtlabel).appendChild(htmldescription)
     },
     setDetteTxt(el){
-      console.log(typeof el)
       return Number(el)
     },
     showAccordion(){
-        let panel = document.getElementById(this.idpanellabel);
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+      let panel = document.getElementById(this.idpanellabel);
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        this.srcImg= require('../../../assets/caret-down.svg')
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        this.srcImg = require('../../../assets/caret-up.svg')
+      }
     }
   },
   beforeMount() {
     this.idtxtlabel = "txt-label-"+this.device.id
     this.idpanellabel = 'panel-label-'+this.device.id
+    this.idcaret = 'caret-'+this.device.id
   },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
@@ -117,6 +121,7 @@ export default {
     htmldescription.style.textAlign='left'
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)
     this.isfirefox = this.$store.getters.getIsFirefox;
+    this.srcImg = require('../../../assets/caret-down.svg')
   },
   updated() {
     this.device.temps[0] = this.temps;
