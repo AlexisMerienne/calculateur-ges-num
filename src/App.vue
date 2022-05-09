@@ -237,6 +237,7 @@ export default {
   cursor: pointer;
 }
 
+
 .actions-view-button {
   text-align: center;
   display: flex;
@@ -248,6 +249,7 @@ export default {
   margin: 2px 5px 0px 5px;
   cursor: pointer;
 }
+
 .charts-view-button{
   text-align: center;
   display: flex;
@@ -259,6 +261,7 @@ export default {
   margin: 2px 5px 0px 5px;
   cursor: pointer;
 }
+
 #wrapper{
   width: 100%;
 }

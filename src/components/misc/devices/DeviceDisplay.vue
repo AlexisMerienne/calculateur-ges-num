@@ -1,8 +1,8 @@
 <template>
   <div id="displayer" shadow="">
     <div id="displat-txt-label" class="accordion" v-on:click="showAccordion()">
-        <div v-bind:id="idtxtlabel" style="display:flex;margin-bottom: 0px;margin-right: 20px;width: 80%"></div>
-        <div id="caret-down-container" style="width: 20%">
+        <div v-bind:id="idtxtlabel" style="display:flex;margin-bottom: 0px;margin-right: 20px;width: 85%"></div>
+        <div id="caret-down-container" style="width: 15%">
           <div id="caret-down" style="display: flex;justify-content: flex-end">
             <img v-bind:id="idcaret" v-bind:src="srcImg" alt="caret-down" height="24">
           </div>
