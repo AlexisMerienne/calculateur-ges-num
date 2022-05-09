@@ -7,9 +7,13 @@
           content="Ajoutez les actions que vous faites pendant une journée type."
       ></Popup>
     </div>
+
     <div v-for="action in actions" :key="action.id">
       <ActionDisplay v-bind:id="action.id"/>
     </div>
+
+    <PopupAddAction/>
+
     <div id="buttons">
       <b-dropdown toggle-class="rounded-circle px-2.8" size="lg" variant="white" pill right style="margin: 5px;" no-caret>
         <template #button-content>
@@ -26,10 +30,12 @@
 
 import ActionDisplay from "@/components/misc/actions/ActionsDisplay";
 import Popup from "@/components/Popup";
+import PopupAddAction from "@/components/PopupAddAction";
+
 
 export default {
   name: "Actions",
-  components: {ActionDisplay,Popup},
+  components: {ActionDisplay,Popup,PopupAddAction},
   data() {
     return {
       actions : this.$store.getters.getActions

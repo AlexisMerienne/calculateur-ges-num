@@ -8,17 +8,14 @@
         <div class="close" style="display: flex;justify-content: right;text-align: left">
           <span class="close" v-on:click="closePopup">&times;</span>
         </div>
-        <div class="device-chooser" v-on:click="addDevice('smartphone')">
-          <h6 class="device-chooser-txt">Smartphone</h6>
+        <div class="action-chooser" v-on:click="addAction('mail')">
+          <h6 class="action-chooser-txt">Mails</h6>
         </div>
-        <div class="device-chooser" v-on:click="addDevice('laptop')">
-          <h6 class="device-chooser-txt">Laptop</h6>
+        <div class="action-chooser" v-on:click="addAction('video')">
+          <h6 class="action-chooser-txt">Vidéo</h6>
         </div>
-        <div class="device-chooser" v-on:click="addDevice('tele')">
-          <h6 class="device-chooser-txt">Télé</h6>
-        </div>
-        <div class="device-chooser" v-on:click="addDevice('ordinateurfixe')">
-          <h6 class="device-chooser-txt">Ordinateur fixe</h6>
+        <div class="action-chooser" v-on:click="addAction('insta')">
+          <h6 class="action-chooser-txt">Réseaux (a)sociaux</h6>
         </div>
       </div>
     </div>
@@ -44,8 +41,8 @@ export default {
     closePopup() {
       document.getElementById("myModal-plus").style.display = "none";
     },
-    addDevice(device) {
-      this.$store.commit('CREATE_DEVICE',device)
+    addAction(action) {
+      this.$store.commit('CREATE_ACTION',action)
       this.closePopup()
     }
   },
@@ -119,7 +116,7 @@ export default {
   text-align: center;
   box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(214, 214, 214, 0.62);
 }
-.device-chooser{
+.action-chooser{
   display: flex;
   text-align: left;
   padding: 10px 0px;
@@ -128,11 +125,11 @@ export default {
   margin: 5px 0px;
   cursor: pointer;
 }
-.device-chooser:hover{
+.action-chooser:hover{
   background-color: #bcd7ff;
 }
-.device-chooser-txt{
-  margin: 2px 20px ;
+.action-chooser-txt{
+  margin: 2px 20px;
 }
 
 </style>

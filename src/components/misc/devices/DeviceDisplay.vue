@@ -19,14 +19,14 @@
         </Slider>
       </div>
       <div v-else style="display:flex;justify-content:center;width: 100%">
-        <div id="range-slider-container" style="display: flex;justify-content:center;width:80%;margin-top:10px;background-color: #2852f9;border-radius: var(--border-radius-main)">
+        <div id="range-slider-container" style="display: flex;justify-content:center;width:80%;margin-top:10px;background-color: rgba(119,136,153,0.73);border-radius: var(--border-radius-main)">
         <range-slider
             class="slider"
             min="0"
             max="24"
             step="1"
             v-model="temps"
-            style="width: 50%;margin: 1em 0px">
+            style="width: 80%;margin: 1em 0px">
         </range-slider>
         </div>
       </div>

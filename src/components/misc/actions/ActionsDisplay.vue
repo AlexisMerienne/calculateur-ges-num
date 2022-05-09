@@ -11,7 +11,7 @@
         <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
       </div>
     </div>
-    <div v-else id="descr-service-num" style="display: flex;flex-direction: column">
+    <div v-else id="descr-service-num" style="display: flex;flex-direction: column;">
       <div v-html="printDescription()"></div>
       <div v-if="isfirefox">
         <Slider
@@ -22,7 +22,8 @@
             @send-value="setValue">
         </Slider>
       </div>
-      <div v-else>
+      <div v-else style="display:flex;justify-content:center;width: 100%">
+      <div id="range-slider-container" style="display: flex;justify-content:center;align-items:center;width:80%;margin-top:10px;background-color: rgba(119,136,153,0.73);border-radius: var(--border-radius-main);min-height: 30px">
       <range-slider
           class="slider"
           min="0"
@@ -30,6 +31,7 @@
           step="1"
           v-model="value1">
       </range-slider>
+        </div>
       </div>
     </div>
     <div class="d-button" style="width:100%">
