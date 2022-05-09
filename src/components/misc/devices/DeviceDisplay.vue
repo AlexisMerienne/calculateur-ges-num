@@ -1,36 +1,43 @@
 <template>
   <div id="displayer" shadow="">
-    <div id="displat-txt-label" style="display: flex;align-items:center;flex-direction: column;width: 100%">
-      <div v-bind:id="idtxtlabel" style="margin-bottom: 0px"></div>
-    </div>
-    <div v-if="isfirefox">
-      <Slider
-        :min=0
-        :max=24
-        :id="id"
-        v-bind:ivalue=parseInt(this.device.temps[0])
-        @send-value="setValue">
-      </Slider>
-    </div>
-    <div v-else style="display:flex;justify-content:center;width: 100%">
-      <range-slider
-          class="slider"
-          min="0"
-          max="24"
-          step="1"
-          v-model="temps"
-          style="width: 50%;margin: 1em 0px">
-      </range-slider>
-    </div>
-    <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;align-items:center;margin-top: 10px;width: 100%;margin-bottom: 10px">
-      <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{setDetteTxt(device.dette_fabrication)}} an(s)</strong></h6>
-      <div class="form">
-        <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+    <div id="displat-txt-label" class="accordion" v-on:click="showAccordion()">
+      <div id="container-accordion" style="display: flex;">
+        <div v-bind:id="idtxtlabel" style="margin-bottom: 0px"></div>
+        <div id="caret-down">
+          <img src="../../../assets/caret-down.svg" alt="caret-down" height="24">
+        </div>
       </div>
     </div>
-    <div class="d-button" style="width:100%">
-      <div class="d-button-container" style="display: flex;justify-content:right">
-        <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+    <div class="panel" v-bind:id="idpanellabel">
+      <div v-if="isfirefox">
+        <Slider
+          :min=0
+          :max=24
+          :id="id"
+          v-bind:ivalue=parseInt(this.device.temps[0])
+          @send-value="setValue">
+        </Slider>
+      </div>
+      <div v-else style="display:flex;justify-content:center;width: 100%">
+        <range-slider
+            class="slider"
+            min="0"
+            max="24"
+            step="1"
+            v-model="temps"
+            style="width: 50%;margin: 1em 0px">
+        </range-slider>
+      </div>
+      <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;align-items:center;margin-top: 10px;width: 100%;margin-bottom: 10px">
+        <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{setDetteTxt(device.dette_fabrication)}} an(s)</strong></h6>
+        <div class="form">
+          <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+        </div>
+      </div>
+      <div class="d-button" style="width:100%">
+        <div class="d-button-container" style="display: flex;justify-content:right">
+          <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +66,7 @@ export default {
       temps : 0,
       description :"",
       idtxtlabel : "",
+      idpanellabel:"",
       isfirefox : false,
     }
   },
@@ -82,10 +90,19 @@ export default {
     setDetteTxt(el){
       console.log(typeof el)
       return Number(el)
+    },
+    showAccordion(){
+        let panel = document.getElementById(this.idpanellabel);
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
     }
   },
   beforeMount() {
     this.idtxtlabel = "txt-label-"+this.device.id
+    this.idpanellabel = 'panel-label-'+this.device.id
   },
   mounted() {
     this.device = this.$store.getters.getDevice(this.id);
@@ -126,6 +143,10 @@ export default {
   margin : 10px 10%;
   background-color: #eff4f9;
 }
+#displayer:hover{
+  background-color: #bcd7ff;
+}
+
 #b-delete{
   margin : 3px
 }

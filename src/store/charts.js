@@ -202,6 +202,5 @@ export const chartsModule = {
         SET_SHOW_BILAN(state,bool){
             state.showBilan=bool;
         }
-
     }
 }

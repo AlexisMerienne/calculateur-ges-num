@@ -67,3 +67,26 @@ form-input::-webkit-inner-spin-button {
 form-input[type=number] {
     -moz-appearance: textfield;
 }
+
+.accordion{
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    padding: 18px;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color:  #eff4f9;
+    display: none;
+    overflow: hidden;
+    border-radius: var(--border-radius-main);
+}
