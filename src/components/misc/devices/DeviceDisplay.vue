@@ -19,6 +19,7 @@
         </Slider>
       </div>
       <div v-else style="display:flex;justify-content:center;width: 100%">
+        <div id="range-slider-container" style="display: flex;justify-content:center;width:80%;margin-top:10px;background-color: #2852f9;border-radius: var(--border-radius-main)">
         <range-slider
             class="slider"
             min="0"
@@ -27,6 +28,7 @@
             v-model="temps"
             style="width: 50%;margin: 1em 0px">
         </range-slider>
+        </div>
       </div>
       <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;align-items:center;margin-top: 10px;width: 100%;margin-bottom: 10px">
         <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{setDetteTxt(device.dette_fabrication)}} an(s)</strong></h6>
