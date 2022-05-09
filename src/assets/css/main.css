@@ -6,6 +6,7 @@
 :root{
     --clr-blue-main: #6887ff;
     --clr-blue-scd: #007bff ;
+    --clr-blue-light : #eff4f9;
     --border-radius-main : 7px;
     --border-radius-max : 10em;
 }
@@ -71,7 +72,8 @@ form-input[type=number] {
 .accordion{
     display: flex;
     align-items:center;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     cursor: pointer;
     padding: 18px;
@@ -85,8 +87,9 @@ form-input[type=number] {
 /* Style the accordion panel. Note: hidden by default */
 .panel {
     padding: 0 18px;
-    background-color:  #eff4f9;
-    display: none;
+    background-color:#eff4f9;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
     border-radius: var(--border-radius-main);
 }

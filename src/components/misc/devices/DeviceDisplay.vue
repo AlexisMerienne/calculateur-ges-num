@@ -1,12 +1,12 @@
 <template>
   <div id="displayer" shadow="">
     <div id="displat-txt-label" class="accordion" v-on:click="showAccordion()">
-      <div id="container-accordion" style="display: flex;">
-        <div v-bind:id="idtxtlabel" style="margin-bottom: 0px"></div>
-        <div id="caret-down">
-          <img src="../../../assets/caret-down.svg" alt="caret-down" height="24">
+        <div v-bind:id="idtxtlabel" style="display:flex;margin-bottom: 0px;margin-right: 20px;width: 80%"></div>
+        <div id="caret-down-container" style="width: 20%">
+          <div id="caret-down" style="display: flex;justify-content: flex-end">
+            <img src="../../../assets/caret-down.svg" alt="caret-down" height="24">
+          </div>
         </div>
-      </div>
     </div>
     <div class="panel" v-bind:id="idpanellabel">
       <div v-if="isfirefox">
@@ -34,7 +34,7 @@
           <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
         </div>
       </div>
-      <div class="d-button" style="width:100%">
+      <div class="d-button" style="width:100%;margin-bottom: 5px">
         <div class="d-button-container" style="display: flex;justify-content:right">
           <b-button id="b-delete" pill variant="outline-danger" v-on:click="onDelete">Supprimer</b-button>
         </div>
@@ -93,10 +93,10 @@ export default {
     },
     showAccordion(){
         let panel = document.getElementById(this.idpanellabel);
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
         } else {
-          panel.style.display = "block";
+          panel.style.maxHeight = panel.scrollHeight + "px";
         }
     }
   },
