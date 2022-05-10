@@ -5,7 +5,7 @@
         <span><h5>-- <strong>Mon Bilan</strong> --</h5></span>
       </div>
       <div id="image-budget-carbone" v-on:click="goToSourceBudgetCarbone">
-        <img src='../../assets/ec_et_budget_carbone.png' alt='Budget carbone 2050' href="https://www.cigref.fr/wp/wp-content/uploads/2021/12/Cigref-INR-Sobriete-numerique-Piloter-empreinte-environnementale-numerique-par-mesure-Decembre-2021-MAJ-16122021.pdf">
+        <img src='../../assets/ec_et_budget_carbone.png' alt='Budget carbone 2050' width="100%">
       </div>
       <div style="text-align: left">
         <h5><br>Cliquez sur le boutton ci-dessous pour connaître le détail de ces émissions.</h5>
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     goToSourceBudgetCarbone(){
-        window.open("https://www.cigref.fr/wp/wp-content/uploads/2021/12/Cigref-INR-Sobriete-numerique-Piloter-empreinte-environnementale-numerique-par-mesure-Decembre-2021-MAJ-16122021.pdf", "_blank");
+        window.open("https://www.statistiques.developpement-durable.gouv.fr/sites/default/files/2020-01/datalab-essentiel-204-l-empreinte-carbone-des-francais-reste-%20stable-janvier2020.pdf", "_blank");
     }
   },
   mounted() {

@@ -8,32 +8,32 @@ export default new Router({
     mode : "history",
     routes: [
         {
-            path: "/",
+            path: "./",
             name: "home",
             component: () => import("./components/views/Devices.vue")
         },
         {
-            path: "/",
+            path: "./",
             name: "homemobile",
             component: () => import("./components/views/mobile/DeviceMobile.vue")
         },
         {
-            path: "/actions",
+            path: "./actions",
             name: "actions",
             component: () => import("./components/views/Actions.vue")
         },
         {
-            path: "/actions",
+            path: "./actions",
             name: "actionsmobile",
             component: () => import("./components/views/mobile/ActionsMobile")
         },
         {
-            path: "/charts",
+            path: "./bilan",
             name: "charts",
             component: () => import("./components/views/Charts.vue")
         },
         {
-            path: "/charts",
+            path: "./bilan",
             name: "chartsmobile",
             component: () => import("./components/views/mobile/ChartsMobile")
         },
