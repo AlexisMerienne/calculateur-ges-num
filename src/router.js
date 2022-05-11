@@ -29,12 +29,12 @@ export default new Router({
         },
         {
             path: "./bilan",
-            name: "charts",
+            name: "bilan",
             component: () => import("./components/views/Charts.vue")
         },
         {
             path: "./bilan",
-            name: "chartsmobile",
+            name: "bilanmobile",
             component: () => import("./components/views/mobile/ChartsMobile")
         },
     ]

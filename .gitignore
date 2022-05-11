@@ -3,7 +3,7 @@ node_modules
 .firebaserc
 .firebase
 .firebase.json
-
+.deploy.cmd
 
 # local env files
 .env.local
