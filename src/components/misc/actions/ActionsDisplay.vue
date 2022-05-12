@@ -141,7 +141,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 10px 10%;
-  background-color: #eff4f9;
+  background-color: #dde5f8;
 }
 #displayer:hover{
   background-color: #bcd7ff;

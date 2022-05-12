@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper" shadow="">
+  <div id="wrapper" wrapper="">
       <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
         <h3>1. Mes appareils</h3>
         <PopupExplanation
@@ -41,6 +41,8 @@ export default {
   flex-direction: column;
   align-items: center;
   min-width: 275px;
+
+
 }
 #buttons{
   display: flex;

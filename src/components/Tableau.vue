@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-main-container" shadow="">
+  <div class="tab-main-container" wrapper="">
     <div class="title-header" shadow="">
       <strong>{{title}}</strong>
     </div>
@@ -54,6 +54,7 @@
   flex-direction: column;
   justify-content: center;
   width: 80%;
+  border-radius: 7px;
 
 }
 .title-header{

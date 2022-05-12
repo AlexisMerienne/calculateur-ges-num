@@ -1,5 +1,5 @@
 <template>
-  <div id="actions-wrapper" shadow="">
+  <div id="actions-wrapper" wrapper="">
     <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
       <h3>2. Mes applications</h3>
       <Popup

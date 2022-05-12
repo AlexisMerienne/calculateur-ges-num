@@ -1,7 +1,7 @@
 <template>
-  <div id="displayer" shadow="">
+  <div id="displayer">
     <div id="displat-txt-label" style="display: flex;flex-direction: row">
-      <div v-bind:id="idtxtlabel"></div><div style="width: 2px"></div>
+      <div v-bind:id="idtxtlabel" style="padding: 10px"></div><div style="width: 2px"></div>
     </div>
     <range-slider
         class="slider"
@@ -12,8 +12,10 @@
     </range-slider>
     <div id="display-dette-ddv" style="margin-top: 10px">
       <h6>Je possède cet appareil depuis <strong>{{device.dette_fabrication}} an(s)</strong></h6>
-      <div class="form">
+      <div style="display: flex;justify-content: center">
+      <div class="form" id="form-mobile">
         <input id="dette-ddv-v2" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+      </div>
       </div>
     </div>
     <div class="d-button" style="width:100%">
@@ -93,12 +95,16 @@ export default {
   align-items: center;
   margin : 20px 0px;
   background-color:#eff4f9;
-  min-width: 100%;
+  width: 90%;
+  border-radius: var(--border-radius-main);
 }
 #b-delete{
   margin : 3px
 }
 .slider {
   width: 200px;
+}
+#form-mobile{
+  width: 70%;
 }
 </style>

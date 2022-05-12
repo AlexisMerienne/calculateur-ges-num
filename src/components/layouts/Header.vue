@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-      <h5 style="max-width: 300px"><strong>Impactomètre carbone du <span style="color:#6887ff">numérique</span></strong></h5>
+      <h5 style="max-width: 300px;color: lightgrey"><strong>Impactomètre carbone du <span style="color:#6887ff">numérique</span></strong></h5>
     <div id="logo-img" alt="logo-i3S" v-on:click="goToI3s">
-      <img id="img-logo-i3s" src="../../assets/NewlogoI3S_0.png" alt="I3S logo" width="100%">
+      <img id="img-logo-i3s" src="../../assets/NewlogoI3S_0.png" alt="I3S logo" width="65%" >
     </div>
   </div>
 </template>
@@ -39,8 +39,11 @@ export default {
 h2{
   margin-left: 10px;
 }
-logo-img{
+#logo-img{
+  display: flex;
+  justify-content: flex-end;
   cursor: pointer;
 }
+
 
 </style>

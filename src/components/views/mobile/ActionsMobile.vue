@@ -1,7 +1,7 @@
 <template>
   <div id="actions-wrapper">
     <div id="title-and-question" style="display: flex;flex-direction: row;justify-content: space-around">
-      <h3>Mes actions</h3>
+      <h3 style="color: lightgrey">Mes actions</h3>
       <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
@@ -9,7 +9,7 @@
       ></Popup>
     </div>
     <div id="actions-column">
-      <div v-for="action in actions" :key="action.id">
+      <div v-for="action in actions" :key="action.id" style="display:flex;justify-content:center;">
         <ActionsDisplayMobile v-bind:id="action.id"/>
       </div>
     </div>

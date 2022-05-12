@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="body">
     <div id="app">
       <div v-if="isMobile">
         <HeaderMobile/>
@@ -164,18 +164,12 @@ export default {
       footer.style.marginTop = (screeneheight-300).toString() + "px";
     },
     setIsClickCss(el){
-      el.style.marginRight = '2px 2px;'
       el.style.backgroundColor='#6887ff'
       el.style.marginTop = "0px"
-      el.style.marginRight = "Opx"
-      el.style.marginLeft = "0px"
     },
     setIsNotClickCss(el){
-      el.style.marginRight = '2px 5px;'
       el.style.backgroundColor='#eff4f9'
       el.style.marginTop = "2px"
-      el.style.marginRight = "5px"
-      el.style.marginLeft = "5px"
     },
     setRoute(routeName){
       this.$router.push({name:routeName})
@@ -239,6 +233,11 @@ export default {
 </script>
 
 <style>
+
+#body{
+  background-color: #313131;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -262,7 +261,7 @@ export default {
   flex-direction: row;
   width: 100%;
   height: 40px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .device-view-button {
   text-align: center;
@@ -271,8 +270,8 @@ export default {
   align-items: center;
   background-color: #6887ff;
   border-radius: 7px 7px 0px 0px;
-  width: 100%;
-  margin: 0px 0px;
+  width: 90%;
+  margin-right: 2px;
   cursor: pointer;
 }
 
@@ -284,8 +283,8 @@ export default {
   align-items: center;
   background-color: #eff4f9;
   border-radius: 7px 7px 0px 0px;
-  width: 100%;
-  margin: 2px 5px 0px 5px;
+  width: 90%;
+  margin: 2px 2px 0px 2px;
   cursor: pointer;
 }
 
@@ -296,8 +295,8 @@ export default {
   align-items: center;
   background-color: #eff4f9;
   border-radius: 7px 7px 0px 0px;
-  width: 100%;
-  margin: 2px 5px 0px 5px;
+  width: 90%;
+  margin: 2px 0px 0px 2px;
   cursor: pointer;
 }
 

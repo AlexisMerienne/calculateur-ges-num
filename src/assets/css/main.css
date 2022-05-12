@@ -20,6 +20,12 @@ div[shadow] {
     background: #ffffff;
 }
 
+div[wrapper] {
+    background-color: white;
+    border-radius:0px 0px var(--border-radius-main) var(--border-radius-main);
+    padding: 10px 20px;
+}
+
 *,
 *::before,
 *::after {
@@ -57,17 +63,7 @@ div[shadow] {
     border-color: dimgrey;
 }
 
-/* Chrome, Safari, Edge, Opera */
-form-input::-webkit-outer-spin-button,
-form-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 
-/* Firefox */
-form-input[type=number] {
-    -moz-appearance: textfield;
-}
 
 .accordion{
     display: flex;

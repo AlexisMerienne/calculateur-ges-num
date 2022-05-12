@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <div id="title-and-question" style="width:80%;display: flex;flex-direction: row;justify-content: space-between;">
-      <h3>Mes appareils</h3>
+      <h3 style="color: lightgrey">Mes appareils</h3>
       <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
@@ -9,7 +9,7 @@
       ></Popup>
     </div>
     <div id="devices-column">
-      <div  v-for="device in devices" :key="device.id">
+      <div  v-for="device in devices" :key="device.id" style="display:flex;justify-content:center;">
         <DeviceDisplayMobile v-bind:id="device.id"/>
       </div>
     </div>

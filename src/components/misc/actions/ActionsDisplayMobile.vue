@@ -1,14 +1,18 @@
 <template>
-  <div id="displayer" shadow="">
+  <div id="displayer">
     <div v-if="action.label==='mail'">
-      <h6 style="text-align: left">Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
+      <h6 style="text-align: left;padding: 10px">Les {{action.label}}s que j'ai envoyé aujourd'hui :</h6>
       <h6 style="text-align: left">Mails totals</h6>
-      <div class="form" >
-        <input id="mail" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_1">
+      <div style="display: flex;justify-content: center">
+        <div class="form" style="width: 70%">
+          <input id="mail" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_1">
+        </div>
       </div>
       <h6 style="text-align: left;">Dont avec pièces jointes</h6>
-      <div class="form">
-        <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
+      <div style="display: flex;justify-content: center">
+        <div class="form" style="width: 70%">
+          <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
+        </div>
       </div>
     </div>
     <div v-else style="display: flex;flex-direction: column">
@@ -54,8 +58,8 @@ export default {
       this.$store.commit('DELETE_ACTION',this.id)
     },
     printDescription(){
-      if (this.action.label==='video'){return '<h6>Je regarde  <strong style="color: #2852f9;">' +this.value1 + 'h</strong> de vidéos par jour</h6>';}
-      if (this.action.label==='insta'){return '<h6>Je passe <strong style="color:#2852f9;">' + this.value1 + 'h</strong> sur les réseaux sociaux</h6>';}
+      if (this.action.label==='video'){return '<h6 style="padding: 0.7em">Je regarde  <strong style="color: #2852f9;">' +this.value1 + 'h</strong> de vidéos par jour</h6>';}
+      if (this.action.label==='insta'){return '<h6 style="padding: 0.7em">Je passe <strong style="color:#2852f9;">' + this.value1 + 'h</strong> sur les réseaux sociaux</h6>';}
     },
   },
   updated() {
@@ -77,7 +81,8 @@ export default {
   align-items: center;
   margin: 20px 0px;
   background-color: #eff4f9;
-  min-width: 100%;
+  min-width: 90%;
+  border-radius: var(--border-radius-main);
 }
 #b-delete{
   margin : 3px
@@ -90,5 +95,8 @@ export default {
 }
 .slider {
   width: 200px;
+}
+#form-mobile{
+  width: 70%;
 }
 </style>
