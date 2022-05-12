@@ -29,7 +29,10 @@
     </div>
     </div>
     <div v-else>
-      <Conclusion/>
+      <Conclusion v-bind:firstbilan="firstbilan"/>
+      <div v-if="firstbilan" id="next-chart-bilan" v-on:click="nextChartBilan">
+        <img src="../../../assets/caret-down.svg" width="50" height="50">
+      </div>
     </div>
   </div>
 </template>
@@ -67,10 +70,27 @@ export default {
       isChart : false,
       narcontent : "",
       conclusion : false,
-      isForOnDay : ""
+      isForOnDay : "",
+      firstbilan : true,
+
     }
   },
   methods : {
+    nextChartBilan() {
+      this.conclusion=false;
+      const data = this.$store.getters.getChartData
+      this.chartdata = data.chartdata
+      this.title = data.title
+      this.focus = data.focus
+      this.source = data.src
+      this.total = data.total
+      this.loaded=true;
+      this.isChart = this.$store.getters.getIsChart;
+      this.$store.commit('SET_PROGRESS',1);
+      this.$emit('changeProgress');
+      let wrapper = document.getElementById("wrapper");
+      wrapper.scrollIntoView();
+    },
     nextChart() {
       if (this.isChart && !this.conclusion){
         this.$store.commit('SET_NEXT_NARID');
@@ -94,10 +114,13 @@ export default {
       }
       this.$store.commit('SET_PROGRESS',1)
       this.$emit('changeProgress')
+      let wrapper = document.getElementById("wrapper");
+      wrapper.scrollIntoView();
     }
 
   },
   mounted() {
+    this.conclusion =this.$store.getters.getShowBilan;
     const data = this.$store.getters.getChartData
     this.chartdata = data.chartdata
     this.title = data.title
@@ -123,4 +146,15 @@ export default {
   background-color: lightgray;
   cursor: pointer;
 }
+
+next-chart-bilan{
+  margin: 10px;
+  border-radius: 7px;
+}
+
+#next-chart-bilan:hover{
+  background-color: lightgray;
+  cursor: pointer;
+}
+
 </style>

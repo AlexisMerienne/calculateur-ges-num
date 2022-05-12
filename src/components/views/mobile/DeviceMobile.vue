@@ -13,22 +13,10 @@
         <DeviceDisplayMobile v-bind:id="device.id"/>
       </div>
     </div>
-    <div id="buttons">
-      <b-dropdown  id="dropdown-device" size="lg" variant="white" pill style="margin: 5px;" no-caret>
-        <template #button-content>
-          <div id="round-button" style="display:flex;justify-content:center;align-items:center;height: 60px;width: 60px;background-color: #0033ff;border-radius: 50%;z-index: 98;border-width: 1px;border-color:#0029cc">
-            <img
-                src="../../../assets/plus.svg"
-                alt="plus icon"
-            />
-          </div>
-        </template>
-        <b-dropdown-item v-on:click="addDevice('smartphone')">Smartphone</b-dropdown-item>
-        <b-dropdown-item v-on:click="addDevice('laptop')">Laptop</b-dropdown-item>
-        <b-dropdown-item v-on:click="addDevice('tele')">Télé</b-dropdown-item>
-        <b-dropdown-item v-on:click="addDevice('ordinateurfixe')">Ordinateur fixe</b-dropdown-item>
-      </b-dropdown>
-    </div>
+
+    <PopupAddDevice style="width: 100%"></PopupAddDevice>
+
+
   </div>
 </template>
 
@@ -36,10 +24,11 @@
 
 import DeviceDisplayMobile from "@/components/misc/devices/mobile/DeviceDisplayMobile";
 import Popup from "@/components/Popup";
+import PopupAddDevice from "@/components/PopupAddDevice";
 
 export default {
   name: "WrapperDevice",
-  components: {DeviceDisplayMobile,Popup},
+  components: {DeviceDisplayMobile,Popup,PopupAddDevice},
   data() {
     return {
       devices: this.$store.getters.getDevices,

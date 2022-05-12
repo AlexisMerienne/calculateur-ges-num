@@ -13,32 +13,21 @@
         <ActionsDisplayMobile v-bind:id="action.id"/>
       </div>
     </div>
-    <div id="buttons">
-      <b-dropdown  id="dropdown-device" size="lg" variant="white" pill style="margin: 5px;" no-caret>
-        <template #button-content>
-          <div id="round-button" style="display:flex;justify-content:center;align-items:center;height: 60px;width: 60px;background-color: #0033ff;border-radius: 50%;z-index: 98;border-width: 1px;border-color:#0029cc">
-            <img
-                src="../../../assets/plus.svg"
-                alt="plus icon"
-            />
-          </div>
-        </template>
-        <b-dropdown-item v-on:click="addAction('mail')">mail</b-dropdown-item>
-        <b-dropdown-item v-on:click="addAction('video')">video</b-dropdown-item>
-        <b-dropdown-item v-on:click="addAction('insta')">réseaux (a)sociaux</b-dropdown-item>
-      </b-dropdown>
-    </div>
+
+    <PopupAddAction style="width: 100%"></PopupAddAction>
+
   </div>
 </template>
 
 <script>
 import ActionsDisplayMobile from "@/components/misc/actions/ActionsDisplayMobile";
 import Popup from "@/components/Popup";
+import PopupAddAction from "@/components/PopupAddAction";
 
 
 export default {
   name: "Actions",
-  components: {ActionsDisplayMobile,Popup},
+  components: {ActionsDisplayMobile,Popup,PopupAddAction},
   data() {
     return {
       actions : this.$store.getters.getActions
