@@ -11,8 +11,6 @@ exports.chartData = (data,scenario,id) => {
             return getGESProduction(data,scenario);
         case 'chart-gesutilisationproduction' :
             return getGESProdUtilisation(data,scenario);
-        case 'chart-gesbrique':
-            return getBrique(data,scenario);
         case 'chart-gesdoubleutilisationproduction':
             return getGESProdUtilisationDoubleDureeDeVie(data,scenario)
     }
@@ -173,10 +171,16 @@ function getGESDevice(data,scenario){
     };
 }
 
+/**
+ *
+ * @param data
+ * @param scenario
+ * @returns Les gaz à effet de serre émis lors de la phase de production des appareils;
+ */
 function getGESProduction(data,scenario){
 
+    //On renvoie seulement le coût carbone des appareils qui ont été utilisé dans le scénario établit par l'utilisateur
     const ges_smartphone_daily_prod = getTempsTotalUtilisation(scenario,"smartphone")!=0 ? data.production.GES.smartphone : 0
-
 
     const ges_laptop_daily = getTempsTotalUtilisation(scenario,"laptop")!=0 ?data.production.GES.laptop : 0
 
@@ -224,10 +228,23 @@ function getGESProduction(data,scenario){
     };
 }
 
+/**
+ *
+ * @param data
+ * @param scenario
+ * @returns Calcule le rapport entre les émissions de GES des utilisation avec la production des appareils
+ *
+ * Pour pouvoir comparer ces deux grandeurs, il faut ramener le cout carbone de la production à une unité temporelle
+ * On divise donc le coût carbone lié à la production par l'âge de l'appareil
+ */
+
 function getGESProdUtilisation(data,scenario){
 
 
     const initialValue_1 = 0;const initialValue_2 = 0;
+
+    //On récupère les emmissions en GES de l'utilisation du num sur une journée des actions num et de
+    //la conso elec des appareils
     const ges_utilisation = getGESAction(data,scenario).data.reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue_1
@@ -236,13 +253,15 @@ function getGESProdUtilisation(data,scenario){
             initialValue_2
     );
 
+    //On récupère le coût carbone de la production des appareils utilisé pendant la journée
+    //On divise ce coût carbone par l'âge de l'appareil (âge == dette carbone)
     let ges_production = 0;
     ges_production += getTempsTotalUtilisation(scenario,"smartphone")!=0?data.production.GES.smartphone * Math.pow(10,3) / (getDetteDevices(scenario,data).smartphone * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (getDetteDevices(scenario,data).laptop * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"tele")!=0?data.production.GES.tele_connectee*Math.pow(10,3) / (getDetteDevices(scenario,data).tele * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"ordinateurfixe")!=0?data.production.GES.ordinateurfixe*Math.pow(10,3) / (getDetteDevices(scenario,data).ordinateurfixe * 365.25) : 0
 
-
+    //calcule les ges total émis sur une journée
     const initialValue=0;
     const ges_total = [roundDecimal(ges_utilisation), roundDecimal(ges_production)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
@@ -289,6 +308,14 @@ function getGESProdUtilisation(data,scenario){
     };
 }
 
+
+/**
+ *
+ * @param data
+ * @param scenario
+ * @return On calcule le rapport entre la phase de production et la phase d'utilisation des appareils
+ * Seulement ici, on double l'âge des appareils renseigné par l'utilisateur
+ */
 function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
 
 
@@ -301,6 +328,7 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         initialValue_2
     );
 
+    //Pour chaque appareil, on mutliplie par 2 l'âge des appareils
     let ges_production = 0;
     ges_production += getTempsTotalUtilisation(scenario,"smartphone")!=0?data.production.GES.smartphone * Math.pow(10,3) / (2*getDetteDevices(scenario,data).smartphone * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (2*getDetteDevices(scenario,data).laptop * 365.25) : 0
@@ -352,68 +380,6 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         'src_equation' : 'dettecarbonesobriete.png'
     };
 }
-
-
-
-function getBrique(data,scenario){
-    let ges_terminaux=0
-    let ges_resaux=0
-    let ges_datacenter=0
-
-    const nbr_mail_sans_pj = scenario.actions.mail.nbr_mail-scenario.actions.mail.nbr_mail_pj;
-    const nbr_mail_pj = scenario.actions.mail.nbr_mail_pj;
-    const nrj_mail_res = data.utilisation.actions.mail.conso *  (data.utilisation.actions.onebyte.wifi.energie_par_byte*Math.pow(10,6));
-    const nrj_mail_dc  = data.utilisation.actions.mail.conso *  (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6));
-    const nrj_mail_pj_res = data.utilisation.actions.mail_piece_jointe.conso * data.utilisation.actions.onebyte.wifi.energie_par_byte*Math.pow(10,6);
-    const nrj_mail_pj_dc = data.utilisation.actions.mail_piece_jointe.conso *(data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6))
-    const nrj_mail_daily_res = nbr_mail_sans_pj*nrj_mail_res + nbr_mail_pj*nrj_mail_pj_res;
-    const nrj_mail_daily_dc = nbr_mail_sans_pj*nrj_mail_dc + nbr_mail_pj*nrj_mail_pj_dc;
-    ges_resaux+=roundDecimal(nrj_mail_daily_res*data.ges_elec_france.valeur)
-    ges_datacenter+=roundDecimal(nrj_mail_daily_dc*data.ges_elec_france.valeur)
-
-    const mn_video = scenario.actions.video.temps
-    const nrj_video_mn_res = data.utilisation.actions.video.conso *  (data.utilisation.actions.onebyte.wifi.energie_par_byte*Math.pow(10,6));
-    const nrj_video_mn_dc = data.utilisation.actions.video.conso * (data.utilisation.actions.onebyte.datacenter.energie*Math.pow(10,6));
-    const nrj_video_daily_res=mn_video*nrj_video_mn_res;
-    const nrj_video_daily_dc = mn_video*nrj_video_mn_dc;
-    ges_resaux+=roundDecimal(nrj_video_daily_res*data.ges_elec_france.valeur)
-    ges_datacenter+=roundDecimal(nrj_video_daily_dc*data.ges_elec_france.valeur)
-
-    const initialValue_1 = 0
-    ges_terminaux += getGESProdUtilisation(data,scenario).data.reduce(
-        (previousValue, currentValue) => previousValue + currentValue,
-        initialValue_1)
-
-    const initialValue=0;
-    const ges_total = [roundDecimal(ges_terminaux), roundDecimal(ges_resaux), roundDecimal(ges_datacenter)].reduce(
-        (previousValue, currentValue) => previousValue + currentValue,
-        initialValue);
-
-    const src = [{
-        id : 0,
-        src : 'base-carbone ADEME'
-    },
-        {
-            id : 1,
-            src : "Rapport The Shift Project numérique 2018"
-        },
-        {
-            id : 2,
-            src :"rapport CITIZEN : 'Empreinte carbone du numérique en France : des politiques publiques suffisantes pour faire face à l’accroissement des usages ? ' - juin 2020"
-        }]
-    return {
-        'data' : [roundDecimal(ges_terminaux), roundDecimal(ges_resaux), roundDecimal(ges_datacenter)],
-        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
-        'totalTab' : roundDecimal(ges_total),
-        'labels' : ['terminaux','réseaux','datacenter'],
-        'title': "GES par 'brique numérique'",
-        'focus' : "On calcule les émissions de GES par brique numérique",
-        'src' : src,
-        'addrow' : false,
-        'rowlabel' : ''
-    };
-}
-
 
 
 

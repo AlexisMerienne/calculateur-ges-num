@@ -8,7 +8,7 @@ export const chartsModule = {
         gesdata : data,
         scenario : scenario,
         chartsids : ['chart-gesdevice','chart-gesaction','chart-gesproduction','chart-gesutilisationproduction','chart-gesdoubleutilisationproduction'],
-        currentid : 'chart-gesbrique',
+        currentid : 'chart-gesdoubleutilisationproduction',
         narids : ['nar-gesdevice','nar-gesaction','nar-gesproduction','nar-gesutilisationproduction','nar-sobrieteproduction'],
         currentnarid : 'nar-gesdevice',
         isChart : false,

@@ -1,6 +1,6 @@
 <template>
   <div id="popup-wrapper">
-    <div class="plus-button" v-on:click="onClickPopup">
+    <div class="plus-button" id="plus-button-device" v-on:click="onClickPopup">
       +
     </div>
     <div id="myModal-plus" class="modal">
@@ -28,10 +28,6 @@
 <script>
 export default {
   name: "Popup",
-  props: {
-    textbutton : String,
-    content : String,
-  },
   data() {
     return {
       isMobile : false,
@@ -54,6 +50,7 @@ export default {
     if(this.isMobile==true){
       document.getElementById('modal-content-plus').style.margin="5px"
       document.getElementById('modal-content-plus').style.width="90%"
+      document.getElementById('plus-button-device').style.backgroundColor='#007bff'
     }
   }
 }

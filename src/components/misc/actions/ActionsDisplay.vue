@@ -1,10 +1,10 @@
 <template>
   <div id="displayer" shadow="">
     <div v-if="action.label==='mail'" style="display: flex;flex-direction: column;width: 100%;">
-      <div id="displat-txt-label" class="accordion" v-on:click="showAccordion()">
+      <div id="displat-txt-label-mail" class="accordion" v-on:click="showAccordion()">
         <h6 style="text-align: left">En moyenne, j'envoie <span style="color:#2852f9">{{action.value_1}}</span><strong> mails</strong>, dont <span style="color:#2852f9">{{action.value_2}}</span> avec <strong>pièce jointe</strong></h6>
-        <div id="caret-down-container" style="width: 15%">
-          <div id="caret-down" style="display: flex;justify-content: flex-end">
+        <div id="caret-down-container-mail" style="width: 15%">
+          <div id="caret-down-mail" style="display: flex;justify-content: flex-end">
             <img v-bind:id="idcaret" v-bind:src="srcImg" alt="caret-down" height="24">
           </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" wrapper="">
     <div id="title-and-question" style="width:80%;display: flex;flex-direction: row;justify-content: space-between;">
-      <h3 style="color: lightgrey">Mes appareils</h3>
+      <h3>Mes appareils</h3>
       <div id="some-space" style="width: 20px"></div>
       <Popup
           textbutton="?"
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <PopupAddDevice style="width: 100%"></PopupAddDevice>
+    <PopupAddDevice style="width: 100%;"></PopupAddDevice>
 
 
   </div>
@@ -52,6 +52,7 @@ export default {
   justify-content: center;
   align-items: center;
   min-width: 275px;
+  background-color: var(--clr-blue-wrapper);;
 }
 
 #buttons{

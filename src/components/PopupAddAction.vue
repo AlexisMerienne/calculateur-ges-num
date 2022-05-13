@@ -1,6 +1,6 @@
 <template>
   <div id="popup-wrapper">
-    <div class="plus-button" v-on:click="onClickPopup">
+    <div class="plus-button" id="plus-button-action" v-on:click="onClickPopup">
       +
     </div>
     <div id="myModal-plus" class="modal">
@@ -51,6 +51,8 @@ export default {
     if(this.isMobile==true){
       document.getElementById('modal-content-plus').style.margin="5px"
       document.getElementById('modal-content-plus').style.width="90%"
+      document.getElementById('plus-button-action').style.backgroundColor='#007bff'
+
     }
   }
 }

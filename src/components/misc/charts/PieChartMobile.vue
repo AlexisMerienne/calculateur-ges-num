@@ -92,6 +92,7 @@ export default {
       wrapper.scrollIntoView();
     },
     nextChart() {
+
       if (this.isChart && !this.conclusion){
         this.$store.commit('SET_NEXT_NARID');
         this.narcontent = this.$store.getters.getNarData;
@@ -99,6 +100,9 @@ export default {
         this.$store.commit('SET_iS_CHART',false);
         this.conclusion = this.narcontent.isEnd;
         this.conclusion ? this.$store.commit('SET_NARID_END') : null;
+        if (this.conclusion){
+          this.firstbilan = false;
+        }
       }else if (!this.conclusion){
         this.loaded = false;
         this.$store.commit('SET_NEXT_CHARTID');

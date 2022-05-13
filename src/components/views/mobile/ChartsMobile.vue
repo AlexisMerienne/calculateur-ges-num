@@ -1,8 +1,8 @@
 <template>
   <div id="wrapper" wrapper="">
     <div id="progress-wrapper" style="display: flex;flex-direction: row;justify-content:center;width: 100%">
-      <progress id="progress" v-bind:value="progress" max="11">70 %</progress>
-      <h6 style="margin-left: 10px">{{progress}}/11</h6>
+      <progress id="progress" v-bind:value="progress" max="12">70 %</progress>
+      <h6 style="margin-left: 10px">{{progress}}/12</h6>
     </div>
     <PieChartMobile v-on:changeProgress="updateProgress"/>
   </div>
