@@ -2,7 +2,7 @@
 
 ### Présentation
 
-Ce projet a pour vocation de développer un outil permettant de mesurer l'impact carbone de votre utilisation du numérique. Il se présente sous la forme d'une interface intuitive par laquelle on peut spécifier les apparails numériques que l'on utilise en une journée ainsi que les services numériques que l'on effectue.
+Ce projet a pour vocation de développer un outil permettant de mesurer l'impact carbone de votre utilisation du numérique. Il se présente sous la forme d'une interface intuitive par laquelle on peut spécifier les appareils numériques que l'on utilise sur une journée ainsi que les services numériques que l'on effectue.
 
 Vous pouvez trouver une version du site sur : https://mon-impact-numerique.web.app/
 
