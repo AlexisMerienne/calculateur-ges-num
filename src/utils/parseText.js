@@ -8,6 +8,8 @@ exports.setTextDevice = (device,temps) => {
             return "Ma <strong> télé </strong>📺 est allumée pendant <strong style='color: #2852f9;'>"+temps+"h</strong> dans une journée"
         case 'ordinateurfixe' :
             return "J'utilise mon <strong> ordinateur fixe </strong>🖥 pendant <strong style='color: #2852f9;'>"+temps+"h</strong> dans une journée"
+        case 'tablette' :
+            return "L'écran de ma <strong> tablette </strong>📟 est allumé pendant <strong style='color: #2852f9;'>"+temps+"h</strong> dans une journée"
         default :
             return "Appareil non reconnu"
     }

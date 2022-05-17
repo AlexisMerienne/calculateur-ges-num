@@ -27,7 +27,7 @@
     </div>
     <div v-else id="descr-service-num" style="display: flex;flex-direction: column;">
       <div id="displat-txt-label" class="accordion" v-on:click="showAccordion()">
-        <div v-html="printDescription()"></div>
+        <div style="display:flex;margin-bottom: 0px;margin-right: 20px;width: 85%" v-html="printDescription()"></div>
         <div id="caret-down-container" style="width: 15%">
           <div id="caret-down" style="display: flex;justify-content: flex-end">
             <img v-bind:id="idcaret" v-bind:src="srcImg" alt="caret-down" height="24">

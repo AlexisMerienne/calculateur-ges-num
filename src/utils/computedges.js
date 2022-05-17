@@ -128,6 +128,10 @@ function getGESDevice(data,scenario){
     const nrj_ordifixe_daily = (data.utilisation.equipement.ordinateurfixe.energie / (365.25 * 24))*temps_ordifixe
     const ges_ordifixe=(nrj_ordifixe_daily*data.ges_elec_france.valeur)
 
+    const temps_tablette = getTempsTotalUtilisation(scenario,"tablette")
+    const nrj_tablette_daily = (data.utilisation.equipement.tablette.energie / (365.25 * 24))*temps_tablette
+    const ges_tablette=(nrj_tablette_daily*data.ges_elec_france.valeur)
+
     const src = [{
             id : 0,
             src : 'base-carbone ADEME',
@@ -155,16 +159,16 @@ function getGESDevice(data,scenario){
         initialValue);
 
     return {
-        'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe)],
+        'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe),roundDecimal(ges_tablette)],
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'totalTab' : roundDecimal(ges_total),
-        'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
+        'labels' : ['smartphone','laptop','tele','ordinateur fixe','tablette'],
         'title': "Emmission de GES de l'utilisation des appareils numérique",
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
         'src' : src,
         'addrow' : true,
         'rowlabel' : 'utilisation appareils',
-        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5]],
+        'backgroundColor' : [getColors().elecColor[0],getColors().elecColor[1],getColors().elecColor[2],getColors().elecColor[3],getColors().elecColor[4],getColors().elecColor[5],getColors().elecColor[6]],
         'isEquation' :true,
         'src_equation' : 'formuleconsodevice.png'
 
@@ -188,10 +192,11 @@ function getGESProduction(data,scenario){
 
     const ges_ordifix_daily = getTempsTotalUtilisation(scenario,"ordinateurfixe") !=0 ? data.production.GES.ordinateurfixe : 0
 
+    const ges_tablette_daily = getTempsTotalUtilisation(scenario,"tablette") !=0 ? data.production.GES.tablette : 0
 
 
     const initialValue=0;
-    const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)].reduce(
+    const ges_total = [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily),roundDecimal(ges_tablette_daily)].reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initialValue);
 
@@ -213,16 +218,16 @@ function getGESProduction(data,scenario){
         }
         ]
     return {
-        'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily)],
+        'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily),roundDecimal(ges_tablette_daily)],
         'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
         'totalTab' : roundDecimal(ges_total),
-        'labels' : ['smartphone','laptop','tele','ordinateur fixe'],
+        'labels' : ['smartphone','laptop','tele','ordinateur fixe','tablette'],
         'title': "Emmission de GES de la production des appareils",
         'focus' : "Ce graphique présente la quantité de gaz à effet de serre émis lors de la production de chaque appareil",
         'src' : src,
         'addrow' : false,
         'rowlabel' : '',
-        'backgroundColor' : [getColors().prodColors[0],getColors().prodColors[1],getColors().prodColors[2],getColors().prodColors[3],getColors().prodColors[4],getColors().prodColors[5]],
+        'backgroundColor' : [getColors().prodColors[0],getColors().prodColors[1],getColors().prodColors[2],getColors().prodColors[3],getColors().prodColors[4],getColors().prodColors[5],getColors().prodColors[6]],
         'isEquation' :false,
         'src_equation' : ''
     };
@@ -260,6 +265,7 @@ function getGESProdUtilisation(data,scenario){
     ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (getDetteDevices(scenario,data).laptop * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"tele")!=0?data.production.GES.tele_connectee*Math.pow(10,3) / (getDetteDevices(scenario,data).tele * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"ordinateurfixe")!=0?data.production.GES.ordinateurfixe*Math.pow(10,3) / (getDetteDevices(scenario,data).ordinateurfixe * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"tablette")!=0?data.production.GES.tablette*Math.pow(10,3) / (getDetteDevices(scenario,data).tablette * 365.25) : 0
 
     //calcule les ges total émis sur une journée
     const initialValue=0;
@@ -334,6 +340,7 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
     ges_production+= getTempsTotalUtilisation(scenario,"laptop")!=0?data.production.GES.laptop * Math.pow(10,3) / (2*getDetteDevices(scenario,data).laptop * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"tele")!=0?data.production.GES.tele_connectee*Math.pow(10,3) / (2*getDetteDevices(scenario,data).tele * 365.25) : 0
     ges_production+= getTempsTotalUtilisation(scenario,"ordinateurfixe")!=0?data.production.GES.ordinateurfixe*Math.pow(10,3) / (2*getDetteDevices(scenario,data).ordinateurfixe * 365.25) : 0
+    ges_production+= getTempsTotalUtilisation(scenario,"tablette")!=0?data.production.GES.tablette*Math.pow(10,3) / (getDetteDevices(scenario,data).tablette * 365.25) : 0
 
     const initialValue=0;
     const ges_total = [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)].reduce(
@@ -404,12 +411,15 @@ function getDetteDevices(scenario,data){
     let ddv_laptop = scenario.laptop.dette_fabrication != 0 ? scenario.laptop.dette_fabrication : data.production.duree_de_vie.laptop
     let ddv_tele = scenario.tele.dette_fabrication != 0 ? scenario.tele.dette_fabrication : data.production.duree_de_vie.ordinateurfixe
     let ddv_ordinateurfixe = scenario.ordinateurfixe.dette_fabrication != 0 ? scenario.ordinateurfixe.dette_fabrication : data.production.duree_de_vie.ordinateurfixe
+    let ddv_tablette = scenario.tablette.dette_fabrication != 0 ? scenario.tablette.dette_fabrication : data.production.duree_de_vie.tablette
+
 
     return {
         "smartphone" : ddv_smartphone,
         "laptop" : ddv_laptop,
         "tele": ddv_tele,
-        "ordinateurfixe" : ddv_ordinateurfixe
+        "ordinateurfixe" : ddv_ordinateurfixe,
+        "tablette" : ddv_tablette,
     }
 }
 

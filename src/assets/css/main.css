@@ -6,11 +6,13 @@
 :root{
     --clr-blue-main: #6887ff;
     --clr-blue-scd: #007bff ;
-    --clr-blue-wrapper : #b5c4ff;
+    --clr-blue-wrapper : #d2e5ff;
     --clr-blue-light : #eff4f9;
     --border-radius-main : 7px;
     --border-radius-max : 10em;
 }
+
+
 
 div[shadow] {
     border: 0px solid black;

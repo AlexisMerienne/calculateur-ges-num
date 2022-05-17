@@ -51,7 +51,7 @@ export default {
     if(this.isMobile==true){
       document.getElementById('modal-content-plus').style.margin="5px"
       document.getElementById('modal-content-plus').style.width="90%"
-      document.getElementById('plus-button-action').style.backgroundColor='#007bff'
+      document.getElementById('plus-button-action').style.backgroundColor='#B2B2B2'
 
     }
   }

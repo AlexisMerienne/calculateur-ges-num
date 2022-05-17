@@ -9,13 +9,15 @@
       </div>
       <div id="nav-bar" class="nav-bar">
         <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
-          <span id="span-device">1.Mes appareils</span>
+          <div style="padding: 1em">
+            <span id="span-device"><strong>1.Mes appareils</strong></span>
+          </div>
         </div>
         <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
-          <span id="span-action">2.Mes applications</span>
+          <span id="span-action" style="margin: 1em"><strong>2.Mes applications</strong></span>
         </div>
         <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
-          <span id="span-bilan">3.Mon bilan</span>
+          <span id="span-bilan" style="margin: 1em"><strong>3.Mon bilan</strong></span>
         </div>
       </div>
       <div id="wrapper">
@@ -173,7 +175,7 @@ export default {
       footer.style.marginTop = (screeneheight-300).toString() + "px";
     },
     setIsClickCss(el){
-      el.style.backgroundColor="#b5c4ff"
+      el.style.backgroundColor=" #d2e5ff"
       el.style.marginTop = "0px"
     },
     setIsNotClickCss(el){
@@ -256,6 +258,8 @@ export default {
 
 <style>
 
+
+
 #body{
   background-color: #313131;
 }
@@ -308,6 +312,7 @@ export default {
   width: 90%;
   margin: 2px 2px 0px 2px;
   cursor: pointer;
+
 }
 
 .charts-view-button{

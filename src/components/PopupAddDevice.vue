@@ -20,6 +20,9 @@
         <div class="device-chooser" v-on:click="addDevice('ordinateurfixe')">
           <h6 class="device-chooser-txt">Ordinateur fixe 🖥</h6>
         </div>
+        <div class="device-chooser" v-on:click="addDevice('tablette')">
+          <h6 class="device-chooser-txt">Tablette 📟</h6>
+        </div>
       </div>
     </div>
   </div>
@@ -50,7 +53,7 @@ export default {
     if(this.isMobile==true){
       document.getElementById('modal-content-plus').style.margin="5px"
       document.getElementById('modal-content-plus').style.width="90%"
-      document.getElementById('plus-button-device').style.backgroundColor='#007bff'
+      document.getElementById('plus-button-device').style.backgroundColor='#B2B2B2'
     }
   }
 }

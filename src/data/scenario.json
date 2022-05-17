@@ -23,6 +23,12 @@
     "temps": [0],
     "dette_fabrication" : 0
   },
+  "tablette" : {
+    "label": "Tablette",
+    "item": 0,
+    "temps": [0],
+    "dette_fabrication" : 0
+  },
   "actions": {
     "mail": {
       "label": "mail",
