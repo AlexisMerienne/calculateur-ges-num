@@ -19,8 +19,8 @@
 <script>
 
 import DeviceDisplay from "@/components/misc/devices/DeviceDisplay";
-import PopupExplanation from "@/components/PopupExplanation";
-import PopupAddDevice from "@/components/PopupAddDevice";
+import PopupExplanation from "@/components/popup/PopupExplanation";
+import PopupAddDevice from "@/components/popup/PopupAddDevice";
 
 
 export default {

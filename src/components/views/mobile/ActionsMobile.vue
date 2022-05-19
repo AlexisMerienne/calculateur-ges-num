@@ -21,8 +21,8 @@
 
 <script>
 import ActionsDisplayMobile from "@/components/misc/actions/ActionsDisplayMobile";
-import Popup from "@/components/Popup";
-import PopupAddAction from "@/components/PopupAddAction";
+import Popup from "@/components/popup/Popup";
+import PopupAddAction from "@/components/popup/PopupAddAction";
 
 
 export default {

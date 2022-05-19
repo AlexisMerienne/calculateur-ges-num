@@ -23,8 +23,8 @@
 <script>
 
 import DeviceDisplayMobile from "@/components/misc/devices/mobile/DeviceDisplayMobile";
-import Popup from "@/components/Popup";
-import PopupAddDevice from "@/components/PopupAddDevice";
+import Popup from "@/components/popup/Popup";
+import PopupAddDevice from "@/components/popup/PopupAddDevice";
 
 export default {
   name: "WrapperDevice",

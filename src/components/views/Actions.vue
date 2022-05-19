@@ -19,8 +19,8 @@
 <script>
 
 import ActionDisplay from "@/components/misc/actions/ActionsDisplay";
-import Popup from "@/components/Popup";
-import PopupAddAction from "@/components/PopupAddAction";
+import Popup from "@/components/popup/Popup";
+import PopupAddAction from "@/components/popup/PopupAddAction";
 
 
 export default {

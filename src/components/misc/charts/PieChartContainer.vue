@@ -55,7 +55,7 @@
 <script>
 
 import PieChart from "@/components/misc/charts/PieChart";
-import Popup from "@/components/Popup";
+import Popup from "@/components/popup/Popup";
 import Narratif from "@/components/misc/Narratif";
 import Conclusion from "@/components/misc/Conclusion";
 
