@@ -328,13 +328,13 @@
         "nar-gesdevice" : {
             "isEnd" : true,
             "narfirst" : "L'électricité consommée par les terminaux génère des gaz à effet de serre pendant sa phase de production.<br><br> ",
-            "narsecond" : "Voyons ce que vos appareils ont émis comme Co2 pendant votre journée:",
+            "narsecond" : "Voyons ce que vos appareils ont émis comme CO2eq pendant votre journée:",
             "nbricon" : 3,
             "icon" : ["power-plant.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesaction" :{
             "isEnd" : false,
-            "narfirst": "Nous allons maintenant vous présenter la consommation en GES du réseau et des datacenter<br><br>",
+            "narfirst": "Nous allons maintenant vous présenter la consommation en GES du réseau et des datacenters<br><br>",
             "narsecond" : " Regardons combien nos actions numériques consomment au travers de ces deux infrastructures: ",
             "nbricon" : 5,
             "icon" : ["devices.svg","right-arrow.svg","network.svg","right-arrow.svg","database.svg"]
@@ -342,20 +342,20 @@
         "nar-gesproduction" : {
             "isEnd" : false,
             "narfirst" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils.<br><br>",
-            "narsecond" : "Regardons la quantité de gaz à effet de serre rejeter pendant la fabrication de vos appareils",
+            "narsecond" : "Regardons la quantité de gaz à effet de serre rejetée pendant la fabrication de vos appareils",
             "nbricon" : 3,
             "icon" : ["factory.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesutilisationproduction":{
             "isEnd" : false,
-            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'<strong style='color:#6887ff;'>utilisation</strong> avec la phase de <strong style='color:#6887ff;'>production</strong>. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le coût carbone de la production d'un appareil numérique par son âge",
+            "narfirst" :"Enfin, nous allons comparer les émissions de gaz à effet de serre de la phase d'<strong style='color:#6887ff;'>utilisation</strong> avec la phase de <strong style='color:#6887ff;'>production</strong>. <br>Pour pouvoir comparer ces deux valeurs à des échelles égales, nous allons diviser le <strong style='color:#6887ff;'>coût carbone</strong> de la production d'un appareil numérique par son <strong style='color:#6887ff;'>âge</strong>",
             "narsecond" : "",
             "nbricon" : 0,
             "icon" : []
         },
         "nar-sobrieteproduction" : {
             "isEnd" : false,
-            "narfirst" :"On remarque que les émissions de GES liées à la phase d'utilisation sont marginales par rapports aux émissions de GES induites par la phase de production. L'action de <strong>sobriété</strong> ayant le plus d'impact pour réduire le coût carbone du numérique est donc de <strong>rallonger les durées de vie de nos appareils.</strong> <br><br> Regardons commment ce rapport utilisation/production évolue si on multiplie par deux la durée de vie de nos appareils.",
+            "narfirst" :"On remarque que les émissions de GES liées à la phase d'utilisation sont marginales par rapport aux émissions de GES induites par la phase de production. L'action de <strong>sobriété</strong> ayant le plus d'impact pour réduire le coût carbone du numérique est donc de <strong>rallonger les durées de vie de nos appareils.</strong> <br><br> Regardons commment ce rapport utilisation/production évolue si on multiplie par deux la durée de vie de nos appareils.",
             "narsecond": "",
             "nbricon" : 0,
             "icon" : []
