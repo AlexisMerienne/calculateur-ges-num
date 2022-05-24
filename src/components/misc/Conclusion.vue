@@ -8,7 +8,7 @@
         <img src='../../assets/ec_et_budget_carbone.png' alt='Budget carbone 2050' width="100%">
       </div>
       <div style="text-align: left">
-        <h5><br>Cliquez sur le boutton ci-dessous pour connaître le détail de ces émissions.</h5>
+        <h5><br>Cliquez sur le bouton ci-dessous pour connaître le détail de ces émissions.</h5>
       </div>
     </div>
   </div>
