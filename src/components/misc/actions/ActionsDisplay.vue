@@ -96,6 +96,7 @@ export default {
   },
   methods : {
     onDelete(){
+      this.$store.commit('AVAILABLE',this.action.label)
       this.$store.commit('DELETE_ACTION',this.id)
     },
     printDescription(){

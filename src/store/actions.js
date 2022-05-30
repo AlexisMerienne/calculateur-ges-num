@@ -19,7 +19,9 @@ export const actionModule = {
             value_1 : 2,
             value_2 : null,
         }],
-        count : 3
+        count : 3,
+        actions_available : [],
+
     },
     getters : {
         getActions (state) {return state.action;},
@@ -28,15 +30,16 @@ export const actionModule = {
             let indexmail = state.action.findIndex(a=>a.label==='mail')
             return indexmail !== -1 ? state.action[indexmail] : null;
 
-        }
+        },
+        getActionAvailables (state){return state.actions_available;}
     },
     mutations: {
         CREATE_ACTION (state,action) {
             state.action.push({
                 id : state.count++,
                 label : action,
-                value_1 : null,
-                value_2 : null,
+                value_1 : 0,
+                value_2 : 0,
             })
         },
         SET_VALUE_ACTION (state,action) {
@@ -57,7 +60,19 @@ export const actionModule = {
                 scenario.actions[state.action[indexaction].label].temps = 0
             }
             state.action.splice(state.action.findIndex(d => d.id === id), 1);
+        },
+        AVAILABLE(state,label){
+            state.actions_available.push(label)
+            console.log(state.actions_available)
+        },
+        UNAVAILABLE(state,label){
+            const indexaction = state.actions_available.findIndex(el => el ===label)
+
+            indexaction != -1 ? state.actions_available.splice(indexaction,1) : null
+
+
         }
+
     }
 }
 

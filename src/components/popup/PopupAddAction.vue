@@ -42,8 +42,15 @@ export default {
       document.getElementById("myModal-plus").style.display = "none";
     },
     addAction(action) {
-      this.$store.commit('CREATE_ACTION',action)
-      this.closePopup()
+      const list_action_availables = this.$store.getters.getActionAvailables
+      if (list_action_availables.findIndex(el => el === action)!= -1){
+        this.$store.commit('CREATE_ACTION',action)
+        this.$store.commit('UNAVAILABLE',action)
+        this.closePopup()
+      }else {
+        window.alert('Cette action est déjà sélectionnée.')
+      }
+
     }
   },
   mounted() {
