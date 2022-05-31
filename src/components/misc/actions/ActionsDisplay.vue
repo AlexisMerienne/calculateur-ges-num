@@ -17,6 +17,7 @@
       <h6 style="text-align: left;">Dont avec pièces jointes</h6>
       <div class="form" style="width: 100%;">
         <input id="mailpj" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="action.value_2">
+        <h5 id="alert-txt" style="position:absolute;color: red;text-align: left;font-size: 0.7em;top: 5em;">{{alertText}}</h5>
       </div>
       <div class="d-button" style="width:100%">
         <div class="d-button-container" style="display: flex;justify-content:right">
@@ -92,6 +93,7 @@ export default {
       idcaret:"",
       srcImg:"",
       idtxtlabel:"",
+      alertText:"",
     }
   },
   methods : {
@@ -108,17 +110,55 @@ export default {
     },
     showAccordion(){
       let panel = document.getElementById(this.idpanellabel);
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        this.srcImg= require('../../../assets/caret-down.svg')
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        this.srcImg = require('../../../assets/caret-up.svg')
+      switch (this.action.label){
+        case "mail":
+          if (this.checkCoherentValueMail()){
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+              this.srcImg= require('../../../assets/caret-down.svg')
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+              this.srcImg = require('../../../assets/caret-up.svg')
+            }
+          }else{
+            window.alert("Veuillez renseigner des valeurs cohérentes :(")
+          }
+          break
+        case "video" :
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            this.srcImg= require('../../../assets/caret-down.svg')
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            this.srcImg = require('../../../assets/caret-up.svg')
+          }
+          break
+        case "insta":
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            this.srcImg= require('../../../assets/caret-down.svg')
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            this.srcImg = require('../../../assets/caret-up.svg')
+          }
       }
+
+    },
+    checkCoherentValueMail(){
+      if (this.action.value_1<this.action.value_2){
+        return false;
+      }return true;
     }
   },
   updated() {
     if(this.action.label !=='mail'){this.action.value_1 = this.value1;}
+    else {
+      if (this.action.value_1 < this.action.value_2){
+       this.alertText = "Les mails avec pièce jointe sont nécessairement inférieurs aux nombre de mails total"
+      }else{
+        this.alertText=""
+      }
+    }
     this.$store.commit('SET_VALUE_ACTION',this.action)
   },
   beforeMount() {
@@ -152,7 +192,8 @@ export default {
   margin : 3px
 }
 #b-delete-mail{
-  margin : 3px
+  margin-top: 2em;
+  margin-bottom: 5px;
 }
 #mail{
   margin: 5px;

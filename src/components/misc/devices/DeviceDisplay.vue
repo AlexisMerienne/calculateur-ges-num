@@ -104,7 +104,8 @@ export default {
         panel.style.maxHeight = panel.scrollHeight + "px";
         this.srcImg = require('../../../assets/caret-up.svg')
       }
-    }
+    },
+
   },
   beforeMount() {
     this.idtxtlabel = "txt-label-"+this.device.id

@@ -3,12 +3,8 @@ import scenario from '../data/scenario.json'
 export const actionModule = {
     namespaced: false,
     state : {
-        action : [{
-            id : 0,
-            label : 'mail',
-            value_1 : 10,
-            value_2 : 2,
-        },{
+        action : [
+            {
             id : 1,
             label : 'video',
             value_1 : 2,
@@ -20,7 +16,7 @@ export const actionModule = {
             value_2 : null,
         }],
         count : 3,
-        actions_available : [],
+        actions_available : ["mail"],
 
     },
     getters : {

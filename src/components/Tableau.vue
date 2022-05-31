@@ -12,8 +12,20 @@
     <div class="some-space" style="width:100%;height:15px"></div>
     <div class="items-container">
       <div id='item-row' class="item-row" v-for="item in items" :key="item.key">
-        <div id='value-row' class="value-row" v-for="value in colspan" :key="value" style="text-align: left;width: 100%">
-          <h6><div v-html="item.value[value-1]"></div> <div v-if="value==2 && item.key==0"> gCO2e<br><span style="color:#7993ff">100%</span> </div> </h6>
+        <div v-if="item.key==99" style="border-radius: 7px;padding:0.6em;display: flex;flex-direction: row;border: solid #7993ff">
+          <div id='value-row-tot' class="value-row" v-for="value in colspan" :key="value" style="text-align: left;width: 100%;">
+            <h6>
+              <div v-html="item.value[value-1]"></div>
+              <div v-if="value==2">gCO2e<br><span style="color:#7993ff">100%</span></div>
+            </h6>
+          </div>
+        </div>
+        <div v-else style="display: flex;flex-direction: row;padding:0.6em;">
+          <div id='value-row' class="value-row" v-for="value in colspan" :key="value" style="text-align: left;width: 100%;">
+            <h6>
+              <div v-html="item.value[value-1]"></div>
+            </h6>
+          </div>
         </div>
       </div>
     </div>

@@ -328,7 +328,7 @@
         "nar-gesdevice" : {
             "isEnd" : true,
             "narfirst" : "L'électricité consommée par les terminaux génère des gaz à effet de serre pendant sa phase de production.<br><br> ",
-            "narsecond" : "Voyons ce que vos appareils ont émis comme CO2eq pendant votre journée.",
+            "narsecond" : "Voyons ce que vos appareils ont émis comme CO2e pendant votre journée.",
             "nbricon" : 3,
             "icon" : ["power-plant.svg","right-arrow.svg","devices.svg"]
         },

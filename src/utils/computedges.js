@@ -163,7 +163,7 @@ function getGESDevice(data,scenario){
         'total' : roundDecimal(ges_total).toString() + ' gCo2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe','tablette'],
-        'title': "Emmission de GES de l'utilisation des appareils numériques",
+        'title': "Emission de GES de l'utilisation des appareils numériques",
         'focus' : "Pour chaque appareil, on calcule la consommation en accord avec le temps d'utilisation que l'on mutliplie avec l'intensité énergétique de la France",
         'src' : src,
         'addrow' : true,
