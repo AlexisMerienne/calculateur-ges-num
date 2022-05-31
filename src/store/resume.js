@@ -4,12 +4,12 @@ export const resumeModule = {
     namespaced : false,
     state : {
         items : [{
-            key: 99,
-            value : ['Total', 0, 'une voiture diesel roulant 2m']
+            key: 0,
+            value : ['Total des émissions de GES', 0, 'une voiture diesel roulant 2m']
         }],
         total : 0,
         colspan : 3,
-        key : 0,
+        key : 1,
     },
     getters : {
         getItems(state){
@@ -25,13 +25,12 @@ export const resumeModule = {
             const index = state.items.findIndex(elm => elm.value[0] === data.data.rowlabel);
             if (index==-1) {
                 const percent = Math.round((data.data.totalTab/data.conso)*10000)/100
-                state.items.splice(state.items.length - 1, 0, {
+                state.items.push({
                     key: state.key,
                     value: [data.data.rowlabel, data.data.totalTab + " gCO2e<br><span style='color:#7993ff'>"+percent+"%</span>", computeEquiv(data.data.totalTab)]
                 })
-                const sizeitems = state.items.length
-                state.items[sizeitems-1].value[1] = data.conso
-                state.items[sizeitems-1].value[2] = computeEquiv(data.conso)
+                state.items[0].value[1] = data.conso
+                state.items[0].value[2] = computeEquiv(data.conso)
             }
         },
         SET_NEW_RESUME_VALUE (state,data) {
@@ -40,17 +39,17 @@ export const resumeModule = {
             if (index!=-1) {
                 const percent = Math.round((data.data.totalTab/data.conso)*10000)/100
                 state.items[index].value = [data.data.rowlabel,data.data.totalTab + " gCO2e<br><span style='color:#7993ff'>"+percent+"%</span>",computeEquiv(data.data.totalTab)]
-                const sizeitems = state.items.length
-                state.items[sizeitems-1].value[1] = data.conso
-                state.items[sizeitems-1].value[2] = computeEquiv(data.conso)
+
+                state.items[0].value[1] = data.conso
+                state.items[0].value[2] = computeEquiv(data.conso)
             }
         },
         DELETE_ROWS (state) {
             state.items = [{
-                key: 99,
-                value : ['Total', 0, 'une voiture diesel roulant 2m']
+                key: 0,
+                value : ['Total des émissions de GES', 0, 'une voiture diesel roulant 2m']
             }]
-            state.key=0;
+            state.key=1;
         }
     }
 

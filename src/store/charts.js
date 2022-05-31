@@ -77,6 +77,7 @@ export const chartsModule = {
             return state.isChart;
         },
         getConsoTotal(state){
+            state.consoTotale = parseFloat(chartData(state.gesdata,state.scenario,'chart-gesutilisationproduction').total)
             return state.consoTotale;
         },
 
@@ -100,6 +101,8 @@ export const chartsModule = {
 
             const consototale =  chartdata.total;
             state.consoTotale = parseFloat(consototale)
+
+
             const consodistance = ((parseFloat(consototale)*365.25) / consodiesel)
             const consodistancediesel = Math.round(consodistance*100)/100
 
@@ -179,10 +182,9 @@ export const chartsModule = {
             if (indexChart > 0){
                 state.currentid  = state.chartsids[indexChart-1]
             }else{
-                console.log('HERE')
                 state.currentid= state.chartsids[state.chartsids.length-1]
             }
-            console.log(state.currentid)
+
 
         },
         SET_PREVIOUS_NARID (state) {

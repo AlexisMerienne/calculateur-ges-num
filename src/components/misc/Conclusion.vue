@@ -32,7 +32,9 @@ export default {
   mounted() {
 
     if (this.firstbilan){
-      let bilan = this.$store.getters.getBilanData;
+
+      const bilan = this.$store.getters.getBilanData;
+
 
       let htmlObjectBilan = document.createElement('h5');
 
@@ -45,7 +47,7 @@ export default {
 
     }else{
 
-      let s = this.$store.getters.getConclusionData;
+      const s = this.$store.getters.getConclusionData;
 
       let htmlObject = document.createElement('h5');
 

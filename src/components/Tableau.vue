@@ -13,7 +13,7 @@
     <div class="items-container">
       <div id='item-row' class="item-row" v-for="item in items" :key="item.key">
         <div id='value-row' class="value-row" v-for="value in colspan" :key="value" style="text-align: left;width: 100%">
-          <h6><div v-html="item.value[value-1]"></div> <div v-if="value==2 && item.key==99"> gCO2e</div> </h6>
+          <h6><div v-html="item.value[value-1]"></div> <div v-if="value==2 && item.key==0"> gCO2e<br><span style="color:#7993ff">100%</span> </div> </h6>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
                 items: [],
                 fields: [
                   { key: 'phase', label: '' },
-                  { key: 'gco2', label: 'gCO2' },
+                  { key: 'gco2', label: 'gCO2e' },
                   { key: 'equivalent', label: 'Equivalent' }],
                 colspan : 3,
                 title : 'Résumé',

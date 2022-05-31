@@ -328,21 +328,21 @@
         "nar-gesdevice" : {
             "isEnd" : true,
             "narfirst" : "L'électricité consommée par les terminaux génère des gaz à effet de serre pendant sa phase de production.<br><br> ",
-            "narsecond" : "Voyons ce que vos appareils ont émis comme CO2eq pendant votre journée :",
+            "narsecond" : "Voyons ce que vos appareils ont émis comme CO2eq pendant votre journée.",
             "nbricon" : 3,
             "icon" : ["power-plant.svg","right-arrow.svg","devices.svg"]
         },
         "nar-gesaction" :{
             "isEnd" : false,
             "narfirst": "Nous allons maintenant vous présenter les émissions en GES du réseau et des datacenters.<br><br>",
-            "narsecond" : " Regardons combien nos actions numériques consomment au travers de ces deux infrastructures : ",
+            "narsecond" : " Regardons combien nos actions numériques consomment au travers de ces deux infrastructures.",
             "nbricon" : 5,
             "icon" : ["devices.svg","right-arrow.svg","network.svg","right-arrow.svg","database.svg"]
         },
         "nar-gesproduction" : {
             "isEnd" : false,
             "narfirst" : "Maintenant, nous allons nous intéresser à la phase de production de nos appareils.<br><br>",
-            "narsecond" : "Regardons la quantité de gaz à effet de serre rejetée pendant la fabrication de vos appareils : ",
+            "narsecond" : "Regardons la quantité de gaz à effet de serre rejetée pendant la fabrication de vos appareils.",
             "nbricon" : 3,
             "icon" : ["factory.svg","right-arrow.svg","devices.svg"]
         },

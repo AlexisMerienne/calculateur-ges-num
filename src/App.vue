@@ -116,6 +116,28 @@ export default {
       }else if(this.checkNotNumberValue()){
         window.alert('Veuillez indiquer des valeurs numériques dans les champs dédiés')
       }else if (!this.viewscliked[2]){
+
+
+        /**
+         * On met à jour le résumé avec les nouvelles données
+         */
+
+        //on calcule la conso totale en GES de l'utilisateur
+        const consotot = this.$store.getters.getConsoTotal
+        //On met à jour les valeurs du tableau résumé
+        this.$store.commit('SET_NEW_RESUME_VALUE',{
+          data : this.$store.getters.getChartDataSpec('chart-gesdevice'),
+          conso : consotot
+        })
+        this.$store.commit('SET_NEW_RESUME_VALUE',{
+          data:this.$store.getters.getChartDataSpec('chart-gesaction'),
+          conso : consotot
+        })
+        this.$store.commit('SET_NEW_RESUME_VALUE', {
+          data: this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'),
+          conso : consotot
+        })
+
         //se dirige vers la page 'bilan'
         route === 'bilan' ? this.$router.push({name:"bilan"}) : this.$router.push({name:"bilanmobile"})
         //on change les design des onglets en conséquence
@@ -124,21 +146,7 @@ export default {
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
         this.viewscliked=[false,false,true]
       }
-      //on calcule la conso totale en GES de l'utilisateur
-      const consotot = this.$store.getters.getConsoTotal
-      //On met à jour les valeurs du tableau résumé
-      this.$store.commit('SET_NEW_RESUME_VALUE',{
-        data : this.$store.getters.getChartDataSpec('chart-gesdevice'),
-        conso : consotot
-      })
-      this.$store.commit('SET_NEW_RESUME_VALUE',{
-        data:this.$store.getters.getChartDataSpec('chart-gesaction'),
-        conso : consotot
-      })
-      this.$store.commit('SET_NEW_RESUME_VALUE', {
-        data: this.$store.getters.getChartDataSpec('chart-gesutilisationproduction'),
-        conso : consotot
-      })
+
     },
 
     //Si l'utilisateur a renseigné des valeurs négatives dans les inputs dédiés, une popup d'alerte s'affiche

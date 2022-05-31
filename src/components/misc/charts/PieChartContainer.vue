@@ -144,7 +144,8 @@ export default {
       if (data.addrow){
         this.$store.commit('ADD_ROW',{
           data:data,
-          conso:this.consotot
+          conso: this.$store.getters.getConsoTotal
+
         })
       }
       this.$emit('undisplayTab')
@@ -181,7 +182,7 @@ export default {
             if (data.addrow) {
               this.$store.commit('ADD_ROW', {
                 data:data,
-                conso:this.consotot
+                conso:this.$store.getters.getConsoTotal
               })
             }
           }
