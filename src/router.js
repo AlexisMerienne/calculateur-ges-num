@@ -37,5 +37,15 @@ export default new Router({
             name: "bilanmobile",
             component: () => import("./components/views/mobile/ChartsMobile")
         },
+        {
+            path: "./solution",
+            name: "solution",
+            component: () => import("./components/views/Solution")
+        },
+        {
+            path: "./solution",
+            name: "solutionmobile",
+            component: () => import("./components/views/mobile/SolutionMobile")
+        },
     ]
 });

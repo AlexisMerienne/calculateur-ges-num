@@ -93,3 +93,12 @@ div[wrapper] {
     transition: max-height 0.2s ease-out;
     border-radius: var(--border-radius-main);
 }
+
+.title{
+    display: flex;
+    justify-content: center;
+}
+.content{
+    text-align: left;
+    padding: 0.7em;
+}

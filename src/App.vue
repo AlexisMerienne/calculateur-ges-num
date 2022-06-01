@@ -19,6 +19,9 @@
         <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
           <span id="span-bilan" style="margin: 1em"><strong>3.Mon bilan</strong></span>
         </div>
+        <div id="solution-view-button" class="solution-view-button" v-on:click="goToSolution">
+          <span id="span-solution" style="margin: 1em"><strong>4.Les solutions</strong></span>
+        </div>
       </div>
       <div id="wrapper">
         <router-view/>
@@ -50,7 +53,7 @@ export default {
       currentviews : this.$store.getters.getCurrentView,
       isMobile : false,
       windowsheight : 0,
-      viewscliked : [true,false,false],
+      viewscliked : [true,false,false,false],
     }
   },
   created() {
@@ -76,7 +79,8 @@ export default {
         this.setIsClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
         this.setIsNotClickCss(document.getElementById('charts-view-button'));
-        this.viewscliked=[true,false,false]
+        this.setIsNotClickCss(document.getElementById('solution-view-button'));
+        this.viewscliked=[true,false,false,false]
       }
     },
     goToAction(){
@@ -95,7 +99,8 @@ export default {
         this.setIsClickCss(document.getElementById('actions-view-button'));
         this.setIsNotClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('charts-view-button'));
-        this.viewscliked=[false,true,false]
+        this.setIsNotClickCss(document.getElementById('solution-view-button'));
+        this.viewscliked=[false,true,false,false]
 
       }
     },
@@ -144,9 +149,30 @@ export default {
         this.setIsClickCss(document.getElementById('charts-view-button'));
         this.setIsNotClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
-        this.viewscliked=[false,false,true]
+        this.setIsNotClickCss(document.getElementById('solution-view-button'));
+        this.viewscliked=[false,false,true,false]
       }
 
+    },
+    goToSolution(){
+      if(this.checkNegValue()){
+        window.alert('Vous avez indiqué une valeur négative là où il ne faut pas')
+      }else if(this.checkNotNumberValue()){
+        window.alert('Veuillez indiquer des valeurs numériques dans les champs dédiés')
+      }else if (!this.viewscliked[3]) {
+        if(this.isMobile){
+          this.$router.push({name:"solutionmobile"})
+          this.$session.set("page","solutionmobile")
+        }else{
+          this.$router.push({name:"solution"})
+          this.$session.set("page","solution")
+        }
+        this.setIsClickCss(document.getElementById('solution-view-button'));
+        this.setIsNotClickCss(document.getElementById('actions-view-button'));
+        this.setIsNotClickCss(document.getElementById('device-view-button'));
+        this.setIsNotClickCss(document.getElementById('charts-view-button'));
+        this.viewscliked=[false,false,false,true]
+      }
     },
 
     //Si l'utilisateur a renseigné des valeurs négatives dans les inputs dédiés, une popup d'alerte s'affiche
@@ -198,20 +224,30 @@ export default {
           this.setIsNotClickCss(document.getElementById('charts-view-button'));
           this.setIsClickCss(document.getElementById('device-view-button'));
           this.setIsNotClickCss(document.getElementById('actions-view-button'));
+          this.setIsNotClickCss(document.getElementById('actions-view-button'));
           this.viewscliked=[true,false,false]
           break
         case "actions" || "actionsmobile" :
           this.setIsNotClickCss(document.getElementById('charts-view-button'));
           this.setIsNotClickCss(document.getElementById('device-view-button'));
           this.setIsClickCss(document.getElementById('actions-view-button'));
+          this.setIsNotClickCss(document.getElementById('actions-view-button'));
           this.viewscliked=[false,true,false]
           break
         case "bilan" || "bilanmobile" :
           this.setIsClickCss(document.getElementById('charts-view-button'));
           this.setIsNotClickCss(document.getElementById('device-view-button'));
           this.setIsNotClickCss(document.getElementById('actions-view-button'));
+          this.setIsNotClickCss(document.getElementById('solution-view-button'));
+
           this.viewscliked=[false,false,true]
           break
+        case "solution" || "solutionmobile" :
+          this.setIsNotClickCss(document.getElementById('charts-view-button'));
+          this.setIsNotClickCss(document.getElementById('device-view-button'));
+          this.setIsNotClickCss(document.getElementById('actions-view-button'));
+          this.setIsClickCss(document.getElementById('solution-view-button'));
+          this.viewscliked=[false,false,false,true];
       }
     }
   },
@@ -324,6 +360,18 @@ export default {
 }
 
 .charts-view-button{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff4f9;
+  border-radius: 7px 7px 0px 0px;
+  width: 90%;
+  margin: 2px 0px 0px 2px;
+  cursor: pointer;
+}
+
+.solution-view-button{
   text-align: center;
   display: flex;
   justify-content: center;
