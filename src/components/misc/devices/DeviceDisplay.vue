@@ -32,9 +32,9 @@
       </div>
       <div id="display-dette-ddv" style="display:flex;flex-direction:column;justify-content: center;align-items:center;margin-top: 10px;width: 100%;margin-bottom: 10px">
         <h6 style="text-align: left">Je change de <strong>{{device.label}}</strong> tous les <strong style="color: #2852f9;">{{setDetteTxt(device.dette_fabrication)}} an(s)</strong></h6>
-        <div class="form" style="max-width: 250px;width: 100%;">
+        <div id="dette-ddv-wrapper" class="form" style="max-width: 250px;width: 100%;">
           <label for="dette-ddv-v2"></label>
-          <input id="dette-ddv-v2" name="dette-input" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication">
+          <input id="dette-ddv-v2" name="dette-input" class="form-input" type=”number” autocomplete="off" placeholder=" " v-model.number="device.dette_fabrication" >
         </div>
       </div>
       <div class="d-button" style="width:100%;margin-bottom: 5px">
@@ -137,6 +137,10 @@ export default {
     htmldescription.innerHTML = this.description;
     htmldescription.style.textAlign='left'
     document.getElementById(this.idtxtlabel).appendChild(htmldescription)
+    if (this.device.dette_fabrication>=15){
+      document.getElementById('dette-ddv-v2').style="color:red;"
+      this.device.dette_fabrication=15
+    }else{document.getElementById('dette-ddv-v2').style="color:black;"}
   },
 }
 </script>
