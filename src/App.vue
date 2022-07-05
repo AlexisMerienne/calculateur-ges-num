@@ -30,10 +30,10 @@
           <img alt="list icon" src="../src/assets/list.svg" height="48" width="48">
         </div>
         <div class="mobil-nav-bar" id="mobil-nav-bar">
-          <h4 v-on:click="goToDevice">1. Mes appareils</h4>
-          <h4 v-on:click="goToAction">2. Mes actions</h4>
-          <h4 v-on:click="goToBilanonClick">3. Mon bilan</h4>
-          <h4 v-on:click="goToSolution">4. Mes solutions</h4>
+          <h4 v-on:click="goToDevice">Mes appareils</h4>
+          <h4 v-on:click="goToAction">Mes actions</h4>
+          <h4 v-on:click="goToBilanonClick">Mon bilan</h4>
+          <h4 v-on:click="goToSolution">Les solutions</h4>
 
         </div>
 
@@ -270,10 +270,10 @@ export default {
     },
     OnClickSideBar(){
       if (this.isOpenSideBar){
-        document.getElementById("mobil-nav-bar").style.display="none";
+        document.getElementById("mobil-nav-bar").style.maxHeight="0";
         this.isOpenSideBar=false
       }else{
-        document.getElementById("mobil-nav-bar").style.display="flex";
+        document.getElementById("mobil-nav-bar").style.maxHeight="10em";
         this.isOpenSideBar=true
       }
     },
@@ -416,12 +416,14 @@ export default {
   border-radius: 0px 7px 0px 0px;
 }
 .mobil-nav-bar{
-  display: none;
+  display: flex;
   justify-content: left;
+  max-height : 0;
   align-items: flex-start;
   flex-direction: column;
   margin-left: 2em;
   color: var(--clr-blue-wrapper);
+  transition: 0.4s;
 }
 
 #wrapper{
