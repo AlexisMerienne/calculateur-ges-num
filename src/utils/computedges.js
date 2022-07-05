@@ -82,7 +82,7 @@ function getGESAction(data,scenario){
 
     return {
         'data' : [roundDecimal(ges_mail), roundDecimal(ges_video), roundDecimal(ges_insta)],
-        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'total' : roundDecimal(ges_total).toString() + ' gCO2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['mail','video','réseaux sociaux'],
         'title': 'Emission de GES des actions numériques (en gCO2eq)',
@@ -160,7 +160,7 @@ function getGESDevice(data,scenario){
 
     return {
         'data' : [roundDecimal(ges_smarpthone), roundDecimal(ges_laptop), roundDecimal(ges_tele),roundDecimal(ges_ordifixe),roundDecimal(ges_tablette)],
-        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'total' : roundDecimal(ges_total).toString() + ' gCO2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe','tablette'],
         'title': "Emission de GES de l'utilisation des appareils numériques",
@@ -219,7 +219,7 @@ function getGESProduction(data,scenario){
         ]
     return {
         'data' : [roundDecimal(ges_smartphone_daily_prod), roundDecimal(ges_laptop_daily), roundDecimal(ges_tele_daily),roundDecimal(ges_ordifix_daily),roundDecimal(ges_tablette_daily)],
-        'total' : roundDecimal(ges_total).toString() + ' kgCo2e',
+        'total' : roundDecimal(ges_total).toString() + ' kgCO2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['smartphone','laptop','tele','ordinateur fixe','tablette'],
         'title': "Emission de GES de la production des appareils",
@@ -300,7 +300,7 @@ function getGESProdUtilisation(data,scenario){
         }]
     return {
         'data' : [roundDecimal(ges_utilisation), roundDecimal(ges_production)],
-        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'total' : roundDecimal(ges_total).toString() + ' gCO2e',
         'totalTab' : roundDecimal(ges_production),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émissions provenant de la production et de l'utilisation",
@@ -374,7 +374,7 @@ function getGESProdUtilisationDoubleDureeDeVie(data,scenario){
         }]
     return {
         'data' : [roundDecimal(ges_utilisation_action), roundDecimal(ges_production)],
-        'total' : roundDecimal(ges_total).toString() + ' gCo2e',
+        'total' : roundDecimal(ges_total).toString() + ' gCO2e',
         'totalTab' : roundDecimal(ges_total),
         'labels' : ['utilisation','production'],
         'title': "Comparaison entre la part d'émissions provenant de la production et de l'utilisation en doublant la durée de vie des appareils",

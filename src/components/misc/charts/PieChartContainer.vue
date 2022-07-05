@@ -10,7 +10,7 @@
                    :width='320'
                    :height='320'/>
           <div id="flewx-total" style="display: flex;flex-direction:column;justify-content:center;align-items: center">
-            Consommation totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
+            Emission totale {{isForOnDay}}<div id="stg wrapper" style="display:flex;flex-direction:row"><strong>{{total}} </strong></div>
             <div v-if="compareToSobriete">
               <div id="button-compare-sobriete" v-on:click="showGraph">
                 <h6 style="margin: 5px">Graphe sans sobriété</h6>

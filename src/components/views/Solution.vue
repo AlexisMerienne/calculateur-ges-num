@@ -28,13 +28,18 @@
       Voici quelques conseils pour diminuer votre impact carbone lors
       de l'utilisation : <br><br>
 
-      <ul>
-        <li>Limiter le visionnage et l'écoute en streaming</li>
-        <li>Diminuer la résolution des vidéos pour le visionnage</li>
-        <li>Stopper la pub sur les sites web</li>
-        <li>Télécharger avec modération</li>
-        <li>Utiliser le wifi plutôt que le réseau mobile</li>
-      </ul>
+      <div class="solutions-list">
+        <h6>
+        <ul>
+          <li>Limiter le visionnage et l'écoute en streaming</li>
+          <li>Diminuer la résolution des vidéos pour le visionnage</li>
+          <li>Stopper la pub sur les sites web</li>
+          <li>Télécharger avec modération</li>
+          <li>Utiliser le wifi plutôt que le réseau mobile</li>
+        </ul>
+        </h6>
+
+      </div>
 
     </h5>
 
@@ -50,5 +55,13 @@ export default {
 </script>
 
 <style scoped>
+
+.solutions-list{
+  border:  0.3em outset #6887ff;
+  border-radius: 7px;
+  padding: 2em;
+  box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(214, 214, 214, 0.62);
+
+}
 
 </style>
