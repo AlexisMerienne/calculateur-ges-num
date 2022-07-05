@@ -26,15 +26,20 @@
         </div>
       </div>
       <div v-else>
-        <div class="button-mobile-nav-bar" v-on:click="OnClickSideBar()">
-          <img alt="list icon" src="../src/assets/list.svg" height="48" width="48">
+        <div id="nav-bar-mobile" class="nav-bar">
+          <div class="button-mobile-nav-bar" v-on:click="OnClickSideBar()">
+              <img alt="list icon" src="../src/assets/list.svg" height="48" width="48">
+          </div>
+          <div id="charts-view-button-mobile" class="charts-view-button" v-on:click="goToBilanonClick">
+            <span id="span-bilan-mobile" style="margin: 1em"><strong>Mon bilan</strong></span>
+          </div>
+          <div id="solution-view-button-mobile" class="solution-view-button" v-on:click="goToSolution">
+            <span id="span-solution-mobile" style="margin: 1em"><strong>Les solutions</strong></span>
+          </div>
         </div>
         <div class="mobil-nav-bar" id="mobil-nav-bar">
           <h4 v-on:click="goToDevice">Mes appareils</h4>
           <h4 v-on:click="goToAction">Mes actions</h4>
-          <h4 v-on:click="goToBilanonClick">Mon bilan</h4>
-          <h4 v-on:click="goToSolution">Les solutions</h4>
-
         </div>
 
       </div>
@@ -167,6 +172,9 @@ export default {
         this.setIsNotClickCss(document.getElementById('device-view-button'));
         this.setIsNotClickCss(document.getElementById('actions-view-button'));
         this.setIsNotClickCss(document.getElementById('solution-view-button'));
+        }else{
+          this.setIsClickCss(document.getElementById('charts-view-button-mobile'));
+          this.setIsNotClickCss(document.getElementById('solution-view-button-mobile'));
         }
         this.viewscliked=[false,false,true,false]
       }
@@ -181,6 +189,8 @@ export default {
         if(this.isMobile){
           this.$router.push({name:"solutionmobile"})
           this.$session.set("page","solutionmobile")
+          this.setIsClickCss(document.getElementById('solution-view-button-mobile'));
+          this.setIsNotClickCss(document.getElementById('charts-view-button-mobile'));
         }else{
           this.$router.push({name:"solution"})
           this.$session.set("page","solution")
@@ -269,6 +279,9 @@ export default {
       }
     },
     OnClickSideBar(){
+      this.setIsNotClickCss(document.getElementById('charts-view-button-mobile'));
+      this.setIsNotClickCss(document.getElementById('solution-view-button-mobile'));
+
       if (this.isOpenSideBar){
         document.getElementById("mobil-nav-bar").style.maxHeight="0";
         this.isOpenSideBar=false
@@ -412,6 +425,7 @@ export default {
 .button-mobile-nav-bar{
   display: flex;
   justify-content: left;
+  align-items: center;
   background-color: var(--clr-blue-wrapper);
   border-radius: 0px 7px 0px 0px;
 }

@@ -29,8 +29,6 @@ export default {
     },
   },
   mounted() {
-    let wrapper = document.getElementById("wrapper");
-    wrapper.scrollIntoView();
     this.progress = this.$store.getters.getProgress
   }
 }
