@@ -4,7 +4,7 @@
 
 Ce projet a pour vocation de développer un outil permettant de mesurer l'impact carbone de votre utilisation du numérique. Il se présente sous la forme d'une interface intuitive par laquelle on peut spécifier les appareils numériques que l'on utilise sur une journée ainsi que les services numériques que l'on effectue.
 
-Vous pouvez trouver une version du site sur : https://mon-impact-numerique.web.app/
+Vous pouvez trouver une version du site sur : https://mon-impact-numerique.i3s.univ-cotedazur.fr/
 
 
 
