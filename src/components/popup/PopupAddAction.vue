@@ -36,7 +36,12 @@ export default {
   },
   methods : {
     onClickPopup() {
-      document.getElementById("myModal-plus").style.display = "block";
+      if(this.isMobile==true) {
+        document.getElementById('myModal-plus').style.display = "flex"
+        document.getElementById('myModal-plus').style.justifyContent = "center"
+      }else {
+        document.getElementById("myModal-plus").style.display = "block";
+      }
     },
     closePopup() {
       document.getElementById("myModal-plus").style.display = "none";

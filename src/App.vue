@@ -38,8 +38,8 @@
           </div>
         </div>
         <div class="mobil-nav-bar" id="mobil-nav-bar">
-          <h4 v-on:click="goToDevice">Mes appareils</h4>
-          <h4 v-on:click="goToAction">Mes actions</h4>
+          <h5 class="txt-mobil-nav-bar" v-on:click="goToDevice">Mes appareils</h5>
+          <h5 class="txt-mobil-nav-bar" v-on:click="goToAction">Mes actions</h5>
         </div>
 
       </div>
@@ -435,9 +435,18 @@ export default {
   max-height : 0;
   align-items: flex-start;
   flex-direction: column;
-  margin-left: 2em;
   color: var(--clr-blue-wrapper);
+  background-color: rgb(239, 244, 249);
   transition: 0.4s;
+}
+.txt-mobil-nav-bar{
+  display: flex;
+  justify-content: left;
+  margin: 0.2em 0 0.2em 2em;
+  width: 80%;
+  border-radius: 7px;
+  box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(214, 214, 214, 0.62);
+  color: #2c3e50;
 }
 
 #wrapper{
