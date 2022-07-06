@@ -8,20 +8,39 @@
         <Header/>
       </div>
       <div v-if="!isMobile">
-        <div id="nav-bar" class="nav-bar">
-          <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
-            <div style="padding: 1em">
-              <span id="span-device"><strong>1.Mes appareils</strong></span>
+        <div v-if="isLargeWindows">
+          <div id="nav-bar" class="nav-bar">
+            <div id="device-view-button" class="device-view-button" v-on:click="goToDevice">
+              <div style="padding: 1em">
+                <span id="span-device"><strong>1.Mes appareils</strong></span>
+              </div>
+            </div>
+            <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
+              <span id="span-action" style="margin: 1em"><strong>2.Mes applications</strong></span>
+            </div>
+            <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
+              <span id="span-bilan" style="margin: 1em"><strong>3.Mon bilan</strong></span>
+            </div>
+            <div id="solution-view-button" class="solution-view-button" v-on:click="goToSolution">
+              <span id="span-solution" style="margin: 1em"><strong>4.Les solutions</strong></span>
             </div>
           </div>
-          <div id="actions-view-button" class="actions-view-button" v-on:click="goToAction">
-            <span id="span-action" style="margin: 1em"><strong>2.Mes applications</strong></span>
+        </div>
+        <div v-else>
+          <div id="nav-bar-mobile" class="nav-bar">
+            <div class="button-mobile-nav-bar" v-on:click="OnClickSideBar()">
+              <img alt="list icon" src="../src/assets/list.svg" height="48" width="48">
+            </div>
+            <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
+              <span id="span-bilan" style="margin: 1em"><strong>Mon bilan</strong></span>
+            </div>
+            <div id="solution-view-button" class="solution-view-button" v-on:click="goToSolution">
+              <span id="span-solution" style="margin: 1em"><strong>Les solutions</strong></span>
+            </div>
           </div>
-          <div id="charts-view-button" class="charts-view-button" v-on:click="goToBilanonClick">
-            <span id="span-bilan" style="margin: 1em"><strong>3.Mon bilan</strong></span>
-          </div>
-          <div id="solution-view-button" class="solution-view-button" v-on:click="goToSolution">
-            <span id="span-solution" style="margin: 1em"><strong>4.Les solutions</strong></span>
+          <div class="mobil-nav-bar" id="mobil-nav-bar">
+            <h5 class="txt-mobil-nav-bar" v-on:click="goToDevice">Mes appareils</h5>
+            <h5 class="txt-mobil-nav-bar" v-on:click="goToAction">Mes actions</h5>
           </div>
         </div>
       </div>
@@ -75,6 +94,7 @@ export default {
       windowsheight : 0,
       viewscliked : [true,false,false,false],
       isOpenSideBar : false,
+      isLargeWindows : true,
     }
   },
   created() {
@@ -96,12 +116,18 @@ export default {
         }else {
           this.$router.push({name:"home"})
           this.$session.set("page","home")
-          this.setIsClickCss(document.getElementById('device-view-button'));
-          this.setIsNotClickCss(document.getElementById('actions-view-button'));
-          this.setIsNotClickCss(document.getElementById('charts-view-button'));
-          this.setIsNotClickCss(document.getElementById('solution-view-button'));
+          if (!this.isLargeWindows){
+            this.isLargeWindows ?this.setIsClickCss(document.getElementById('device-view-button')):null;
+            this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
+            this.setIsNotClickCss(document.getElementById('charts-view-button'));
+            this.setIsNotClickCss(document.getElementById('solution-view-button'));
+          }
         }
         this.viewscliked=[true,false,false,false]
+      }
+      if (this.isMobile || !this.isLargeWindows){
+        document.getElementById("mobil-nav-bar").style.maxHeight="0";
+        this.isOpenSideBar=false
       }
     },
     goToAction(){
@@ -116,12 +142,18 @@ export default {
         }else{
           this.$router.push({name:"actions"})
           this.$session.set("page","actions")
-          this.setIsClickCss(document.getElementById('actions-view-button'));
-          this.setIsNotClickCss(document.getElementById('device-view-button'));
-          this.setIsNotClickCss(document.getElementById('charts-view-button'));
-          this.setIsNotClickCss(document.getElementById('solution-view-button'));
+          if (!this.isLargeWindows) {
+            this.isLargeWindows ?this.setIsClickCss(document.getElementById('actions-view-button')):null;
+            this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
+            this.setIsNotClickCss(document.getElementById('charts-view-button'));
+            this.setIsNotClickCss(document.getElementById('solution-view-button'));
+          }
         }
         this.viewscliked=[false,true,false,false]
+        if (this.isMobile || !this.isLargeWindows){
+          document.getElementById("mobil-nav-bar").style.maxHeight="0";
+          this.isOpenSideBar=false
+        }
 
       }
     },
@@ -169,8 +201,8 @@ export default {
         //on change les design des onglets en conséquence
         if (!this.isMobile){
         this.setIsClickCss(document.getElementById('charts-view-button'));
-        this.setIsNotClickCss(document.getElementById('device-view-button'));
-        this.setIsNotClickCss(document.getElementById('actions-view-button'));
+        this.isLargeWindows?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
+          this.isLargeWindows?this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
         this.setIsNotClickCss(document.getElementById('solution-view-button'));
         }else{
           this.setIsClickCss(document.getElementById('charts-view-button-mobile'));
@@ -194,9 +226,9 @@ export default {
         }else{
           this.$router.push({name:"solution"})
           this.$session.set("page","solution")
-          this.setIsClickCss(document.getElementById('solution-view-button'));
-          this.setIsNotClickCss(document.getElementById('actions-view-button'));
-          this.setIsNotClickCss(document.getElementById('device-view-button'));
+          this.setIsClickCss(document.getElementById('solution-view-button'))
+          this.isLargeWindows ? this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
+          this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
           this.setIsNotClickCss(document.getElementById('charts-view-button'));
         }
         this.viewscliked=[false,false,false,true]
@@ -235,6 +267,11 @@ export default {
       const screeneheight = window.screen.height;
       let footer = document.getElementById("footer");
       footer.style.marginTop = (screeneheight-300).toString() + "px";
+      if (document.getElementById('wrapper').clientWidth<420){
+        this.isLargeWindows=false;
+      }else{
+        this.isLargeWindows=true;
+      }
     },
     setIsClickCss(el){
       el.style.backgroundColor=" #d2e5ff"
@@ -279,9 +316,8 @@ export default {
       }
     },
     OnClickSideBar(){
-      this.setIsNotClickCss(document.getElementById('charts-view-button-mobile'));
-      this.setIsNotClickCss(document.getElementById('solution-view-button-mobile'));
-
+      //this.setIsNotClickCss(document.getElementById('charts-view-button-mobile'));
+      //this.setIsNotClickCss(document.getElementById('solution-view-button-mobile'));
       if (this.isOpenSideBar){
         document.getElementById("mobil-nav-bar").style.maxHeight="0";
         this.isOpenSideBar=false
@@ -336,6 +372,7 @@ export default {
     const screeneheight = window.screen.height;
     let footer = document.getElementById("footer");
     footer.style.marginTop = (screeneheight-300).toString() + "px";
+    document.getElementById('wrapper').clientWidth<420?this.isLargeWindows=false:null;
   }
 }
 </script>
@@ -428,6 +465,7 @@ export default {
   align-items: center;
   background-color: var(--clr-blue-wrapper);
   border-radius: 0px 7px 0px 0px;
+  cursor: pointer;
 }
 .mobil-nav-bar{
   display: flex;
@@ -447,6 +485,10 @@ export default {
   border-radius: 7px;
   box-shadow: 0 0 0 transparent, 0 0 0 transparent, 6px 4px 25px rgba(214, 214, 214, 0.62);
   color: #2c3e50;
+  cursor: pointer;
+}
+.txt-mobil-nav-bar:hover{
+  background-color: lightgrey;
 }
 
 #wrapper{
