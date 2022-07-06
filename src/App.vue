@@ -116,12 +116,10 @@ export default {
         }else {
           this.$router.push({name:"home"})
           this.$session.set("page","home")
-          if (!this.isLargeWindows){
-            this.isLargeWindows ?this.setIsClickCss(document.getElementById('device-view-button')):null;
-            this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
-            this.setIsNotClickCss(document.getElementById('charts-view-button'));
-            this.setIsNotClickCss(document.getElementById('solution-view-button'));
-          }
+          this.isLargeWindows ? this.setIsClickCss(document.getElementById('device-view-button')):null;
+          this.isLargeWindows ? this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
+          this.setIsNotClickCss(document.getElementById('charts-view-button'));
+          this.setIsNotClickCss(document.getElementById('solution-view-button'));
         }
         this.viewscliked=[true,false,false,false]
       }
@@ -142,12 +140,11 @@ export default {
         }else{
           this.$router.push({name:"actions"})
           this.$session.set("page","actions")
-          if (!this.isLargeWindows) {
-            this.isLargeWindows ?this.setIsClickCss(document.getElementById('actions-view-button')):null;
-            this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
-            this.setIsNotClickCss(document.getElementById('charts-view-button'));
-            this.setIsNotClickCss(document.getElementById('solution-view-button'));
-          }
+          this.isLargeWindows ?this.setIsClickCss(document.getElementById('actions-view-button')):null;
+          this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
+          this.setIsNotClickCss(document.getElementById('charts-view-button'));
+          this.setIsNotClickCss(document.getElementById('solution-view-button'));
+
         }
         this.viewscliked=[false,true,false,false]
         if (this.isMobile || !this.isLargeWindows){
@@ -228,7 +225,7 @@ export default {
           this.$session.set("page","solution")
           this.setIsClickCss(document.getElementById('solution-view-button'))
           this.isLargeWindows ? this.setIsNotClickCss(document.getElementById('actions-view-button')):null;
-          this.isLargeWindows ?this.setIsNotClickCss(document.getElementById('device-view-button')):null;
+          this.isLargeWindows ? this.setIsNotClickCss(document.getElementById('device-view-button')):null;
           this.setIsNotClickCss(document.getElementById('charts-view-button'));
         }
         this.viewscliked=[false,false,false,true]
@@ -395,6 +392,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 0 30%;
+  min-height: 300px;
 }
 #footer{
   display: flex;
