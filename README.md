@@ -29,31 +29,4 @@ npm run build
 
 Cela génère le dossier */dist* qui contient une version du site prête à être déployée.  
 
-### Documentation 
-
-##### Plan
-  
-    1. Structures
-    2. Calcule des GES
-
-
-#### I. Structures
-
-
-L'application est divisée en trois pages :
-
-  - La saisie des appareils numériques
-
-  ![pagedevice](documentation/PageDevice.PNG)
-  
-  
-  - La saisie des services numériques
-
-![pageaction](documentation/PageAction.PNG)
-
-  - Le bilan de consommation
-
-![pageaction](documentation/PageBilan.PNG)
-
-
-Les implémentations de ces trois pages se trouvent dans le dossier *views*. On navigue de l'une à l'autre grâce à la barre de navigation composée de trois onglets. Les implémentations des composants qui composent ces trois pages sont regroupées dans le dossier *misc*.
+### [Documentation](DOCUMENTATION.pdf) 
